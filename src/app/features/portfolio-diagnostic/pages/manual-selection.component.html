@@ -1,0 +1,85 @@
+<div class="page-container">
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-left">
+            <button (click)="goBack()" class="back-btn" aria-label="Go back">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </button>
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                        </path>
+                    </svg>
+                </div>
+                <span class="brand-text">QUANT<span class="text-primary-500">MF</span></span>
+            </div>
+        </div>
+        <ui-theme-toggle></ui-theme-toggle>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-main">
+        <div class="content-container">
+
+            <!-- Page Header -->
+            @if (!resultData) {
+            <div class="page-header-content">
+                <h1 class="page-title">Portfolio Diagnostic</h1>
+                <p class="page-subtitle">Add your existing mutual funds to analyze health, overlap, and performance.</p>
+            </div>
+            }
+
+            <!-- Form View -->
+            @if (!resultData && !isLoading) {
+            <div class="form-section">
+                <!-- Weight Indicator -->
+                <app-weight-total [total]="totalWeight"></app-weight-total>
+
+                <!-- Fund Rows -->
+                <div class="rows-container">
+                    @for (item of selections; track $index) {
+                    <app-selection-row [item]="item" (update)="calculateTotal()" (remove)="removeRow($index)">
+                    </app-selection-row>
+                    }
+
+                    <!-- Add Button -->
+                    <button (click)="addRow()" class="add-btn">
+                        <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Add Another Fund
+                    </button>
+                </div>
+
+                <!-- Submit -->
+                <div class="actions">
+                    <button [disabled]="totalWeight !== 100" (click)="submit()" class="submit-btn">
+                        Analyze Portfolio
+                    </button>
+                </div>
+            </div>
+            }
+
+            <!-- Loading View -->
+            @if (isLoading) {
+            <div class="loading-card">
+                <h3 class="loading-title">Analyzing your portfolio...</h3>
+                <app-loading-skeleton [rows]="6"></app-loading-skeleton>
+            </div>
+            }
+
+            <!-- Results View -->
+            @if (resultData) {
+            <app-selection-result [data]="resultData"></app-selection-result>
+            }
+
+        </div>
+    </main>
+</div>

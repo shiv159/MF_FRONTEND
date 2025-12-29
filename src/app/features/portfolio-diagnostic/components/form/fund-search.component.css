@@ -1,0 +1,122 @@
+/* Fund Search - Dark Mode Compatible */
+
+.fund-search {
+    position: relative;
+    width: 100%;
+}
+
+.search-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding-left: 0.875rem;
+    display: flex;
+    align-items: center;
+    pointer-events: none;
+    color: var(--color-text-muted);
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.875rem 2.5rem 0.875rem 2.75rem;
+    font-size: 0.875rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    color: var(--color-text-primary);
+    transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+.search-input:disabled {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}
+
+.clear-btn {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    padding-right: 0.875rem;
+    display: flex;
+    align-items: center;
+    color: var(--color-text-muted);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.clear-btn:hover {
+    color: var(--color-text-secondary);
+}
+
+/* Results Dropdown */
+.results-dropdown {
+    position: absolute;
+    z-index: 50;
+    width: 100%;
+    margin-top: 0.5rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-lg);
+    max-height: 15rem;
+    overflow-y: auto;
+}
+
+.result-item {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    text-align: left;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-item:hover {
+    background-color: var(--color-primary-light);
+}
+
+.result-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.result-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.result-amc {
+    background-color: var(--color-surface-hover);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+}

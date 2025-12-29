@@ -1,0 +1,85 @@
+/* Holdings List - Dark Mode Compatible */
+
+.holdings-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.holdings-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface-hover);
+}
+
+.holdings-title {
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.holdings-table {
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+}
+
+.holdings-table th {
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.holdings-table td {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.holdings-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.holdings-table tbody tr {
+    transition: background 0.15s;
+}
+
+.holdings-table tbody tr:hover {
+    background-color: var(--color-primary-light);
+}
+
+.fund-name {
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.fund-isin {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.weight-cell {
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+}
+
+.date-cell {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}

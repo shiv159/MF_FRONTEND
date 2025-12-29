@@ -1,0 +1,21 @@
+<div class="weight-container">
+    <div class="weight-header">
+        <div class="weight-circle" [class.complete]="isComplete" [class.over]="isOver">
+            {{ total() }}%
+        </div>
+        <div class="weight-info">
+            <div class="weight-label">Total Weight</div>
+            @if (!isComplete && !isOver) {
+            <div class="weight-hint">Add {{ 100 - total() }}% more</div>
+            } @else if (isOver) {
+            <div class="weight-hint error">Reduce by {{ total() - 100 }}%</div>
+            } @else {
+            <div class="weight-hint success">Perfect!</div>
+            }
+        </div>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-fill" [class.complete]="isComplete" [class.over]="isOver" [style.width]="progressWidth">
+        </div>
+    </div>
+</div>

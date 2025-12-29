@@ -1,0 +1,197 @@
+/* Manual Selection Page - Premium Dark Theme */
+
+.page-container {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    backdrop-filter: blur(12px);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.back-btn {
+    padding: 0.5rem;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary);
+}
+
+/* Main */
+.page-main {
+    flex: 1;
+    padding: 2rem;
+}
+
+.content-container {
+    max-width: 64rem;
+    margin: 0 auto;
+}
+
+/* Page Header Content */
+.page-header-content {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.dark .page-title {
+    text-shadow: 0 0 30px var(--color-primary-glow);
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+/* Form Section */
+.form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.rows-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Add Button */
+.add-btn {
+    width: 100%;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background-color: transparent;
+    border: 2px dashed var(--color-border);
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: var(--color-primary-light);
+    transform: translateY(-2px);
+}
+
+.dark .add-btn:hover {
+    box-shadow: var(--shadow-glow-primary);
+}
+
+/* Actions */
+.actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+/* Submit Button - Glossy */
+.submit-btn {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
+}
+
+.submit-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Loading Card - Glassmorphism */
+.loading-card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.dark .loading-card {
+    background: var(--color-surface-glass);
+    backdrop-filter: blur(16px);
+    border-color: var(--color-border-glass);
+}
+
+.loading-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 1.5rem;
+}

@@ -1,0 +1,46 @@
+<div class="selection-row">
+    <!-- Header -->
+    <div class="row-header">
+        <span class="row-label">FUND SELECTION</span>
+        <div class="mode-toggle">
+            <button (click)="toggleMode()" class="mode-btn" [class.active]="!isManualMode">
+                Catalog
+            </button>
+            <button (click)="toggleMode()" class="mode-btn" [class.active]="isManualMode">
+                Manual
+            </button>
+        </div>
+        <span class="weight-label">WEIGHT %</span>
+    </div>
+
+    <!-- Content -->
+    <div class="row-content">
+        <!-- Fund Search/Input -->
+        <div class="fund-input-area">
+            @if (!isManualMode) {
+            <app-fund-search [selectedFund]="item().fundName || ''" (fundSelected)="onFundSelected($event)">
+            </app-fund-search>
+            } @else {
+            <input type="text" [value]="item().fundName || ''"
+                (input)="item().fundName = $any($event.target).value; onWeightChange()"
+                placeholder="Enter fund name manually" class="manual-input">
+            }
+        </div>
+
+        <!-- Weight Input -->
+        <div class="weight-input-area">
+            <input type="number" [value]="item().weightPct"
+                (input)="item().weightPct = +$any($event.target).value; onWeightChange()" min="0" max="100" step="5"
+                class="weight-input">
+        </div>
+
+        <!-- Remove Button -->
+        <button (click)="remove.emit()" class="remove-btn" aria-label="Remove fund">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                </path>
+            </svg>
+        </button>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="holdings-card">
+    <div class="holdings-header">
+        <h4 class="holdings-title">Your Holdings</h4>
+    </div>
+    <div class="table-wrapper">
+        <table class="holdings-table">
+            <thead>
+                <tr>
+                    <th>Fund Name</th>
+                    <th>Weight</th>
+                    <th>Category</th>
+                    <th>NAV Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (holding of holdings(); track holding.fundId) {
+                <tr>
+                    <td>
+                        <div class="fund-name">{{ holding.fundName }}</div>
+                        <div class="fund-isin">{{ holding.isin }}</div>
+                    </td>
+                    <td class="weight-cell">{{ holding.weightPct }}%</td>
+                    <td>
+                        <span class="category-badge">{{ holding.fundCategory }}</span>
+                    </td>
+                    <td class="date-cell">{{ holding.navAsOf }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

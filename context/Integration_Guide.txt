@@ -1,0 +1,100 @@
+Angular UI Integration Guide: Wealth & Risk Analytics
+This document provides architectural context and implementation instructions for integrating the backend Analytics APIs into the Angular frontend.
+
+🏗️ Architectural Overview
+The backend exposes two primary "Intelligence" endpoints. Unlike standard CRUD APIs (like Dashboard/Uploads), these are Computational Engines that generate real-time financial insights.
+
+The Two Core User Flows
+New Investor Flow (/risk-profile):
+Goal: "Tell me what to buy."
+Input: User's risk answers (Age, Income, Risk Tolerance).
+Output: A recommended portfolio + deep explanation of why it's good (Projected Wealth, Risk Analysis).
+Existing Investor Flow (/manual-selection):
+Goal: "Tell me if my current portfolio is good."
+Input: A list of funds and weights (Manual Entry/ETL).
+Output: A Health Check report (Overlap Analysis, Concentration Risk, Projected Wealth).
+🔌 API 1: New User Recommendation
+Endpoint: POST /api/onboarding/risk-profile Use Case: The user completes the Risk Questionnaire wizard.
+
+UI Experience Design
+This screen should be the "Aha!" moment. Do not just show a list of funds. You must sell the strategy.
+
+Key Visual Components
+The "Wealth Cone" (Financial Future)
+
+Source: response.portfolioHealth.wealthProjection
+Visualization: Area Chart / Line Chart (Highcharts/Chart.js).
+Data Points:
+X-Axis: timeline[].year (Years 1-10).
+Series 1 (Optimistic): timeline[].optimisticScenarioAmount (Color: Green/Success).
+Series 2 (Expected): timeline[].likelyScenarioAmount (Color: Blue/Primary).
+Series 3 (Pessimistic): timeline[].pessimisticScenarioAmount (Color: Red/Warning).
+Tooltip: "In a bad market, you still have ₹X. In a good market, you could have ₹Y."
+The "Safety Gauge" (Risk Meter)
+
+Source: response.riskProfile.score (0-100).
+Visualization: Gauge Chart or Progress Bar.
+Context:
+< 40: "Conservative (Capital Protection First)"
+40-70: "Moderate (Balanced Growth)"
+70: "Aggressive (Wealth Creation)"
+
+The "Master Plan" (Asset Allocation)
+
+Source: response.assetAllocation
+Visualization: Donut Chart.
+Segments: Equity vs Debt vs Gold.
+The "Shopping List" (Fund Recommendations)
+
+Source: response.recommendations[]
+Structure: Grouped by Category (e.g., "Large Cap", "Small Cap").
+Card Data:
+Name: fund.name
+Reason: fund.reason (e.g., "High Alpha Generator") -> Highlight this tag!
+Metrics: fund.riskMetrics (Alpha, Sharpe). Use these to show "Quality Badges".
+🔌 API 2: Portfolio Health Check
+Endpoint: POST /api/manual/manual-selection Use Case: The user manually adds funds they own to see if they are making mistakes.
+
+UI Experience Design
+This screen is a "Diagnostic Report". It should feel like a medical checkup for money.
+
+Key Visual Components
+The "Clone Detector" (Overlap Matrix)
+
+Source: response.analysis.fundSimilarities
+Visualization:
+List View: "⚠️ Warning: Fund A and Fund B overlap by 82%."
+Heatmap (Advanced): A grid showing overlap percentages.
+Logic:
+Loop through fundSimilarities.
+If stockOverlapPct > 60%, show a RED alert card. "You are paying double fees for the same stocks!"
+If sectorCorrelation > 80%, show a YELLOW warning. "Your funds act identically."
+Concentration Alert
+
+Source: response.analysis.sectorConcentration
+Logic: If "High", warn the user: "You are too exposed to one sector."
+Top Stock Exposure
+
+Source: response.analysis.topOverlappingStocks
+Visualization: Table or Horizontal Bar Chart.
+Message: "Did you know you own 15% of HDFC Bank across 4 different funds?"
+Wealth Projection (The "Reality Check")
+
+Source: response.analysis.wealthProjection
+Usage: Same as API 1. Shows if their current bad habits will cost them money in the long run vs the recommended plan.
+🎨 Shared Component Guidelines
+Wealth Projection Chart (The "Cone")
+Library: Chart.js (recommended) or Highcharts.
+Config:
+Fill the area between "Pessimistic" and "Optimistic" with a semi-transparent color to create the "Cone of Uncertainty".
+Draw the "Expected" line as a solid, bold line in the center.
+Fund Card
+Do not dump all JSON fields.
+Do prioritize:
+reason: The AI-generated "Why?"
+alpha: The metric of "beating the market".
+sharpeRatio: The metric of "risk-adjusted return".
+Note to Frontend Team: Both APIs return a shared object structure 
+PortfolioHealthDTO
+. You should build a reusable <app-portfolio-health-widget> that accepts this DTO and renders the Wealth Cone + Overlap Matrix. This widget can then be dropped into both the "New User" and "Analysis" pages.
+

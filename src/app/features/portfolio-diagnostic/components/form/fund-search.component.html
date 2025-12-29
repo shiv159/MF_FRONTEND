@@ -1,0 +1,36 @@
+<div class="fund-search">
+    <div class="search-wrapper">
+        <div class="search-icon">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+            </svg>
+        </div>
+        <input type="text" [(ngModel)]="searchTerm" (input)="onSearch($event)" (focus)="showResults = true"
+            [disabled]="disabled()" class="search-input" placeholder="Search mutual funds...">
+        @if (searchTerm && !disabled()) {
+        <button (click)="clear()" class="clear-btn" aria-label="Clear search">
+            <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"
+                    clip-rule="evenodd"></path>
+            </svg>
+        </button>
+        }
+    </div>
+
+    <!-- Dropdown Results -->
+    @if (showResults && results.length > 0) {
+    <div class="results-dropdown">
+        @for (result of results; track result.schemeCode) {
+        <button (click)="selectFund(result)" class="result-item">
+            <div class="result-name">{{ result.name }}</div>
+            <div class="result-meta">
+                <span class="result-amc">{{ result.amc }}</span>
+                <span class="result-isin">{{ result.isin }}</span>
+            </div>
+        </button>
+        }
+    </div>
+    }
+</div>

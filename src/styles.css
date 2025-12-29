@@ -1,1 +1,315 @@
-/* You can add global styles to this file, and also import other style files */
+/* Design System - Global Styles */
+/* Import Inter font - must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Theming */
+:root {
+  /* Backgrounds - Light */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-hover: #f1f5f9;
+  --color-surface-glass: rgba(255, 255, 255, 0.8);
+
+  /* Borders */
+  --color-border: #e2e8f0;
+  --color-border-strong: #cbd5e1;
+  --color-border-glass: rgba(255, 255, 255, 0.2);
+
+  /* Text */
+  --color-text-primary: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #94a3b8;
+
+  /* Primary - Blue */
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-light: #eff6ff;
+  --color-primary-glow: rgba(59, 130, 246, 0.3);
+
+  /* Accent - Emerald */
+  --color-accent: #10b981;
+  --color-accent-hover: #059669;
+  --color-accent-light: #d1fae5;
+  --color-accent-glow: rgba(16, 185, 129, 0.3);
+
+  /* Semantic */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  --gradient-accent: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-metallic: linear-gradient(135deg, #64748b 0%, #334155 50%, #64748b 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-glow-primary: 0 0 20px rgba(59, 130, 246, 0.3);
+  --shadow-glow-accent: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Dark Mode - Obsidian Depth */
+.dark {
+  /* Backgrounds - Deep Obsidian */
+  --color-bg: #030712;
+  --color-surface: #0f172a;
+  --color-surface-hover: #1e293b;
+  --color-surface-glass: rgba(15, 23, 42, 0.8);
+
+  /* Borders - Glassmorphism */
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.15);
+  --color-border-glass: rgba(255, 255, 255, 0.1);
+
+  /* Text - High Contrast */
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #64748b;
+
+  /* Primary - Neon Blue */
+  --color-primary: #60a5fa;
+  --color-primary-hover: #3b82f6;
+  --color-primary-light: rgba(59, 130, 246, 0.15);
+  --color-primary-glow: rgba(96, 165, 250, 0.4);
+
+  /* Accent - Neon Emerald */
+  --color-accent: #34d399;
+  --color-accent-hover: #10b981;
+  --color-accent-light: rgba(16, 185, 129, 0.15);
+  --color-accent-glow: rgba(52, 211, 153, 0.4);
+
+  /* Semantic */
+  --color-success: #34d399;
+  --color-warning: #fbbf24;
+  --color-error: #f87171;
+
+  /* Gradients - Glossy */
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #60a5fa 50%, #3b82f6 100%);
+  --gradient-accent: linear-gradient(135deg, #10b981 0%, #34d399 50%, #10b981 100%);
+  --gradient-metallic: linear-gradient(135deg, #1e293b 0%, #334155 50%, #1e293b 100%);
+  --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+
+  /* Shadows - Glows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --shadow-glow-primary: 0 0 30px rgba(96, 165, 250, 0.4);
+  --shadow-glow-accent: 0 0 30px rgba(52, 211, 153, 0.4);
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Form inputs - Global dark mode support */
+  input,
+  textarea,
+  select {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    border-color: var(--color-border);
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Dark mode specific input styles */
+  .dark input,
+  .dark textarea,
+  .dark select {
+    background-color: rgba(15, 23, 42, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dark input:focus,
+  .dark textarea:focus,
+  .dark select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+  }
+}
+
+/* Component Classes */
+@layer components {
+
+  /* Glassmorphism Card */
+  .glass-card {
+    background: var(--color-surface-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--color-border-glass);
+    border-radius: 1rem;
+  }
+
+  /* Glossy Button */
+  .btn-glossy {
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-glow-primary);
+  }
+
+  .btn-glossy:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
+  }
+
+  .btn-glossy:active {
+    transform: translateY(0);
+  }
+
+  .btn-glossy-accent {
+    background: var(--gradient-accent);
+    box-shadow: var(--shadow-glow-accent);
+  }
+
+  .btn-glossy-accent:hover {
+    box-shadow: var(--shadow-glow-accent), var(--shadow-lg);
+  }
+
+  /* Neon Text */
+  .text-neon-blue {
+    color: var(--color-primary);
+    text-shadow: 0 0 10px var(--color-primary-glow);
+  }
+
+  .text-neon-green {
+    color: var(--color-accent);
+    text-shadow: 0 0 10px var(--color-accent-glow);
+  }
+
+  /* Metallic Progress Bar */
+  .progress-metallic {
+    background: var(--gradient-metallic);
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+
+  .progress-metallic-fill {
+    background: var(--gradient-primary);
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.5s ease;
+  }
+
+  /* Pill Badge */
+  .pill-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .pill-badge-success {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+  }
+
+  .pill-badge-warning {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--color-warning);
+  }
+
+  .pill-badge-error {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--color-error);
+  }
+}
+
+/* Utility Classes */
+@layer utilities {
+
+  /* Background utilities */
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  .bg-surface-hover:hover {
+    background-color: var(--color-surface-hover);
+  }
+
+  /* Text utilities */
+  .text-primary-brand {
+    color: var(--color-primary);
+  }
+
+  .text-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  .text-muted {
+    color: var(--color-text-muted);
+  }
+
+  /* Border utilities */
+  .border-default {
+    border-color: var(--color-border);
+  }
+
+  .border-glass {
+    border-color: var(--color-border-glass);
+  }
+
+  /* Glow utilities */
+  .glow-primary {
+    box-shadow: var(--shadow-glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--shadow-glow-accent);
+  }
+
+  /* Micro-interactions */
+  .hover-lift {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .hover-scale {
+    transition: transform 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Focus ring */
+  .focus-ring {
+    outline: none;
+  }
+
+  .focus-ring:focus {
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+  }
+}

@@ -1,0 +1,48 @@
+<div class="summary-grid">
+    <!-- Diversification Score -->
+    <div class="summary-card">
+        <div class="card-icon icon-blue">
+            {{ analysis().diversificationScore }}
+        </div>
+        <div class="card-content">
+            <div class="card-label">Diversification Score</div>
+            <div class="card-value">
+                {{ (analysis().diversificationScore || 0) >= 7 ? 'Excellent' : 'Needs Improvement' }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Sector Concentration -->
+    <div class="summary-card">
+        <div class="card-icon" [class.icon-green]="analysis().sectorConcentration === 'Balanced'"
+            [class.icon-yellow]="analysis().sectorConcentration === 'Low'"
+            [class.icon-red]="analysis().sectorConcentration === 'High'">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                </path>
+            </svg>
+        </div>
+        <div class="card-content">
+            <div class="card-label">Sector Concentration</div>
+            <div class="card-value">{{ analysis().sectorConcentration }}</div>
+        </div>
+    </div>
+
+    <!-- Overlap Status -->
+    <div class="summary-card">
+        <div class="card-icon" [class.icon-green]="analysis().overlapStatus === 'Low'"
+            [class.icon-yellow]="analysis().overlapStatus === 'Moderate'"
+            [class.icon-red]="analysis().overlapStatus === 'High'">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                </path>
+            </svg>
+        </div>
+        <div class="card-content">
+            <div class="card-label">Stock Overlap</div>
+            <div class="card-value">{{ analysis().overlapStatus }}</div>
+        </div>
+    </div>
+</div>

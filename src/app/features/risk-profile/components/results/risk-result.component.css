@@ -1,0 +1,150 @@
+/* Risk Result - Dark Mode Compatible */
+
+.result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 5rem;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Card */
+.hero-card {
+    position: relative;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .hero-content {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.hero-left {
+    flex: 1;
+}
+
+.hero-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.profile-level {
+    color: var(--color-primary);
+}
+
+.hero-description {
+    color: #cbd5e1;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    max-width: 32rem;
+}
+
+/* Score Box */
+.score-box {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.score-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #94a3b8;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.score-value {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+}
+
+.score-max {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #64748b;
+}
+
+/* Decorative Glow */
+.hero-glow {
+    position: absolute;
+    right: -5rem;
+    top: -5rem;
+    width: 16rem;
+    height: 16rem;
+    background: var(--color-primary);
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
+    pointer-events: none;
+}
+
+/* Charts Grid */
+.charts-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+    .charts-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Action Section */
+.action-section {
+    text-align: center;
+    padding-top: 2rem;
+}
+
+.cta-button {
+    padding: 1rem 3rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: white;
+    background: var(--gradient-primary);
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.cta-button:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
+}

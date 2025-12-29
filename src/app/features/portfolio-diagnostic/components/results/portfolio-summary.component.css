@@ -1,0 +1,79 @@
+/* Portfolio Summary - Dark Mode Compatible */
+
+.summary-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+    .summary-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: all 0.2s ease;
+}
+
+.summary-card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-md);
+}
+
+.card-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.icon-blue {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.icon-green {
+    background-color: var(--color-accent-light);
+    color: var(--color-accent);
+}
+
+.icon-yellow {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: var(--color-warning);
+}
+
+.icon-red {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: var(--color-error);
+}
+
+.card-content {
+    flex: 1;
+}
+
+.card-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: 0.25rem;
+}
+
+.card-value {
+    font-weight: 700;
+    color: var(--color-text-primary);
+}

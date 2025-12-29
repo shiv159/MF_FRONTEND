@@ -1,0 +1,226 @@
+/* Landing Page - Premium Dark Theme */
+
+.landing-page {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.landing-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    backdrop-filter: blur(12px);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.brand-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.brand-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--color-text-primary);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logout-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logout-btn:hover {
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-primary);
+    transform: translateY(-1px);
+}
+
+/* Main */
+.landing-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 56rem;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Path Card - Glassmorphism */
+.path-card {
+    position: relative;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.5rem;
+    padding: 2.5rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+/* Glassmorphism effect in dark mode */
+.dark .path-card {
+    background: var(--color-surface-glass);
+    backdrop-filter: blur(12px);
+    border-color: var(--color-border-glass);
+}
+
+.path-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.path-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.dark .path-card:hover {
+    border-color: var(--color-border-strong);
+    box-shadow: var(--shadow-lg), 0 0 40px rgba(0, 0, 0, 0.3);
+}
+
+.path-card:hover::before {
+    opacity: 1;
+}
+
+.path-card:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--color-primary-glow);
+}
+
+/* Card Icon - Neon Glow */
+.card-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.path-card:hover .card-icon {
+    transform: scale(1.1);
+}
+
+.card-icon-blue {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.dark .card-icon-blue {
+    background: var(--color-primary-light);
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.card-icon-green {
+    background: var(--color-accent-light);
+    color: var(--color-accent);
+}
+
+.dark .card-icon-green {
+    background: var(--color-accent-light);
+    box-shadow: var(--shadow-glow-accent);
+}
+
+/* Card Content */
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.card-desc {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+/* Card Action - Neon */
+.card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.path-card:hover .card-action {
+    gap: 0.625rem;
+}
+
+.card-action-blue {
+    color: var(--color-primary);
+}
+
+.dark .card-action-blue {
+    text-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+.card-action-green {
+    color: var(--color-accent);
+}
+
+.dark .card-action-green {
+    text-shadow: 0 0 10px var(--color-accent-glow);
+}

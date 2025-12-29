@@ -1,0 +1,75 @@
+<div class="page-container">
+    <!-- Header -->
+    <header class="page-header">
+        <div class="header-left">
+            <button (click)="goBack()" class="back-btn" aria-label="Go back">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                </svg>
+            </button>
+            <div class="brand">
+                <div class="brand-icon">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                        </path>
+                    </svg>
+                </div>
+                <span class="brand-text">QUANT<span class="text-primary-500">MF</span></span>
+            </div>
+        </div>
+        <ui-theme-toggle></ui-theme-toggle>
+    </header>
+
+    <!-- Main Content -->
+    <main class="page-main">
+        <div class="content-container">
+
+            <!-- Wizard Header -->
+            @if (!isCompleted) {
+            <div class="wizard-header">
+                <h1 class="page-title">Build Your Investor DNA</h1>
+                <p class="page-subtitle">Let's find the perfect portfolio for you in 5 simple steps.</p>
+                <div class="stepper-container">
+                    <app-stepper [steps]="stepLabels" [currentStep]="currentStep"></app-stepper>
+                </div>
+            </div>
+
+            <!-- Form Card -->
+            <div class="form-card">
+                @switch (currentStep) {
+                @case (0) {
+                <app-demographics-step (next)="nextStep()"></app-demographics-step>
+                }
+                @case (1) {
+                <app-financials-step (next)="nextStep()" (back)="prevStep()"></app-financials-step>
+                }
+                @case (2) {
+                <app-goals-step (next)="nextStep()" (back)="prevStep()"></app-goals-step>
+                }
+                @case (3) {
+                <app-behavioral-step (next)="nextStep()" (back)="prevStep()"></app-behavioral-step>
+                }
+                @case (4) {
+                <app-preferences-step (submitForm)="submitProfile()" (back)="prevStep()"></app-preferences-step>
+                }
+                }
+            </div>
+            }
+
+            <!-- Result View -->
+            @if (isCompleted) {
+            @if (isLoading) {
+            <div class="loading-card">
+                <h3 class="loading-title">Analyzing your profile...</h3>
+                <app-loading-skeleton [rows]="5"></app-loading-skeleton>
+            </div>
+            } @else if (resultData) {
+            <app-risk-result [data]="resultData"></app-risk-result>
+            }
+            }
+
+        </div>
+    </main>
+</div>

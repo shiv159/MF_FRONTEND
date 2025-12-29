@@ -1,0 +1,46 @@
+<div class="step-container">
+    <h3 class="step-title">Tell us about yourself</h3>
+
+    <!-- Age -->
+    <div class="form-group">
+        <label for="age" class="form-label">Age</label>
+        <input id="age" type="number" [(ngModel)]="data.age" min="18" max="100" placeholder="e.g. 30"
+            class="form-input">
+    </div>
+
+    <!-- Annual Income -->
+    <div class="form-group">
+        <label for="income" class="form-label">Annual Income Range</label>
+        <select id="income" [(ngModel)]="data.incomeRange" class="form-select">
+            <option value="" disabled>Select range</option>
+            @for (range of incomeRanges; track range.value) {
+            <option [value]="range.value">{{ range.label }}</option>
+            }
+        </select>
+    </div>
+
+    <!-- Dependents -->
+    <div class="form-group">
+        <label class="form-label">Number of Dependents</label>
+        <div class="counter-control">
+            <button (click)="adjustDependents(-1)" class="counter-btn" [disabled]="data.dependents <= 0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+                </svg>
+            </button>
+            <span class="counter-value">{{ data.dependents }}</span>
+            <button (click)="adjustDependents(1)" class="counter-btn" [disabled]="data.dependents >= 10">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="step-actions">
+        <button (click)="onNext()" [disabled]="!isValid()" class="next-btn">
+            Next
+        </button>
+    </div>
+</div>

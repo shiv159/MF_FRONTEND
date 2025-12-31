@@ -1,48 +1,48 @@
-import { Component, Input, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, effect, viewChild, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
-import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData } from 'chart.js';
 
 @Component({
     selector: 'app-doughnut-chart',
-    standalone: true,
     imports: [CommonModule, BaseChartDirective],
-    template: `
-    <div class="relative w-full h-64 md:h-72 flex items-center justify-center">
-      <canvas baseChart
-        [data]="doughnutChartData"
-        [options]="doughnutChartOptions"
-        [type]="doughnutChartType">
-      </canvas>
-      <!-- Center Text (Optional) -->
-      <div *ngIf="centerText" class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span class="text-xl font-bold text-gray-700">{{ centerText }}</span>
-      </div>
-    </div>
-  `
+    templateUrl: './doughnut-chart.component.html',
+    styleUrl: './doughnut-chart.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DoughnutChartComponent implements OnChanges {
-    @Input() labels: string[] = [];
-    @Input() data: number[] = [];
-    @Input() centerText: string = '';
-    @Input() colors: string[] = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444']; // Blue, Green, Amber, Red
+export class DoughnutChartComponent {
+    readonly labels = input<string[]>([]);
+    readonly data = input<number[]>([]);
+    readonly centerText = input<string>('');
+    readonly showLegend = input<boolean>(true);
+    readonly colors = input<string[]>(['#3b82f6', '#10b981', '#f59e0b', '#ef4444']);
 
-    @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+    private readonly chart = viewChild(BaseChartDirective);
 
-    public doughnutChartType: 'doughnut' = 'doughnut';
+    readonly doughnutChartType = 'doughnut' as const;
 
-    public doughnutChartData: ChartData<'doughnut'> = {
-        labels: [],
-        datasets: [{ data: [], backgroundColor: [] }]
-    };
+    protected readonly doughnutChartData = computed<ChartData<'doughnut'>>(() => ({
+        labels: this.labels(),
+        datasets: [{
+            data: this.data(),
+            backgroundColor: this.colors(),
+            hoverOffset: 4,
+            borderWidth: 0
+        }]
+    }));
 
-    public doughnutChartOptions: ChartConfiguration<'doughnut'>['options'] = {
+    protected readonly doughnutChartOptions = computed<ChartConfiguration<'doughnut'>['options']>(() => ({
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
             legend: {
+                display: this.showLegend(),
                 position: 'bottom',
-                labels: { font: { size: 12 }, usePointStyle: true }
+                labels: {
+                    font: { size: 12 },
+                    usePointStyle: true,
+                    color: '#6b7280'
+                }
             },
             tooltip: {
                 callbacks: {
@@ -54,28 +54,24 @@ export class DoughnutChartComponent implements OnChanges {
                 }
             }
         },
-        cutout: '70%', // Thinner ring
+        cutout: '70%',
         layout: { padding: 20 }
-    };
+    }));
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['data'] || changes['labels']) {
-            this.updateChart();
-        }
-    }
+    constructor() {
+        // Effect to update chart when data changes
+        effect(() => {
+            // Access signals to track them
+            this.data();
+            this.labels();
+            this.colors();
+            this.showLegend();
 
-    private updateChart() {
-        this.doughnutChartData = {
-            labels: this.labels,
-            datasets: [
-                {
-                    data: this.data,
-                    backgroundColor: this.colors,
-                    hoverOffset: 4,
-                    borderWidth: 0
-                }
-            ]
-        };
-        this.chart?.update();
+            // Update chart
+            const chartRef = this.chart();
+            if (chartRef) {
+                chartRef.update();
+            }
+        });
     }
 }

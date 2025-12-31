@@ -1,0 +1,67 @@
+.chart-container {
+    background-color: var(--color-surface, white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    border: 1px solid var(--color-border, #e5e7eb);
+    height: 100%;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+:host-context(.dark) .chart-container {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.chart-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1f2937);
+    margin: 0;
+}
+
+:host-context(.dark) .chart-title {
+    color: #f3f4f6;
+}
+
+.legend {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary, #4b5563);
+}
+
+:host-context(.dark) .legend {
+    color: #d1d5db;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.legend-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+}
+
+.legend-dot.optimistic {
+    background-color: #22c55e;
+}
+
+.legend-dot.expected {
+    background-color: #3b82f6;
+}
+
+.legend-dot.pessimistic {
+    background-color: #f87171;
+}

@@ -1,0 +1,1927 @@
+{
+    "results": [
+        {
+            "inputFundId": null,
+            "inputFundName": "Parag Parikh Flexi Cap Fund Direct Growth",
+            "status": "ENRICHED_FROM_ETL",
+            "fundId": "65f8b7b6-e359-474f-9bfe-dd79dee23355",
+            "fundName": "Parag Parikh Flexi Cap Fund Direct Growth",
+            "isin": "INF879O01027",
+            "message": "Resolved via ETL"
+        },
+        {
+            "inputFundId": null,
+            "inputFundName": "HDFC Flexi Cap Direct Plan Growth",
+            "status": "ENRICHED_FROM_ETL",
+            "fundId": "281cbda1-f45f-44b3-9b51-2053235d1434",
+            "fundName": "HDFC Flexi Cap Direct Plan Growth",
+            "isin": "INF179K01UT0",
+            "message": "Resolved via ETL"
+        }
+    ],
+    "portfolio": {
+        "summary": {
+            "totalHoldings": 2,
+            "totalWeightPct": 100
+        },
+        "holdings": [
+            {
+                "fundId": "65f8b7b6-e359-474f-9bfe-dd79dee23355",
+                "fundName": "Parag Parikh Flexi Cap Fund Direct Growth",
+                "isin": "INF879O01027",
+                "amcName": "PPFAS Mutual Fund",
+                "fundCategory": "Equity Scheme - Flexi Cap Fund",
+                "directPlan": true,
+                "currentNav": 94.6116,
+                "navAsOf": "2025-12-30",
+                "weightPct": 60,
+                "sectorAllocation": {
+                    "basicMaterials": 0.97263,
+                    "consumerCyclical": 12.96599,
+                    "financialServices": 35.17297,
+                    "realEstate": 0.97968,
+                    "communicationServices": 12.98756,
+                    "energy": 7.00393,
+                    "industrials": 0.35533,
+                    "technology": 9.86776,
+                    "consumerDefensive": 6.74069,
+                    "healthcare": 5.40678,
+                    "utilities": 7.54668
+                },
+                "topHoldings": [
+                    {
+                        "securityName": "HDFC Bank Ltd",
+                        "isin": "INE040A01034",
+                        "ticker": "HDFCBANK",
+                        "secId": "0P0000C3NZ",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 1.03486016E8,
+                        "marketValue": 1.0427251E11,
+                        "weighting": 8.0344,
+                        "shareChange": 1282695.0,
+                        "firstBoughtDate": "2023-07-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                9.1187529E10,
+                                9.6686573E10,
+                                1.00905339E11,
+                                1.0427251E11
+                            ]
+                        },
+                        "totalReturn1Year": 12.9872,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 23.015,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Power Grid Corp Of India Ltd",
+                        "isin": "INE752E01010",
+                        "ticker": "532898",
+                        "secId": "0P0000GGLM",
+                        "country": "India",
+                        "sector": "Utilities",
+                        "numberOfShare": 2.84154236E8,
+                        "marketValue": 7.6707436E10,
+                        "weighting": 5.91046,
+                        "shareChange": 2.2367599E7,
+                        "firstBoughtDate": "2021-09-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                6.7725261E10,
+                                7.1722344E10,
+                                7.5433819E10,
+                                7.6707436E10
+                            ]
+                        },
+                        "totalReturn1Year": -12.6642,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 23.5859,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "ICICI Bank Ltd",
+                        "isin": "INE090A01021",
+                        "ticker": "ICICIBANK",
+                        "secId": "0P0000BIOD",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 4.5308598E7,
+                        "marketValue": 6.2924581E10,
+                        "weighting": 4.84846,
+                        "shareChange": 2013025.0,
+                        "firstBoughtDate": "2014-05-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                5.6919175E10,
+                                5.6906592E10,
+                                5.8245534E10,
+                                6.2924581E10
+                            ]
+                        },
+                        "totalReturn1Year": 4.5456,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 16.9815,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Bajaj Holdings and Investment Ltd",
+                        "isin": "INE118A01012",
+                        "ticker": "500490",
+                        "secId": "0P0000AM0R",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 5318918.0,
+                        "marketValue": 6.1162238E10,
+                        "weighting": 4.71267,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2016-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                6.7922583E10,
+                                6.5140789E10,
+                                6.5438648E10,
+                                6.1162238E10
+                            ]
+                        },
+                        "totalReturn1Year": -11.9779,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 14.9953,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Coal India Ltd",
+                        "isin": "INE522F01014",
+                        "ticker": "COALINDIA",
+                        "secId": "0P0000RQ97",
+                        "country": "India",
+                        "sector": "Energy",
+                        "numberOfShare": 1.62039558E8,
+                        "marketValue": 6.095118E10,
+                        "weighting": 4.69641,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2022-05-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                6.0732426E10,
+                                6.3187326E10,
+                                6.2976674E10,
+                                6.095118E10
+                            ]
+                        },
+                        "totalReturn1Year": 12.3313,
+                        "assessment": "Undervalued",
+                        "stockRating": "5",
+                        "quantRating": "5",
+                        "susEsgRiskScore": 45.1634,
+                        "susEsgRiskCategory": "Severe",
+                        "susEsgRiskGlobes": 1.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "ITC Ltd",
+                        "isin": "INE154A01025",
+                        "ticker": "ITC",
+                        "secId": "0P0000BL1E",
+                        "country": "India",
+                        "sector": "Consumer Defensive",
+                        "numberOfShare": 1.44737169E8,
+                        "marketValue": 5.8510001E10,
+                        "weighting": 4.50831,
+                        "shareChange": 5966145.0,
+                        "firstBoughtDate": "2020-03-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                5.3030265E10,
+                                5.4498777E10,
+                                5.83324E10,
+                                5.8510001E10
+                            ]
+                        },
+                        "totalReturn1Year": -4.8428,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 29.2605,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Alphabet Inc Class A",
+                        "isin": "US02079K3059",
+                        "ticker": "GOOGL",
+                        "secId": "0P000002HD",
+                        "country": "United States",
+                        "sector": "Communication Services",
+                        "numberOfShare": 1889757.0,
+                        "marketValue": 5.411309E10,
+                        "weighting": 4.16952,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2021-05-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.5459237E10,
+                                4.0776787E10,
+                                4.7169608E10,
+                                5.411309E10
+                            ]
+                        },
+                        "totalReturn1Year": 64.5472,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 19.9906,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Kotak Mahindra Bank Ltd",
+                        "isin": "INE237A01028",
+                        "ticker": "KOTAKBANK",
+                        "secId": "0P0000BHY1",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 2.4306544E7,
+                        "marketValue": 5.1636822E10,
+                        "weighting": 3.97872,
+                        "shareChange": 101489.0,
+                        "firstBoughtDate": "2023-11-30T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                4.5885489E10,
+                                4.8233413E10,
+                                5.0883867E10,
+                                5.1636822E10
+                            ]
+                        },
+                        "totalReturn1Year": 23.8123,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 16.959,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Mahindra & Mahindra Ltd",
+                        "isin": "INE101A01026",
+                        "ticker": "M&M",
+                        "secId": "0P0000CA2F",
+                        "country": "India",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 1.2435671E7,
+                        "marketValue": 4.6724547E10,
+                        "weighting": 3.60022,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-03-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.9467979E10,
+                                4.2274345E10,
+                                4.3365672E10,
+                                4.6724547E10
+                            ]
+                        },
+                        "totalReturn1Year": 22.7347,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 26.2795,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Bharti Airtel Ltd",
+                        "isin": "INE397D01024",
+                        "ticker": "BHARTIARTL",
+                        "secId": "0P0000BJR2",
+                        "country": "India",
+                        "sector": "Communication Services",
+                        "numberOfShare": 2.1167034E7,
+                        "marketValue": 4.4484639E10,
+                        "weighting": 3.42763,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-05-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.9980294E10,
+                                3.9760157E10,
+                                4.3487671E10,
+                                4.4484639E10
+                            ]
+                        },
+                        "totalReturn1Year": 33.3291,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 19.204,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Maruti Suzuki India Ltd",
+                        "isin": "INE585B01010",
+                        "ticker": "MARUTI",
+                        "secId": "0P0000BU88",
+                        "country": "India",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 2746670.0,
+                        "marketValue": 4.3672053E10,
+                        "weighting": 3.36502,
+                        "shareChange": 50000.0,
+                        "firstBoughtDate": "2022-12-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                4.0625996E10,
+                                4.3224923E10,
+                                4.3648301E10,
+                                4.3672053E10
+                            ]
+                        },
+                        "totalReturn1Year": 55.404,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 30.2476,
+                        "susEsgRiskCategory": "High",
+                        "susEsgRiskGlobes": 2.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Axis Bank Ltd",
+                        "isin": "INE238A01034",
+                        "ticker": "532215",
+                        "secId": "0P0000CM8C",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 3.3244875E7,
+                        "marketValue": 4.2543467E10,
+                        "weighting": 3.27806,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2013-06-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.4120423E10,
+                                3.7619901E10,
+                                4.0984282E10,
+                                4.2543467E10
+                            ]
+                        },
+                        "totalReturn1Year": 16.5856,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 17.79,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Meta Platforms Inc Class A",
+                        "isin": "US30303M1027",
+                        "ticker": "META",
+                        "secId": "0P0000W3KZ",
+                        "country": "United States",
+                        "sector": "Communication Services",
+                        "numberOfShare": 591056.0,
+                        "marketValue": 3.4250924E10,
+                        "weighting": 2.6391,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2017-07-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.8519795E10,
+                                3.8537557E10,
+                                3.4016888E10,
+                                3.4250924E10
+                            ]
+                        },
+                        "totalReturn1Year": 12.9913,
+                        "assessment": "Undervalued",
+                        "stockRating": "4",
+                        "quantRating": "4",
+                        "susEsgRiskScore": 24.6668,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Microsoft Corp",
+                        "isin": "US5949181045",
+                        "ticker": "MSFT",
+                        "secId": "0P000003MH",
+                        "country": "United States",
+                        "sector": "Technology",
+                        "numberOfShare": 733019.0,
+                        "marketValue": 3.2254576E10,
+                        "weighting": 2.48528,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2020-04-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.2767613E10,
+                                3.3708372E10,
+                                3.3693188E10,
+                                3.2254576E10
+                            ]
+                        },
+                        "totalReturn1Year": 15.5474,
+                        "assessment": "Undervalued",
+                        "stockRating": "4",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 14.3584,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "HCL Technologies Ltd",
+                        "isin": "INE860A01027",
+                        "ticker": "HCLTECH",
+                        "secId": "0P0000CJ48",
+                        "country": "India",
+                        "sector": "Technology",
+                        "numberOfShare": 1.9831378E7,
+                        "marketValue": 3.2210124E10,
+                        "weighting": 2.48185,
+                        "shareChange": 1692433.0,
+                        "firstBoughtDate": "2021-01-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                2.7214936E10,
+                                2.5911059E10,
+                                2.7961184E10,
+                                3.2210124E10
+                            ]
+                        },
+                        "totalReturn1Year": -13.1548,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 13.1245,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Amazon.com Inc",
+                        "isin": "US0231351067",
+                        "ticker": "AMZN",
+                        "secId": "0P000000B7",
+                        "country": "United States",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 1377678.0,
+                        "marketValue": 2.8735297E10,
+                        "weighting": 2.21411,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2019-01-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                2.7790231E10,
+                                2.6846345E10,
+                                2.9866572E10,
+                                2.8735297E10
+                            ]
+                        },
+                        "totalReturn1Year": 5.0746,
+                        "assessment": "Undervalued",
+                        "stockRating": "4",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 16.6413,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Infosys Ltd",
+                        "isin": "INE009A01021",
+                        "ticker": "INFY",
+                        "secId": "0P0000AKOJ",
+                        "country": "India",
+                        "sector": "Technology",
+                        "numberOfShare": 1.762174E7,
+                        "marketValue": 2.7491677E10,
+                        "weighting": 2.11829,
+                        "shareChange": 8315267.0,
+                        "firstBoughtDate": "2023-03-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.3676793E10,
+                                1.3418073E10,
+                                1.3794985E10,
+                                2.7491677E10
+                            ]
+                        },
+                        "totalReturn1Year": -12.5603,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 13.1088,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Dr Reddy's Laboratories Ltd",
+                        "isin": "INE089A01031",
+                        "ticker": "500124",
+                        "secId": "0P0000AMTR",
+                        "country": "India",
+                        "sector": "Healthcare",
+                        "numberOfShare": 1.3125545E7,
+                        "marketValue": 1.6522436E10,
+                        "weighting": 1.27309,
+                        "shareChange": 350000.0,
+                        "firstBoughtDate": "2016-11-30T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.4658671E10,
+                                1.481649E10,
+                                1.5299993E10,
+                                1.6522436E10
+                            ]
+                        },
+                        "totalReturn1Year": -7.5206,
+                        "assessment": "Undervalued",
+                        "stockRating": "5",
+                        "quantRating": "5",
+                        "susEsgRiskScore": 18.3655,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Cipla Ltd",
+                        "isin": "INE059A01026",
+                        "ticker": "500087",
+                        "secId": "0P0000BI2R",
+                        "country": "India",
+                        "sector": "Healthcare",
+                        "numberOfShare": 1.0765866E7,
+                        "marketValue": 1.6485771E10,
+                        "weighting": 1.27026,
+                        "shareChange": 592406.0,
+                        "firstBoughtDate": "2022-02-28T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.4291419E10,
+                                1.5016223E10,
+                                1.5273415E10,
+                                1.6485771E10
+                            ]
+                        },
+                        "totalReturn1Year": -0.8713,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 24.1625,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Zydus Lifesciences Ltd",
+                        "isin": "INE010B01027",
+                        "ticker": "532321",
+                        "secId": "0P0000CEZZ",
+                        "country": "India",
+                        "sector": "Healthcare",
+                        "numberOfShare": 1.7405149E7,
+                        "marketValue": 1.6404353E10,
+                        "weighting": 1.26399,
+                        "shareChange": 1645360.0,
+                        "firstBoughtDate": "2019-06-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.4506143E10,
+                                1.4874127E10,
+                                1.5357126E10,
+                                1.6404353E10
+                            ]
+                        },
+                        "totalReturn1Year": -4.7505,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 28.5655,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    }
+                ],
+                "fundMetadata": {
+                    "name": "Parag Parikh Flexi Cap Direct Growth",
+                    "alpha": 8.856,
+                    "fund_size": 1297825431002,
+                    "fund_size_currency": "INR",
+                    "fund_size_as_of": "2025-11-30",
+                    "beta": 0.569,
+                    "sharpe_ratio": 1.64,
+                    "stdev": 8.421,
+                    "is_index_fund": false,
+                    "risk_volatility": {
+                        "fund_name": null,
+                        "category_name": "Flexi Cap",
+                        "index_name": "BSE 500 India TR INR",
+                        "calculation_benchmark": "BSE 500 India TR INR",
+                        "extended_performance_data": {
+                            "ePUsedFor1YearFlag": false,
+                            "ePUsedFor3YearFlag": false,
+                            "ePUsedFor5YearFlag": false,
+                            "ePUsedFor10YearFlag": false,
+                            "ePUsedFor15YearFlag": false
+                        },
+                        "fund_risk_volatility": {
+                            "primaryIndexNameNew": "BSE 500 India TR INR",
+                            "bestFitIndexName": null,
+                            "bestFitAlphaFor3Year": null,
+                            "bestFitBetaFor3Year": null,
+                            "bestFitRSquaredFor3Year": null,
+                            "endDate": "2025-11-30T06:00:00.000",
+                            "for1Year": {
+                                "alpha": 2.843,
+                                "beta": 0.495,
+                                "rSquared": 85.354,
+                                "standardDeviation": 7.73,
+                                "sharpeRatio": 0.433
+                            },
+                            "for3Year": {
+                                "alpha": 8.851,
+                                "beta": 0.569,
+                                "rSquared": 78.591,
+                                "standardDeviation": 8.421,
+                                "sharpeRatio": 1.639
+                            },
+                            "for5Year": {
+                                "alpha": 7.168,
+                                "beta": 0.612,
+                                "rSquared": 68.032,
+                                "standardDeviation": 10.078,
+                                "sharpeRatio": 1.473
+                            },
+                            "for10Year": {
+                                "alpha": 5.159,
+                                "beta": 0.708,
+                                "rSquared": 78.908,
+                                "standardDeviation": 13.408,
+                                "sharpeRatio": 0.893
+                            },
+                            "for15Year": {
+                                "alpha": null,
+                                "beta": null,
+                                "rSquared": null,
+                                "standardDeviation": null,
+                                "sharpeRatio": null
+                            },
+                            "forLongestTenure": null
+                        },
+                        "category_risk_volatility": {
+                            "endDate": "2025-11-30T06:00:00.000",
+                            "for1Year": {
+                                "alpha": -2.142,
+                                "beta": 0.995,
+                                "rSquared": 90.225,
+                                "standardDeviation": 15.189,
+                                "sharpeRatio": -0.039
+                            },
+                            "for3Year": {
+                                "alpha": 1.461,
+                                "beta": 0.938,
+                                "rSquared": 87.165,
+                                "standardDeviation": 13.201,
+                                "sharpeRatio": 0.746
+                            },
+                            "for5Year": {
+                                "alpha": 0.742,
+                                "beta": 0.924,
+                                "rSquared": 85.231,
+                                "standardDeviation": 13.641,
+                                "sharpeRatio": 0.91
+                            },
+                            "for10Year": {
+                                "alpha": 0.034,
+                                "beta": 0.946,
+                                "rSquared": 89.642,
+                                "standardDeviation": 16.845,
+                                "sharpeRatio": 0.547
+                            },
+                            "for15Year": {
+                                "alpha": 0.112,
+                                "beta": 0.969,
+                                "rSquared": 90.204,
+                                "standardDeviation": 17.299,
+                                "sharpeRatio": 0.39
+                            },
+                            "forLongestTenure": null
+                        },
+                        "index_risk_volatility": {
+                            "endDate": "2025-11-30T06:00:00.000",
+                            "for1Year": {
+                                "alpha": 10.636,
+                                "beta": -0.407,
+                                "rSquared": 5.761,
+                                "standardDeviation": 14.42,
+                                "sharpeRatio": 0.073
+                            },
+                            "for3Year": {
+                                "alpha": 5.697,
+                                "beta": 0.24,
+                                "rSquared": 4.39,
+                                "standardDeviation": 13.079,
+                                "sharpeRatio": 0.659
+                            },
+                            "for5Year": {
+                                "alpha": 9.986,
+                                "beta": 0.361,
+                                "rSquared": 11.181,
+                                "standardDeviation": 13.584,
+                                "sharpeRatio": 0.924
+                            },
+                            "for10Year": {
+                                "alpha": 6.202,
+                                "beta": 0.616,
+                                "rSquared": 22.534,
+                                "standardDeviation": 16.846,
+                                "sharpeRatio": 0.574
+                            },
+                            "for15Year": {
+                                "alpha": 4.515,
+                                "beta": 0.485,
+                                "rSquared": 13.022,
+                                "standardDeviation": 16.902,
+                                "sharpeRatio": 0.404
+                            },
+                            "forLongestTenure": null
+                        },
+                        "currency": "INR"
+                    },
+                    "nav_history": {
+                        "2016-01": 16.59,
+                        "2016-02": 15.66,
+                        "2016-03": 17.07,
+                        "2016-04": 17.15,
+                        "2016-05": 17.45,
+                        "2016-06": 17.55,
+                        "2016-07": 18.35,
+                        "2016-08": 18.84,
+                        "2016-09": 18.6,
+                        "2016-10": 19.07,
+                        "2016-11": 18.5,
+                        "2016-12": 18.46,
+                        "2017-01": 19.0,
+                        "2017-02": 19.66,
+                        "2017-03": 19.94,
+                        "2017-04": 20.33,
+                        "2017-05": 20.76,
+                        "2017-06": 21.05,
+                        "2017-07": 21.67,
+                        "2017-08": 21.87,
+                        "2017-09": 22.49,
+                        "2017-10": 23.17,
+                        "2017-11": 23.43,
+                        "2017-12": 24.02,
+                        "2018-01": 24.65,
+                        "2018-02": 24.16,
+                        "2018-03": 22.92,
+                        "2018-04": 24.1,
+                        "2018-05": 24.29,
+                        "2018-06": 24.49,
+                        "2018-07": 25.47,
+                        "2018-08": 26.47,
+                        "2018-09": 25.09,
+                        "2018-10": 23.63,
+                        "2018-11": 24.15,
+                        "2018-12": 24.06,
+                        "2019-01": 24.36,
+                        "2019-02": 24.93,
+                        "2019-03": 25.73,
+                        "2019-04": 26.1,
+                        "2019-05": 25.89,
+                        "2019-06": 26.08,
+                        "2019-07": 25.5,
+                        "2019-08": 25.47,
+                        "2019-09": 26.33,
+                        "2019-10": 27.26,
+                        "2019-11": 27.59,
+                        "2019-12": 27.75,
+                        "2020-01": 28.44,
+                        "2020-02": 27.2,
+                        "2020-03": 21.86,
+                        "2020-04": 24.95,
+                        "2020-05": 26.17,
+                        "2020-06": 27.78,
+                        "2020-07": 30.52,
+                        "2020-08": 32.38,
+                        "2020-09": 32.93,
+                        "2020-10": 32.6,
+                        "2020-11": 35.44,
+                        "2020-12": 37.05,
+                        "2021-01": 37.46,
+                        "2021-02": 38.76,
+                        "2021-03": 39.93,
+                        "2021-04": 41.98,
+                        "2021-05": 43.92,
+                        "2021-06": 45.34,
+                        "2021-07": 48.44,
+                        "2021-08": 50.45,
+                        "2021-09": 52.36,
+                        "2021-10": 53.14,
+                        "2021-11": 53.18,
+                        "2021-12": 54.46,
+                        "2022-01": 52.5,
+                        "2022-02": 50.31,
+                        "2022-03": 52.51,
+                        "2022-04": 50.72,
+                        "2022-05": 49.56,
+                        "2022-06": 46.83,
+                        "2022-07": 49.98,
+                        "2022-08": 51.33,
+                        "2022-09": 49.89,
+                        "2022-10": 51.95,
+                        "2022-11": 52.52,
+                        "2022-12": 51.03,
+                        "2023-01": 51.97,
+                        "2023-02": 51.98,
+                        "2023-03": 53.05,
+                        "2023-04": 55.99,
+                        "2023-05": 58.34,
+                        "2023-06": 59.63,
+                        "2023-07": 61.6,
+                        "2023-08": 61.32,
+                        "2023-09": 62.84,
+                        "2023-10": 62.81,
+                        "2023-11": 67.01,
+                        "2023-12": 70.24,
+                        "2024-01": 71.97,
+                        "2024-02": 74.79,
+                        "2024-03": 74.87,
+                        "2024-04": 76.96,
+                        "2024-05": 77.77,
+                        "2024-06": 81.94,
+                        "2024-07": 84.9,
+                        "2024-08": 85.89,
+                        "2024-09": 88.62,
+                        "2024-10": 85.98,
+                        "2024-11": 86.76,
+                        "2024-12": 87.67,
+                        "2025-01": 87.43,
+                        "2025-02": 83.49,
+                        "2025-03": 85.84,
+                        "2025-04": 87.41,
+                        "2025-05": 89.78,
+                        "2025-06": 92.9,
+                        "2025-07": 92.16,
+                        "2025-08": 91.07,
+                        "2025-09": 92.1,
+                        "2025-10": 94.41,
+                        "2025-11": 95.0,
+                        "2025-12": 94.61
+                    }
+                }
+            },
+            {
+                "fundId": "281cbda1-f45f-44b3-9b51-2053235d1434",
+                "fundName": "HDFC Flexi Cap Direct Plan Growth",
+                "isin": "INF179K01UT0",
+                "amcName": "HDFC Mutual Fund",
+                "fundCategory": "Equity Scheme - Flexi Cap Fund",
+                "directPlan": true,
+                "currentNav": 2252.766,
+                "navAsOf": "2025-12-30",
+                "weightPct": 40,
+                "sectorAllocation": {
+                    "basicMaterials": 5.86279,
+                    "consumerCyclical": 17.09266,
+                    "financialServices": 45.1608,
+                    "realEstate": 2.80718,
+                    "communicationServices": 2.93898,
+                    "energy": 1.60374,
+                    "industrials": 5.66766,
+                    "technology": 6.05072,
+                    "consumerDefensive": 0.99793,
+                    "healthcare": 8.87281,
+                    "utilities": 2.94473
+                },
+                "topHoldings": [
+                    {
+                        "securityName": "ICICI Bank Ltd",
+                        "isin": "INE090A01021",
+                        "ticker": "ICICIBANK",
+                        "secId": "0P0000BIOD",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 6.4E7,
+                        "marketValue": 8.88832E10,
+                        "weighting": 9.44875,
+                        "shareChange": 3000000.0,
+                        "firstBoughtDate": "2009-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                7.54812E10,
+                                7.8184E10,
+                                8.20633E10,
+                                8.88832E10
+                            ]
+                        },
+                        "totalReturn1Year": 4.5456,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 16.9815,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "HDFC Bank Ltd",
+                        "isin": "INE040A01034",
+                        "ticker": "HDFCBANK",
+                        "secId": "0P0000C3NZ",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 8.2E7,
+                        "marketValue": 8.26232E10,
+                        "weighting": 8.78328,
+                        "shareChange": 3000000.0,
+                        "firstBoughtDate": "2013-07-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                6.85152E10,
+                                7.1325E10,
+                                7.79967E10,
+                                8.26232E10
+                            ]
+                        },
+                        "totalReturn1Year": 12.9872,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 23.015,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Axis Bank Ltd",
+                        "isin": "INE238A01034",
+                        "ticker": "532215",
+                        "secId": "0P0000CM8C",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 5.4E7,
+                        "marketValue": 6.91038E10,
+                        "weighting": 7.3461,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2017-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                5.64408E10,
+                                6.11064E10,
+                                6.65712E10,
+                                6.91038E10
+                            ]
+                        },
+                        "totalReturn1Year": 14.4362,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 17.79,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "State Bank of India",
+                        "isin": "INE062A01020",
+                        "ticker": "SBIN",
+                        "secId": "0P0000BI86",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 4.4E7,
+                        "marketValue": 4.3076E10,
+                        "weighting": 4.57921,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2003-01-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.45075E10,
+                                3.751535E10,
+                                4.1228E10,
+                                4.3076E10
+                            ]
+                        },
+                        "totalReturn1Year": 25.5043,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 21.7627,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "SBI Life Insurance Co Ltd",
+                        "isin": "INE123W01016",
+                        "ticker": "540719",
+                        "secId": "0P0001BPVS",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 2.0E7,
+                        "marketValue": 3.932E10,
+                        "weighting": 4.17992,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2021-03-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.611E10,
+                                3.5812E10,
+                                3.9114E10,
+                                3.932E10
+                            ]
+                        },
+                        "totalReturn1Year": 43.2574,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 23.504,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Kotak Mahindra Bank Ltd",
+                        "isin": "INE237A01028",
+                        "ticker": "KOTAKBANK",
+                        "secId": "0P0000BHY1",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 1.82E7,
+                        "marketValue": 3.866408E10,
+                        "weighting": 4.11019,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2023-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.430525E10,
+                                3.626714E10,
+                                3.826004E10,
+                                3.866408E10
+                            ]
+                        },
+                        "totalReturn1Year": 22.7968,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 16.959,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Cipla Ltd",
+                        "isin": "INE059A01026",
+                        "ticker": "500087",
+                        "secId": "0P0000BI2R",
+                        "country": "India",
+                        "sector": "Healthcare",
+                        "numberOfShare": 2.1E7,
+                        "marketValue": 3.21573E10,
+                        "weighting": 3.41849,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2012-09-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.33774E10,
+                                3.15693E10,
+                                3.15273E10,
+                                3.21573E10
+                            ]
+                        },
+                        "totalReturn1Year": 0.2822,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 24.1625,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Maruti Suzuki India Ltd",
+                        "isin": "INE585B01010",
+                        "ticker": "MARUTI",
+                        "secId": "0P0000BU88",
+                        "country": "India",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 2000000.0,
+                        "marketValue": 3.18E10,
+                        "weighting": 3.38051,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2023-12-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                3.69775E10,
+                                3.52638E10,
+                                3.2372E10,
+                                3.18E10
+                            ]
+                        },
+                        "totalReturn1Year": 52.426,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 30.2476,
+                        "susEsgRiskCategory": "High",
+                        "susEsgRiskGlobes": 2.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "HCL Technologies Ltd",
+                        "isin": "INE860A01027",
+                        "ticker": "HCLTECH",
+                        "secId": "0P0000CJ48",
+                        "country": "India",
+                        "sector": "Technology",
+                        "numberOfShare": 1.8E7,
+                        "marketValue": 2.92356E10,
+                        "weighting": 3.1079,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2020-09-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                2.40042E10,
+                                2.451627E10,
+                                2.7747E10,
+                                2.92356E10
+                            ]
+                        },
+                        "totalReturn1Year": -13.1548,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 13.1245,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Power Grid Corp Of India Ltd",
+                        "isin": "INE752E01010",
+                        "ticker": "532898",
+                        "secId": "0P0000GGLM",
+                        "country": "India",
+                        "sector": "Utilities",
+                        "numberOfShare": 9.1E7,
+                        "marketValue": 2.456545E10,
+                        "weighting": 2.61144,
+                        "shareChange": 1.44E7,
+                        "firstBoughtDate": "2023-09-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.6515E10,
+                                1.9057E10,
+                                2.207229E10,
+                                2.456545E10
+                            ]
+                        },
+                        "totalReturn1Year": -12.9058,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 23.5859,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Bharti Airtel Ltd",
+                        "isin": "INE397D01024",
+                        "ticker": "BHARTIARTL",
+                        "secId": "0P0000BJR2",
+                        "country": "India",
+                        "sector": "Communication Services",
+                        "numberOfShare": 1.1E7,
+                        "marketValue": 2.31176E10,
+                        "weighting": 2.45752,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2020-08-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                2.07768E10,
+                                2.06624E10,
+                                2.25995E10,
+                                2.31176E10
+                            ]
+                        },
+                        "totalReturn1Year": 33.3291,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 19.204,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Eicher Motors Ltd",
+                        "isin": "INE066A01021",
+                        "ticker": "EICHERMOT",
+                        "secId": "0P0000C513",
+                        "country": "India",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 3200000.0,
+                        "marketValue": 2.25712E10,
+                        "weighting": 2.39944,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-06-30T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.95296E10,
+                                2.24176E10,
+                                2.24224E10,
+                                2.25712E10
+                            ]
+                        },
+                        "totalReturn1Year": 49.5634,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 12.4794,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Hyundai Motor India Ltd",
+                        "isin": "INE0V6F01027",
+                        "ticker": "HYUNDAI",
+                        "secId": "0P0001TWL4",
+                        "country": "India",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 9000000.0,
+                        "marketValue": 2.0934E10,
+                        "weighting": 2.22539,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                2.21436E10,
+                                2.32596E10,
+                                2.19483E10,
+                                2.0934E10
+                            ]
+                        },
+                        "totalReturn1Year": 29.2775,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": null,
+                        "susEsgRiskCategory": null,
+                        "susEsgRiskGlobes": null,
+                        "esgAsOfDate": null
+                    },
+                    {
+                        "securityName": "Bajaj Auto Ltd",
+                        "isin": "INE917I01010",
+                        "ticker": "532977",
+                        "secId": "0P0000HJ9S",
+                        "country": "India",
+                        "sector": "Consumer Cyclical",
+                        "numberOfShare": 2000000.0,
+                        "marketValue": 1.8147E10,
+                        "weighting": 1.92912,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-12-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.7263E10,
+                                1.7357E10,
+                                1.7785E10,
+                                1.8147E10
+                            ]
+                        },
+                        "totalReturn1Year": 4.0348,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 15.1096,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Nexus Select Trust Reits",
+                        "isin": "INE0NDH25011",
+                        "ticker": "543913",
+                        "secId": "0P0001QY8H",
+                        "country": "India",
+                        "sector": "Real Estate",
+                        "numberOfShare": 1.1E8,
+                        "marketValue": 1.78695E10,
+                        "weighting": 1.89962,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2023-05-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.63075E10,
+                                1.8216E10,
+                                1.79278E10,
+                                1.78695E10
+                            ]
+                        },
+                        "totalReturn1Year": 19.7372,
+                        "assessment": "Undervalued",
+                        "stockRating": "4",
+                        "quantRating": "4",
+                        "susEsgRiskScore": 16.7415,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Piramal Pharma Ltd",
+                        "isin": "INE0DK501011",
+                        "ticker": "543635",
+                        "secId": "0P0001PWCS",
+                        "country": "India",
+                        "sector": "Healthcare",
+                        "numberOfShare": 9.0E7,
+                        "marketValue": 1.68489E10,
+                        "weighting": 1.79113,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2023-12-31T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.65096E10,
+                                1.72044E10,
+                                1.79667E10,
+                                1.68489E10
+                            ]
+                        },
+                        "totalReturn1Year": -32.0212,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 24.9297,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "JSW Steel Ltd",
+                        "isin": "INE019A01038",
+                        "ticker": "500228",
+                        "secId": "0P0000BYOM",
+                        "country": "India",
+                        "sector": "Basic Materials",
+                        "numberOfShare": 1.42E7,
+                        "marketValue": 1.647626E10,
+                        "weighting": 1.75151,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.457772E10,
+                                1.622634E10,
+                                1.71252E10,
+                                1.647626E10
+                            ]
+                        },
+                        "totalReturn1Year": 19.9102,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 32.1807,
+                        "susEsgRiskCategory": "High",
+                        "susEsgRiskGlobes": 2.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Bank of Baroda",
+                        "isin": "INE028A01039",
+                        "ticker": "532134",
+                        "secId": "0P0000CLFS",
+                        "country": "India",
+                        "sector": "Financial Services",
+                        "numberOfShare": 5.2E7,
+                        "marketValue": 1.50696E10,
+                        "weighting": 1.60198,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2006-05-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.16415E10,
+                                1.344408E10,
+                                1.44768E10,
+                                1.50696E10
+                            ]
+                        },
+                        "totalReturn1Year": 20.7551,
+                        "assessment": "Fairly Valued",
+                        "stockRating": "3",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 23.9807,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Infosys Ltd",
+                        "isin": "INE009A01021",
+                        "ticker": "INFY",
+                        "secId": "0P0000AKOJ",
+                        "country": "India",
+                        "sector": "Technology",
+                        "numberOfShare": 9000000.0,
+                        "marketValue": 1.40409E10,
+                        "weighting": 1.49262,
+                        "shareChange": 500000.0,
+                        "firstBoughtDate": "2008-10-31T05:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.17568E10,
+                                1.15344E10,
+                                1.259955E10,
+                                1.40409E10
+                            ]
+                        },
+                        "totalReturn1Year": -12.5603,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "3",
+                        "susEsgRiskScore": 13.1088,
+                        "susEsgRiskCategory": "Low",
+                        "susEsgRiskGlobes": 4.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    },
+                    {
+                        "securityName": "Tata Steel Ltd",
+                        "isin": "INE081A01020",
+                        "ticker": "TATASTEEL",
+                        "secId": "0P0000ARUR",
+                        "country": "India",
+                        "sector": "Basic Materials",
+                        "numberOfShare": 8.0E7,
+                        "marketValue": 1.34368E10,
+                        "weighting": 1.4284,
+                        "shareChange": 0.0,
+                        "firstBoughtDate": "2024-02-29T06:00:00.000",
+                        "holdingTrend": {
+                            "trend": [
+                                1.266736E10,
+                                1.383914E10,
+                                1.46272E10,
+                                1.34368E10
+                            ]
+                        },
+                        "totalReturn1Year": 31.0637,
+                        "assessment": "Overvalued",
+                        "stockRating": "2",
+                        "quantRating": "2",
+                        "susEsgRiskScore": 27.7151,
+                        "susEsgRiskCategory": "Medium",
+                        "susEsgRiskGlobes": 3.0,
+                        "esgAsOfDate": "2025-12-03T06:00:00.000"
+                    }
+                ],
+                "fundMetadata": {
+                    "name": "HDFC Flexi Cap Fund -Direct Plan - Growth Option",
+                    "alpha": 6.936,
+                    "fund_size": 940687249962,
+                    "fund_size_currency": "INR",
+                    "fund_size_as_of": "2025-11-30",
+                    "beta": 0.78,
+                    "sharpe_ratio": 1.299,
+                    "stdev": 10.523,
+                    "is_index_fund": false,
+                    "risk_volatility": {
+                        "fund_name": null,
+                        "category_name": "Flexi Cap",
+                        "index_name": "BSE 500 India TR INR",
+                        "calculation_benchmark": "BSE 500 India TR INR",
+                        "extended_performance_data": {
+                            "ePUsedFor1YearFlag": false,
+                            "ePUsedFor3YearFlag": false,
+                            "ePUsedFor5YearFlag": false,
+                            "ePUsedFor10YearFlag": false,
+                            "ePUsedFor15YearFlag": false
+                        },
+                        "fund_risk_volatility": {
+                            "primaryIndexNameNew": "BSE 500 India TR INR",
+                            "bestFitIndexName": null,
+                            "bestFitAlphaFor3Year": null,
+                            "bestFitBetaFor3Year": null,
+                            "bestFitRSquaredFor3Year": null,
+                            "endDate": "2025-11-30T06:00:00.000",
+                            "for1Year": {
+                                "alpha": 4.302,
+                                "beta": 0.7,
+                                "rSquared": 92.467,
+                                "standardDeviation": 10.49,
+                                "sharpeRatio": 0.478
+                            },
+                            "for3Year": {
+                                "alpha": 6.936,
+                                "beta": 0.78,
+                                "rSquared": 94.069,
+                                "standardDeviation": 10.523,
+                                "sharpeRatio": 1.299
+                            },
+                            "for5Year": {
+                                "alpha": 8.104,
+                                "beta": 0.896,
+                                "rSquared": 84.294,
+                                "standardDeviation": 13.241,
+                                "sharpeRatio": 1.459
+                            },
+                            "for10Year": {
+                                "alpha": 1.979,
+                                "beta": 1.032,
+                                "rSquared": 89.395,
+                                "standardDeviation": 18.392,
+                                "sharpeRatio": 0.65
+                            },
+                            "for15Year": {
+                                "alpha": null,
+                                "beta": null,
+                                "rSquared": null,
+                                "standardDeviation": null,
+                                "sharpeRatio": null
+                            },
+                            "forLongestTenure": null
+                        },
+                        "category_risk_volatility": {
+                            "endDate": "2025-11-30T06:00:00.000",
+                            "for1Year": {
+                                "alpha": -2.142,
+                                "beta": 0.995,
+                                "rSquared": 90.225,
+                                "standardDeviation": 15.189,
+                                "sharpeRatio": -0.039
+                            },
+                            "for3Year": {
+                                "alpha": 1.461,
+                                "beta": 0.938,
+                                "rSquared": 87.165,
+                                "standardDeviation": 13.201,
+                                "sharpeRatio": 0.746
+                            },
+                            "for5Year": {
+                                "alpha": 0.742,
+                                "beta": 0.924,
+                                "rSquared": 85.231,
+                                "standardDeviation": 13.641,
+                                "sharpeRatio": 0.91
+                            },
+                            "for10Year": {
+                                "alpha": 0.034,
+                                "beta": 0.946,
+                                "rSquared": 89.642,
+                                "standardDeviation": 16.845,
+                                "sharpeRatio": 0.547
+                            },
+                            "for15Year": {
+                                "alpha": 0.112,
+                                "beta": 0.969,
+                                "rSquared": 90.204,
+                                "standardDeviation": 17.299,
+                                "sharpeRatio": 0.39
+                            },
+                            "forLongestTenure": null
+                        },
+                        "index_risk_volatility": {
+                            "endDate": "2025-11-30T06:00:00.000",
+                            "for1Year": {
+                                "alpha": 10.636,
+                                "beta": -0.407,
+                                "rSquared": 5.761,
+                                "standardDeviation": 14.42,
+                                "sharpeRatio": 0.073
+                            },
+                            "for3Year": {
+                                "alpha": 5.697,
+                                "beta": 0.24,
+                                "rSquared": 4.39,
+                                "standardDeviation": 13.079,
+                                "sharpeRatio": 0.659
+                            },
+                            "for5Year": {
+                                "alpha": 9.986,
+                                "beta": 0.361,
+                                "rSquared": 11.181,
+                                "standardDeviation": 13.584,
+                                "sharpeRatio": 0.924
+                            },
+                            "for10Year": {
+                                "alpha": 6.202,
+                                "beta": 0.616,
+                                "rSquared": 22.534,
+                                "standardDeviation": 16.846,
+                                "sharpeRatio": 0.574
+                            },
+                            "for15Year": {
+                                "alpha": 4.515,
+                                "beta": 0.485,
+                                "rSquared": 13.022,
+                                "standardDeviation": 16.902,
+                                "sharpeRatio": 0.404
+                            },
+                            "forLongestTenure": null
+                        },
+                        "currency": "INR"
+                    },
+                    "nav_history": {
+                        "2016-01": 415.31,
+                        "2016-02": 369.43,
+                        "2016-03": 426.76,
+                        "2016-04": 439.49,
+                        "2016-05": 458.93,
+                        "2016-06": 472.2,
+                        "2016-07": 498.02,
+                        "2016-08": 512.9,
+                        "2016-09": 512.72,
+                        "2016-10": 526.27,
+                        "2016-11": 501.31,
+                        "2016-12": 491.56,
+                        "2017-01": 521.26,
+                        "2017-02": 540.23,
+                        "2017-03": 561.62,
+                        "2017-04": 581.6,
+                        "2017-05": 592.98,
+                        "2017-06": 590.68,
+                        "2017-07": 629.82,
+                        "2017-08": 609.87,
+                        "2017-09": 599.36,
+                        "2017-10": 652.77,
+                        "2017-11": 659.87,
+                        "2017-12": 678.59,
+                        "2018-01": 699.59,
+                        "2018-02": 653.56,
+                        "2018-03": 616.41,
+                        "2018-04": 650.3,
+                        "2018-05": 639.18,
+                        "2018-06": 617.9,
+                        "2018-07": 661.96,
+                        "2018-08": 696.94,
+                        "2018-09": 642.26,
+                        "2018-10": 640.62,
+                        "2018-11": 646.7,
+                        "2018-12": 660.78,
+                        "2019-01": 661.06,
+                        "2019-02": 647.1,
+                        "2019-03": 716.07,
+                        "2019-04": 709.02,
+                        "2019-05": 732.81,
+                        "2019-06": 736.76,
+                        "2019-07": 680.77,
+                        "2019-08": 655.46,
+                        "2019-09": 677.39,
+                        "2019-10": 702.88,
+                        "2019-11": 709.69,
+                        "2019-12": 709.9,
+                        "2020-01": 696.49,
+                        "2020-02": 641.34,
+                        "2020-03": 483.78,
+                        "2020-04": 549.73,
+                        "2020-05": 528.47,
+                        "2020-06": 565.38,
+                        "2020-07": 591.54,
+                        "2020-08": 624.18,
+                        "2020-09": 591.59,
+                        "2020-10": 604.92,
+                        "2020-11": 692.61,
+                        "2020-12": 759.92,
+                        "2021-01": 763.47,
+                        "2021-02": 861.13,
+                        "2021-03": 847.7,
+                        "2021-04": 846.98,
+                        "2021-05": 932.03,
+                        "2021-06": 944.1,
+                        "2021-07": 958.68,
+                        "2021-08": 987.12,
+                        "2021-09": 1047.02,
+                        "2021-10": 1062.82,
+                        "2021-11": 1019.9,
+                        "2021-12": 1041.07,
+                        "2022-01": 1089.94,
+                        "2022-02": 1036.33,
+                        "2022-03": 1081.83,
+                        "2022-04": 1090.95,
+                        "2022-05": 1068.36,
+                        "2022-06": 1027.43,
+                        "2022-07": 1123.14,
+                        "2022-08": 1175.39,
+                        "2022-09": 1144.3,
+                        "2022-10": 1219.99,
+                        "2022-11": 1270.38,
+                        "2022-12": 1239.77,
+                        "2023-01": 1221.97,
+                        "2023-02": 1199.74,
+                        "2023-03": 1207.8,
+                        "2023-04": 1248.99,
+                        "2023-05": 1289.45,
+                        "2023-06": 1353.1,
+                        "2023-07": 1413.56,
+                        "2023-08": 1414.92,
+                        "2023-09": 1442.5,
+                        "2023-10": 1409.17,
+                        "2023-11": 1514.03,
+                        "2023-12": 1629.7,
+                        "2024-01": 1667.19,
+                        "2024-02": 1718.93,
+                        "2024-03": 1740.46,
+                        "2024-04": 1798.29,
+                        "2024-05": 1837.41,
+                        "2024-06": 1958.08,
+                        "2024-07": 2023.96,
+                        "2024-08": 2059.76,
+                        "2024-09": 2121.39,
+                        "2024-10": 2043.15,
+                        "2024-11": 2051.04,
+                        "2024-12": 2026.15,
+                        "2025-01": 1977.71,
+                        "2025-02": 1891.69,
+                        "2025-03": 2014.47,
+                        "2025-04": 2097.09,
+                        "2025-05": 2125.73,
+                        "2025-06": 2184.46,
+                        "2025-07": 2153.32,
+                        "2025-08": 2155.55,
+                        "2025-09": 2192.76,
+                        "2025-10": 2266.13,
+                        "2025-11": 2278.25,
+                        "2025-12": 2252.77
+                    }
+                }
+            }
+        ]
+    },
+    "analysis": {
+        "sectorConcentration": "High",
+        "overlapStatus": "High",
+        "diversificationScore": 0.4,
+        "topOverlappingStocks": [
+            {
+                "stockName": "HDFC Bank Ltd",
+                "isin": "INE040A01034",
+                "totalWeight": 8.33,
+                "fundCount": 2,
+                "fundNames": [
+                    "Parag Parikh Flexi Cap Fund Direct Growth",
+                    "HDFC Flexi Cap Direct Plan Growth"
+                ]
+            },
+            {
+                "stockName": "ICICI Bank Ltd",
+                "isin": "INE090A01021",
+                "totalWeight": 6.69,
+                "fundCount": 2,
+                "fundNames": [
+                    "Parag Parikh Flexi Cap Fund Direct Growth",
+                    "HDFC Flexi Cap Direct Plan Growth"
+                ]
+            },
+            {
+                "stockName": "Axis Bank Ltd",
+                "isin": "INE238A01034",
+                "totalWeight": 4.91,
+                "fundCount": 2,
+                "fundNames": [
+                    "Parag Parikh Flexi Cap Fund Direct Growth",
+                    "HDFC Flexi Cap Direct Plan Growth"
+                ]
+            },
+            {
+                "stockName": "Power Grid Corp Of India Ltd",
+                "isin": "INE752E01010",
+                "totalWeight": 4.59,
+                "fundCount": 2,
+                "fundNames": [
+                    "Parag Parikh Flexi Cap Fund Direct Growth",
+                    "HDFC Flexi Cap Direct Plan Growth"
+                ]
+            },
+            {
+                "stockName": "Kotak Mahindra Bank Ltd",
+                "isin": "INE237A01028",
+                "totalWeight": 4.03,
+                "fundCount": 2,
+                "fundNames": [
+                    "Parag Parikh Flexi Cap Fund Direct Growth",
+                    "HDFC Flexi Cap Direct Plan Growth"
+                ]
+            }
+        ],
+        "fundSimilarities": [
+            {
+                "fundA": "Parag Parikh Flexi Cap Fund Direct Growth",
+                "fundB": "HDFC Flexi Cap Direct Plan Growth",
+                "stockOverlapPct": 33.82,
+                "sectorCorrelation": 70.39
+            }
+        ],
+        "wealthProjection": {
+            "projectedYears": 10,
+            "totalInvestment": 100000.0,
+            "likelyScenarioAmount": 296317.39,
+            "pessimisticScenarioAmount": 164177.98,
+            "optimisticScenarioAmount": 533326.42,
+            "timeline": [
+                {
+                    "year": 1,
+                    "optimisticAmount": 135434.0,
+                    "expectedAmount": 112216.0,
+                    "pessimisticAmount": 92581.0
+                },
+                {
+                    "year": 2,
+                    "optimisticAmount": 164005.0,
+                    "expectedAmount": 124843.0,
+                    "pessimisticAmount": 93362.0
+                },
+                {
+                    "year": 3,
+                    "optimisticAmount": 195404.0,
+                    "expectedAmount": 139676.0,
+                    "pessimisticAmount": 99632.0
+                },
+                {
+                    "year": 4,
+                    "optimisticAmount": 229670.0,
+                    "expectedAmount": 156024.0,
+                    "pessimisticAmount": 103047.0
+                },
+                {
+                    "year": 5,
+                    "optimisticAmount": 266442.0,
+                    "expectedAmount": 173904.0,
+                    "pessimisticAmount": 111431.0
+                },
+                {
+                    "year": 6,
+                    "optimisticAmount": 306701.0,
+                    "expectedAmount": 191119.0,
+                    "pessimisticAmount": 120417.0
+                },
+                {
+                    "year": 7,
+                    "optimisticAmount": 357219.0,
+                    "expectedAmount": 211728.0,
+                    "pessimisticAmount": 127730.0
+                },
+                {
+                    "year": 8,
+                    "optimisticAmount": 398099.0,
+                    "expectedAmount": 234386.0,
+                    "pessimisticAmount": 142316.0
+                },
+                {
+                    "year": 9,
+                    "optimisticAmount": 470929.0,
+                    "expectedAmount": 263382.0,
+                    "pessimisticAmount": 152927.0
+                },
+                {
+                    "year": 10,
+                    "optimisticAmount": 533326.0,
+                    "expectedAmount": 296317.0,
+                    "pessimisticAmount": 164178.0
+                }
+            ],
+            "probabilityOfTarget": null
+        },
+        "aggregateSectorAllocation": {
+            "FinancialServices": 39.17,
+            "ConsumerCyclical": 14.62,
+            "CommunicationServices": 8.97,
+            "Technology": 8.34,
+            "Healthcare": 6.79,
+            "Utilities": 5.71,
+            "Energy": 4.84,
+            "ConsumerDefensive": 4.44,
+            "BasicMaterials": 2.93,
+            "Industrials": 2.48
+        }
+    }
+}

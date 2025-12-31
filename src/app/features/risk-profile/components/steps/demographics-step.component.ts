@@ -1,7 +1,13 @@
-import { Component, ChangeDetectionStrategy, inject, output } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { RiskProfileService } from '../../services/risk-profile.service';
+import { DemographicsData } from '../../../../core/models/api.interface';
+
+interface IncomeRangeOption {
+  value: string;
+  label: string;
+}
 
 @Component({
   selector: 'app-demographics-step',
@@ -10,17 +16,17 @@ import { RiskProfileService } from '../../services/risk-profile.service';
   styleUrl: './demographics-step.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DemographicsStepComponent {
+export class DemographicsStepComponent implements OnInit {
   private readonly service = inject(RiskProfileService);
   readonly next = output<void>();
 
-  data = {
+  data: DemographicsData = {
     age: 0,
     incomeRange: '',
     dependents: 0
   };
 
-  incomeRanges = [
+  readonly incomeRanges: IncomeRangeOption[] = [
     { value: 'BELOW_5L', label: 'Below ₹5 Lakhs' },
     { value: '5L_10L', label: '₹5L - ₹10L' },
     { value: '10L_25L', label: '₹10L - ₹25L' },
@@ -28,7 +34,7 @@ export class DemographicsStepComponent {
     { value: 'ABOVE_50L', label: 'Above ₹50 Lakhs' }
   ];
 
-  constructor() {
+  ngOnInit(): void {
     const current = this.service.getCurrentState().demographics;
     if (current.age) this.data.age = current.age;
     if (current.incomeRange) this.data.incomeRange = current.incomeRange;
@@ -48,7 +54,7 @@ export class DemographicsStepComponent {
 
   onNext(): void {
     if (this.isValid()) {
-      this.service.updateSection('demographics', this.data);
+      this.service.updateDemographics(this.data);
       this.next.emit();
     }
   }

@@ -25,62 +25,7 @@ export class ManualSelectionService {
     }
 
     submitSelection(request: ManualSelectionRequest): Observable<ManualSelectionResponse> {
-        // Mock Response
-        const response: ManualSelectionResponse = {
-            results: request.selections.map((s, i) => ({
-                inputFundId: s.fundId || null,
-                inputFundName: s.fundName || null,
-                status: 'RESOLVED_FROM_DB',
-                fundId: s.fundId || `mock-id-${i}`,
-                fundName: s.fundName || 'Unknown Fund',
-                isin: 'INF-MOCK',
-                message: 'Success'
-            })),
-            portfolio: {
-                summary: { totalHoldings: request.selections.length, totalWeightPct: 100 },
-                holdings: request.selections.map((s, i) => ({
-                    fundId: s.fundId || `mock-id-${i}`,
-                    fundName: s.fundName || 'Unknown Fund',
-                    isin: 'INF-MOCK',
-                    amcName: 'Mock AMC',
-                    fundCategory: 'Equity',
-                    directPlan: true,
-                    currentNav: 120.5,
-                    navAsOf: '2025-12-29',
-                    weightPct: s.weightPct,
-                    sectorAllocation: { 'Finance': 30, 'Technology': 20, 'Energy': 15, 'Others': 35 },
-                    topHoldings: [
-                        { symbol: 'HDFCBANK', company: 'HDFC Bank', weight: 9.5 },
-                        { symbol: 'RELIANCE', company: 'Reliance Ind', weight: 8.2 }
-                    ],
-                    fundMetadata: {}
-                }))
-            },
-            analysis: {
-                sectorConcentration: 'Balanced',
-                overlapStatus: 'Moderate',
-                diversificationScore: 8.5,
-                topOverlappingStocks: [
-                    { stockName: 'HDFC Bank', isin: 'INE040A01034', totalWeight: 12.3, fundCount: 2, fundNames: ['HDFC Fund', 'Axis Fund'] }
-                ],
-                fundSimilarities: [],
-                wealthProjection: {
-                    projectedYears: 10,
-                    totalInvestment: 100000,
-                    likelyScenarioAmount: 250000,
-                    pessimisticScenarioAmount: 180000,
-                    optimisticScenarioAmount: 350000,
-                    timeline: [
-                        { year: 1, optimisticAmount: 110000, expectedAmount: 108000, pessimisticAmount: 105000 },
-                        { year: 5, optimisticAmount: 180000, expectedAmount: 150000, pessimisticAmount: 130000 },
-                        { year: 10, optimisticAmount: 350000, expectedAmount: 250000, pessimisticAmount: 180000 }
-                    ]
-                },
-                aggregateSectorAllocation: {
-                    'Finance': 28, 'Technology': 22, 'Consumer': 15, 'Energy': 12, 'Healthcare': 10, 'Others': 13
-                }
-            }
-        };
-        return of(response).pipe(delay(1500));
+        // Fetch Mock Data from public folder for demo purpose
+        return this.http.get<ManualSelectionResponse>('/data/manual-selection.json').pipe(delay(800));
     }
 }

@@ -1,10 +1,11 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RiskProfileService } from '../services/risk-profile.service';
 import { StepperComponent } from '../../../shared/components/stepper.component';
 import { LoadingSkeletonComponent } from '../../../shared/components/loading-skeleton.component';
 import { ThemeToggleComponent } from '../../../shared/components/ui/theme-toggle.component';
+import { RiskProfileResponse } from '../../../core/models/api.interface';
 
 // Steps
 import { DemographicsStepComponent } from '../components/steps/demographics-step.component';
@@ -37,13 +38,14 @@ import { RiskResultComponent } from '../components/results/risk-result.component
 export class RiskProfileComponent {
   private readonly router = inject(Router);
   private readonly service = inject(RiskProfileService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   currentStep = 0;
   isCompleted = false;
   isLoading = false;
-  resultData: any = null;
+  resultData: RiskProfileResponse | null = null;
 
-  stepLabels = ['Demographics', 'Financials', 'Goals', 'Behavioral', 'Preferences'];
+  readonly stepLabels = ['Demographics', 'Financials', 'Goals', 'Behavioral', 'Preferences'];
 
   goBack(): void {
     this.router.navigate(['/']);
@@ -72,11 +74,13 @@ export class RiskProfileComponent {
       next: (response) => {
         this.resultData = response;
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error('Submission failed', err);
         this.isLoading = false;
         this.isCompleted = false;
+        this.cdr.markForCheck();
       }
     });
   }

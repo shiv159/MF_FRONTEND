@@ -148,3 +148,80 @@
     transform: translateY(-4px);
     box-shadow: var(--shadow-glow-primary), var(--shadow-lg);
 }
+
+/* Overlap Warning */
+.overlap-warning {
+    background-color: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.warning-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-warning);
+    margin-bottom: 1rem;
+}
+
+.overlap-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .overlap-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.overlap-card {
+    background-color: var(--color-surface);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    border-radius: 0.75rem;
+    padding: 1rem;
+}
+
+.overlap-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.stock-name {
+    font-weight: 700;
+    color: var(--color-text-primary);
+}
+
+.stock-weight {
+    font-weight: 700;
+    color: var(--color-error);
+}
+
+.fund-count {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.fund-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.5rem;
+}
+
+.fund-tag {
+    padding: 0.125rem 0.5rem;
+    background-color: var(--color-surface-hover);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

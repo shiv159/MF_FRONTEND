@@ -1,0 +1,17 @@
+<div class="chart-container">
+    <h4 class="chart-title">Sector Allocation</h4>
+    <app-doughnut-chart [data]="chartData()" [labels]="chartLabels()" [colors]="chartColors" [showLegend]="false">
+    </app-doughnut-chart>
+
+    <!-- Custom Legend -->
+    <div class="custom-legend">
+        @for (item of processedData(); track item.originalKey; let i = $index) {
+        <div class="legend-item">
+            <span class="legend-dot" [style.backgroundColor]="chartColors[i % chartColors.length]"></span>
+            <span class="legend-text">
+                {{ item.label }} <span class="legend-percent">({{ item.value }}%)</span>
+            </span>
+        </div>
+        }
+    </div>
+</div>

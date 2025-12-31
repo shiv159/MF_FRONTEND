@@ -1,0 +1,33 @@
+.chart-wrapper {
+    position: relative;
+    width: 100%;
+    height: 16rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media (min-width: 768px) {
+    .chart-wrapper {
+        height: 18rem;
+    }
+}
+
+.center-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.center-text span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #374151);
+}
+
+:host-context(.dark) .center-text span {
+    color: #e5e7eb;
+}

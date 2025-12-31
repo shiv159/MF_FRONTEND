@@ -1,0 +1,9 @@
+<div class="chart-wrapper">
+    <canvas baseChart [data]="doughnutChartData()" [options]="doughnutChartOptions()" [type]="doughnutChartType">
+    </canvas>
+    @if (centerText()) {
+    <div class="center-text">
+        <span>{{ centerText() }}</span>
+    </div>
+    }
+</div>

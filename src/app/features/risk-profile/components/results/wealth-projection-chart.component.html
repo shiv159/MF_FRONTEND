@@ -1,0 +1,20 @@
+<div class="chart-container">
+    <div class="chart-header">
+        <h4 class="chart-title">Wealth Projection</h4>
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-dot optimistic"></span>
+                Optimistic
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot expected"></span>
+                Expected
+            </div>
+            <div class="legend-item">
+                <span class="legend-dot pessimistic"></span>
+                Pessimistic
+            </div>
+        </div>
+    </div>
+    <app-line-chart [projectionData]="timeline()" [showLegend]="false"></app-line-chart>
+</div>

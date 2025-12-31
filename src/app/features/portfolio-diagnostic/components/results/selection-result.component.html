@@ -11,8 +11,10 @@
     <!-- Charts Grid -->
     <div class="charts-grid">
         <app-sector-chart [sectors]="data().analysis?.aggregateSectorAllocation || {}"></app-sector-chart>
-        <app-wealth-projection-chart
-            [timeline]="data().analysis?.wealthProjection?.timeline || []"></app-wealth-projection-chart>
+        <div class="lg:col-span-2">
+            <app-wealth-projection-chart
+                [timeline]="data().analysis?.wealthProjection?.timeline || []"></app-wealth-projection-chart>
+        </div>
     </div>
 
     <!-- Overlap Warning -->

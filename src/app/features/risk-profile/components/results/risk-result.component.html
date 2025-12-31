@@ -1,17 +1,18 @@
+@if (data(); as result) {
 <div class="result-container">
     <!-- Header / Score Hero -->
     <div class="hero-card">
         <div class="hero-content">
             <div class="hero-left">
                 <h2 class="hero-title">
-                    Your Risk Profile: <span class="profile-level">{{ data()?.riskProfile?.level }}</span>
+                    Your Risk Profile: <span class="profile-level">{{ result.riskProfile.level }}</span>
                 </h2>
-                <p class="hero-description">{{ data()?.riskProfile?.rationale }}</p>
+                <p class="hero-description">{{ result.riskProfile.rationale }}</p>
             </div>
             <div class="score-box">
                 <div class="score-label">Risk Score</div>
                 <div class="score-value">
-                    {{ data()?.riskProfile?.score }}<span class="score-max">/100</span>
+                    {{ result.riskProfile.score }}<span class="score-max">/100</span>
                 </div>
             </div>
         </div>
@@ -21,12 +22,46 @@
 
     <!-- Charts Grid -->
     <div class="charts-grid">
-        <app-asset-allocation-chart [allocation]="data()?.assetAllocation"></app-asset-allocation-chart>
-        <app-wealth-projection-chart [timeline]="data()?.wealthProjection?.timeline"></app-wealth-projection-chart>
+        <app-asset-allocation-chart [allocation]="result.assetAllocation"></app-asset-allocation-chart>
+        <app-sector-chart [sectors]="result.portfolioHealth?.aggregateSectorAllocation ?? {}"></app-sector-chart>
+        <div class="lg:col-span-2">
+            <app-wealth-projection-chart
+                [timeline]="result.portfolioHealth?.wealthProjection?.timeline ?? []"></app-wealth-projection-chart>
+        </div>
     </div>
 
+    <!-- Overlap Warning -->
+    @if (result.portfolioHealth?.topOverlappingStocks?.length) {
+    <div class="overlap-warning">
+        <h4 class="warning-title">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
+                </path>
+            </svg>
+            Critical Overlaps in Recommended Funds
+        </h4>
+        <div class="overlap-grid">
+            @for (stock of result.portfolioHealth?.topOverlappingStocks ?? []; track stock.stockName) {
+            <div class="overlap-card">
+                <div class="overlap-card-header">
+                    <div class="stock-name">{{ stock.stockName }}</div>
+                    <div class="stock-weight">{{ stock.totalWeight }}% Portfolio</div>
+                </div>
+                <div class="fund-count">Held by {{ stock.fundCount }} recommended funds:</div>
+                <div class="fund-tags">
+                    @for (f of stock.fundNames; track f) {
+                    <span class="fund-tag">{{ f }}</span>
+                    }
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+    }
+
     <!-- Recommendations -->
-    <app-recommendations-list [recommendations]="data()?.recommendations"></app-recommendations-list>
+    <app-recommendations-list [recommendations]="result.recommendations"></app-recommendations-list>
 
     <!-- Action Button -->
     <div class="action-section">
@@ -35,3 +70,4 @@
         </button>
     </div>
 </div>
+}

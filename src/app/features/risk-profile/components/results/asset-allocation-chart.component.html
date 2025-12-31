@@ -1,0 +1,14 @@
+<div class="chart-container">
+    <h4 class="chart-title">Recommended Asset Allocation</h4>
+    <app-doughnut-chart [data]="chartData()" [labels]="chartLabels" [colors]="chartColors" [centerText]="centerText()"
+        [showLegend]="false">
+    </app-doughnut-chart>
+    <div class="legend-grid">
+        @for (label of chartLabels; track label; let i = $index) {
+        <div class="legend-item">
+            <div class="legend-value">{{ chartData()[i] }}%</div>
+            <div class="legend-label">{{ label }}</div>
+        </div>
+        }
+    </div>
+</div>

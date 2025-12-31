@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ManualSelectionResponse } from '../../../../core/models/api.interface';
 import { PortfolioSummaryComponent } from './portfolio-summary.component';
-import { SectorChartComponent } from './sector-chart.component';
+import { SectorChartComponent } from '../../../../shared/components/sector-chart.component';
 import { HoldingsListComponent } from './holdings-list.component';
 import { WealthProjectionChartComponent } from '../../../risk-profile/components/results/wealth-projection-chart.component';
 

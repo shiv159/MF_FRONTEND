@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { AssetAllocationChartComponent } from './asset-allocation-chart.component';
 import { WealthProjectionChartComponent } from './wealth-projection-chart.component';
 import { RecommendationsListComponent } from './recommendations-list.component';
+import { SectorChartComponent } from '../../../../shared/components/sector-chart.component';
+import { RiskProfileResponse } from '../../../../core/models/api.interface';
 
 @Component({
   selector: 'app-risk-result',
@@ -10,12 +12,13 @@ import { RecommendationsListComponent } from './recommendations-list.component';
     CommonModule,
     AssetAllocationChartComponent,
     WealthProjectionChartComponent,
-    RecommendationsListComponent
+    RecommendationsListComponent,
+    SectorChartComponent
   ],
   templateUrl: './risk-result.component.html',
   styleUrl: './risk-result.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RiskResultComponent {
-  readonly data = input<any>();
+  readonly data = input<RiskProfileResponse | null>(null);
 }

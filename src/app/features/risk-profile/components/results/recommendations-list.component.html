@@ -1,0 +1,42 @@
+<div class="recommendations-container">
+    <h4 class="recommendations-title">Recommended Funds</h4>
+
+    <div class="recommendations-list">
+        @for (group of recommendations(); track group.allocationCategory) {
+        <div class="recommendation-group">
+            <div class="group-header">
+                <h5 class="category-name">{{ group.allocationCategory }}</h5>
+                <span class="allocation-badge">{{ group.allocationPercent }}%</span>
+            </div>
+
+            <div class="funds-list">
+                @for (fund of group.funds; track fund.id) {
+                <div class="fund-card">
+                    <div class="fund-info">
+                        <div class="fund-name">{{ fund.name }}</div>
+                        <div class="fund-category">{{ fund.category }}</div>
+                        @if (fund.reason) {
+                        <div class="fund-reason">{{ fund.reason }}</div>
+                        }
+                    </div>
+                    <div class="fund-metrics">
+                        <div class="metric">
+                            <div class="metric-label">Sharpe</div>
+                            <div class="metric-value">{{ fund.riskMetrics.sharpeRatio | number:'1.2-2' }}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Alpha</div>
+                            <div class="metric-value">{{ fund.riskMetrics.alpha | number:'1.2-2' }}</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Beta</div>
+                            <div class="metric-value">{{ fund.riskMetrics.beta | number:'1.2-2' }}</div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</div>

@@ -1,3 +1,11 @@
+// ============================================
+// Risk Level Enum
+// ============================================
+export type RiskLevel = 'CONSERVATIVE' | 'MODERATE' | 'AGGRESSIVE';
+
+// ============================================
+// Manual Selection Interfaces
+// ============================================
 export interface ManualSelectionRequest {
     selections: ManualSelectionItem[];
 }
@@ -8,6 +16,8 @@ export interface ManualSelectionItem {
     weightPct: number;    // 1-100
 }
 
+export type ManualSelectionStatus = 'RESOLVED_FROM_DB' | 'CREATED_FROM_ETL' | 'ERROR' | 'ENRICHED_FROM_ETL';
+
 export interface ManualSelectionResponse {
     results: ManualSelectionResult[];
     portfolio: ManualSelectionPortfolio;
@@ -17,7 +27,7 @@ export interface ManualSelectionResponse {
 export interface ManualSelectionResult {
     inputFundId: string | null;
     inputFundName: string | null;
-    status: 'RESOLVED_FROM_DB' | 'CREATED_FROM_ETL' | 'ERROR' | 'ENRICHED_FROM_ETL';
+    status: ManualSelectionStatus;
     fundId: string;
     fundName: string;
     isin: string;
@@ -25,11 +35,13 @@ export interface ManualSelectionResult {
 }
 
 export interface ManualSelectionPortfolio {
-    summary: {
-        totalHoldings: number;
-        totalWeightPct: number;
-    };
+    summary: PortfolioSummary;
     holdings: ManualSelectionHolding[];
+}
+
+export interface PortfolioSummary {
+    totalHoldings: number;
+    totalWeightPct: number;
 }
 
 export interface ManualSelectionHolding {
@@ -44,17 +56,109 @@ export interface ManualSelectionHolding {
     weightPct: number;
     sectorAllocation: Record<string, number> | null;
     topHoldings: TopHolding[] | null;
+    fundMetadata?: FundMetadata;
+}
+
+// ============================================
+// Top Holding Interfaces
+// ============================================
+export interface HoldingTrend {
+    trend: number[];
 }
 
 export interface TopHolding {
-    symbol: string;
-    company: string;
-    weight: number;
+    securityName: string;
+    isin: string;
+    ticker: string;
+    sector: string;
+    weighting: number;
+    marketValue?: number;
+    shareChange?: number;
+    stockRating?: string;
+    quantRating?: string;
+    totalReturn1Year?: number;
+    // Extended fields from JSON response
+    secId?: string;
+    country?: string;
+    numberOfShare?: number;
+    firstBoughtDate?: string;
+    holdingTrend?: HoldingTrend;
+    assessment?: 'Undervalued' | 'Fairly Valued' | 'Overvalued';
+    susEsgRiskScore?: number | null;
+    susEsgRiskCategory?: 'Low' | 'Medium' | 'High' | 'Severe' | null;
+    susEsgRiskGlobes?: number | null;
+    esgAsOfDate?: string | null;
 }
 
+// ============================================
+// Fund Metadata & Risk Volatility
+// ============================================
+export interface RiskVolatilityPeriod {
+    alpha: number | null;
+    beta: number | null;
+    rSquared: number | null;
+    standardDeviation: number | null;
+    sharpeRatio: number | null;
+}
+
+export interface RiskVolatilityByPeriod {
+    endDate: string;
+    for1Year: RiskVolatilityPeriod;
+    for3Year: RiskVolatilityPeriod;
+    for5Year: RiskVolatilityPeriod;
+    for10Year: RiskVolatilityPeriod;
+    for15Year: RiskVolatilityPeriod;
+    forLongestTenure: RiskVolatilityPeriod | null;
+    primaryIndexNameNew?: string;
+    bestFitIndexName?: string | null;
+    bestFitAlphaFor3Year?: number | null;
+    bestFitBetaFor3Year?: number | null;
+    bestFitRSquaredFor3Year?: number | null;
+}
+
+export interface ExtendedPerformanceData {
+    ePUsedFor1YearFlag: boolean;
+    ePUsedFor3YearFlag: boolean;
+    ePUsedFor5YearFlag: boolean;
+    ePUsedFor10YearFlag: boolean;
+    ePUsedFor15YearFlag: boolean;
+}
+
+export interface RiskVolatilityData {
+    fund_name: string | null;
+    category_name: string;
+    index_name: string;
+    calculation_benchmark: string;
+    extended_performance_data: ExtendedPerformanceData;
+    fund_risk_volatility: RiskVolatilityByPeriod;
+    category_risk_volatility: RiskVolatilityByPeriod;
+    index_risk_volatility: RiskVolatilityByPeriod;
+    currency: string;
+}
+
+export interface FundMetadata {
+    name: string;
+    alpha: number;
+    fund_size: number;
+    fund_size_currency: string;
+    fund_size_as_of: string;
+    beta: number;
+    sharpe_ratio: number;
+    stdev: number;
+    is_index_fund: boolean;
+    risk_volatility: RiskVolatilityData;
+    nav_history: Record<string, number>;
+}
+
+// ============================================
+// Portfolio Health Interfaces
+// ============================================
+export type ConcentrationLevel = 'High' | 'Balanced' | 'Low';
+export type OverlapStatus = 'High' | 'Moderate' | 'Low';
+
 export interface PortfolioHealthDTO {
-    sectorConcentration: 'High' | 'Balanced' | 'Low';
-    overlapStatus: 'High' | 'Moderate' | 'Low';
+    sectorConcentration: ConcentrationLevel;
+    overlapStatus: OverlapStatus;
     diversificationScore: number;
     topOverlappingStocks: StockOverview[];
     fundSimilarities: FundSimilarity[];
@@ -84,6 +188,7 @@ export interface WealthProjection {
     pessimisticScenarioAmount: number;
     optimisticScenarioAmount: number;
     timeline: YearProjection[];
+    probabilityOfTarget?: number | null;
 }
 
 export interface YearProjection {
@@ -93,30 +198,86 @@ export interface YearProjection {
     pessimisticAmount: number;
 }
 
+// ============================================
 // Risk Profile Interfaces
+// ============================================
 export interface RiskProfileRequest {
-    demographics: {
-        age: number;
-        incomeRange: string;
-        dependents: number;
-    };
-    financials: {
-        emergencyFundMonths: number;
-        existingEmiForLoans: number;
-        financialKnowledge: string;
-        monthlyInvestmentAmount: number;
-    };
-    behavioral: {
-        marketDropReaction: string;
-        investmentPeriodExperience: string;
-    };
-    goals: {
-        primaryGoal: string;
-        timeHorizonYears: number;
-        targetAmount: number;
-    };
-    preferences?: {
-        preferredInvestmentStyle: string;
-        taxSavingNeeded: boolean;
-    };
+    demographics: DemographicsData;
+    financials: FinancialsData;
+    behavioral: BehavioralData;
+    goals: GoalsData;
+    preferences?: PreferencesData;
+}
+
+export interface DemographicsData {
+    age: number;
+    incomeRange: string;
+    dependents: number;
+}
+
+export interface FinancialsData {
+    emergencyFundMonths: number;
+    existingEmiForLoans: number;
+    financialKnowledge: string;
+    monthlyInvestmentAmount: number;
+}
+
+export interface BehavioralData {
+    marketDropReaction: string;
+    investmentPeriodExperience: string;
+}
+
+export interface GoalsData {
+    primaryGoal: string;
+    timeHorizonYears: number;
+    targetAmount: number;
+}
+
+export interface PreferencesData {
+    preferredInvestmentStyle: string;
+    taxSavingNeeded: boolean;
+}
+
+export interface RiskProfile {
+    score: number;
+    level: RiskLevel;
+    rationale: string;
+}
+
+export interface AssetAllocation {
+    equity: number;
+    debt: number;
+    gold: number;
+}
+
+export interface RiskProfileResponse {
+    riskProfile: RiskProfile;
+    assetAllocation: AssetAllocation;
+    recommendations: RecommendedAllocation[];
+    portfolioHealth?: PortfolioHealthDTO;
+}
+
+export interface RecommendedAllocation {
+    allocationCategory: string;
+    allocationPercent: number;
+    amount: number;
+    funds: RecommendedFund[];
+}
+
+export interface RiskMetrics {
+    alpha: number;
+    beta: number;
+    sharpeRatio: number;
+    standardDeviation: number;
+    rsquared: number;
+}
+
+export interface RecommendedFund {
+    id: string;
+    name: string;
+    category: string;
+    riskMetrics: RiskMetrics;
+    sectorAllocation: Record<string, number>;
+    topHoldings: TopHolding[];
+    reason?: string;
 }

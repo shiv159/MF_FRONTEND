@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,6 +29,7 @@ import { LoadingSkeletonComponent } from '../../../shared/components/loading-ske
 export class ManualSelectionComponent {
   private readonly router = inject(Router);
   private readonly service = inject(ManualSelectionService);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   selections: ManualSelectionItem[] = [{ weightPct: 0 }];
   totalWeight = 0;
@@ -63,10 +64,12 @@ export class ManualSelectionComponent {
       next: (response) => {
         this.resultData = response;
         this.isLoading = false;
+        this.cdr.markForCheck();
       },
       error: (err) => {
         console.error(err);
         this.isLoading = false;
+        this.cdr.markForCheck();
       }
     });
   }

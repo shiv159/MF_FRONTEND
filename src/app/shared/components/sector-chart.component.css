@@ -1,0 +1,64 @@
+.chart-container {
+    background-color: var(--color-surface, white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    border: 1px solid var(--color-border, #e5e7eb);
+    height: 100%;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+:host-context(.dark) .chart-container {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.chart-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1f2937);
+    margin-bottom: 1rem;
+}
+
+:host-context(.dark) .chart-title {
+    color: #f3f4f6;
+}
+
+.custom-legend {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.legend-dot {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: 9999px;
+    flex-shrink: 0;
+}
+
+.legend-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--color-text-secondary, #4b5563);
+}
+
+:host-context(.dark) .legend-text {
+    color: #d1d5db;
+}
+
+.legend-percent {
+    color: var(--color-text-tertiary, #9ca3af);
+}
+
+:host-context(.dark) .legend-percent {
+    color: #6b7280;
+}

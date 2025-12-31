@@ -1,0 +1,56 @@
+.chart-container {
+    background-color: var(--color-surface, white);
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    border: 1px solid var(--color-border, #e5e7eb);
+    height: 100%;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+:host-context(.dark) .chart-container {
+    background-color: #1f2937;
+    border-color: #374151;
+}
+
+.chart-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1f2937);
+    margin-bottom: 1rem;
+}
+
+:host-context(.dark) .chart-title {
+    color: #f3f4f6;
+}
+
+.legend-grid {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    text-align: center;
+    font-size: 0.875rem;
+}
+
+.legend-item {
+    padding: 0.5rem;
+}
+
+.legend-value {
+    font-weight: 700;
+    color: var(--color-text-primary, #1f2937);
+}
+
+:host-context(.dark) .legend-value {
+    color: #e5e7eb;
+}
+
+.legend-label {
+    color: var(--color-text-secondary, #6b7280);
+    font-size: 0.75rem;
+}
+
+:host-context(.dark) .legend-label {
+    color: #9ca3af;
+}

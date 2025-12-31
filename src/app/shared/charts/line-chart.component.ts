@@ -1,51 +1,83 @@
-import { Component, Input, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, effect, viewChild, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
-import { ChartConfiguration, ChartType, ChartData } from 'chart.js';
+import { ChartConfiguration, ChartData } from 'chart.js';
 import { YearProjection } from '../../core/models/api.interface';
 
 @Component({
     selector: 'app-line-chart',
-    standalone: true,
     imports: [CommonModule, BaseChartDirective],
-    template: `
-    <div class="relative w-full h-72 md:h-80">
-      <canvas baseChart
-        [data]="lineChartData"
-        [options]="lineChartOptions"
-        [type]="lineChartType">
-      </canvas>
-    </div>
-  `
+    templateUrl: './line-chart.component.html',
+    styleUrl: './line-chart.component.css',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LineChartComponent implements OnChanges {
-    // Input expected: Array of YearProjection from API
-    @Input() projectionData: YearProjection[] = [];
+export class LineChartComponent {
+    readonly projectionData = input<YearProjection[]>([]);
+    readonly showLegend = input<boolean>(true);
 
-    @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+    private readonly chart = viewChild(BaseChartDirective);
 
-    public lineChartType: 'line' = 'line';
+    readonly lineChartType = 'line' as const;
 
-    public lineChartData: ChartData<'line'> = {
-        datasets: [],
-        labels: []
-    };
+    protected readonly lineChartData = computed<ChartData<'line'>>(() => {
+        const data = this.projectionData();
+        if (!data || data.length === 0) {
+            return { datasets: [], labels: [] };
+        }
 
-    public lineChartOptions: ChartConfiguration<'line'>['options'] = {
+        const labels = data.map(d => `Year ${d.year}`);
+        const optimistic = data.map(d => d.optimisticAmount);
+        const expected = data.map(d => d.expectedAmount);
+        const pessimistic = data.map(d => d.pessimisticAmount);
+
+        return {
+            labels: labels,
+            datasets: [
+                {
+                    data: optimistic,
+                    label: 'Optimistic',
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    fill: '+1',
+                    borderWidth: 2
+                },
+                {
+                    data: expected,
+                    label: 'Expected',
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    fill: '+1',
+                    borderWidth: 3
+                },
+                {
+                    data: pessimistic,
+                    label: 'Pessimistic',
+                    borderColor: '#ef4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.05)',
+                    fill: 'origin',
+                    borderWidth: 2
+                }
+            ]
+        };
+    });
+
+    protected readonly lineChartOptions = computed<ChartConfiguration<'line'>['options']>(() => ({
         responsive: true,
         maintainAspectRatio: false,
         elements: {
-            line: { tension: 0.4 }, // Smooth curves
-            point: { radius: 0, hitRadius: 10, hoverRadius: 5 } // Hide points until hover
+            line: { tension: 0.4 },
+            point: { radius: 0, hitRadius: 10, hoverRadius: 5 }
         },
         scales: {
             x: {
                 grid: { display: false },
-                title: { display: true, text: 'Years' }
+                title: { display: true, text: 'Years', color: '#6b7280' },
+                ticks: { color: '#6b7280' }
             },
             y: {
-                grid: { color: '#f3f4f6' }, // Light gray grid
+                grid: { color: 'rgba(156, 163, 175, 0.2)' },
                 ticks: {
+                    color: '#6b7280',
                     callback: (value) => {
                         if (typeof value === 'number') {
                             return '₹' + this.formatCompact(value);
@@ -56,7 +88,11 @@ export class LineChartComponent implements OnChanges {
             }
         },
         plugins: {
-            legend: { display: true, position: 'top' },
+            legend: {
+                display: this.showLegend(),
+                position: 'top',
+                labels: { color: '#6b7280' }
+            },
             tooltip: {
                 mode: 'index',
                 intersect: false,
@@ -67,61 +103,37 @@ export class LineChartComponent implements OnChanges {
                             label += ': ';
                         }
                         if (context.parsed.y !== null) {
-                            label += new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(context.parsed.y);
+                            label += new Intl.NumberFormat('en-IN', {
+                                style: 'currency',
+                                currency: 'INR',
+                                maximumFractionDigits: 0
+                            }).format(context.parsed.y);
                         }
                         return label;
                     }
                 }
             }
         }
-    };
+    }));
 
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['projectionData'] && this.projectionData.length > 0) {
-            this.updateChart();
-        }
-    }
+    constructor() {
+        effect(() => {
+            // Track signals
+            this.projectionData();
+            this.showLegend();
 
-    private updateChart() {
-        const labels = this.projectionData.map(d => `Year ${d.year}`);
-        const optimistic = this.projectionData.map(d => d.optimisticAmount);
-        const expected = this.projectionData.map(d => d.expectedAmount);
-        const pessimistic = this.projectionData.map(d => d.pessimisticAmount);
-
-        this.lineChartData = {
-            labels: labels,
-            datasets: [
-                {
-                    data: optimistic,
-                    label: 'Optimistic',
-                    borderColor: '#10b981', // Green
-                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                    fill: '+1', // Fill down to expected
-                    borderWidth: 2
-                },
-                {
-                    data: expected,
-                    label: 'Expected',
-                    borderColor: '#3b82f6', // Blue
-                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
-                    fill: '+1', // Fill down to pessimistic
-                    borderWidth: 3
-                },
-                {
-                    data: pessimistic,
-                    label: 'Pessimistic',
-                    borderColor: '#ef4444', // Red
-                    backgroundColor: 'rgba(239, 68, 68, 0.05)',
-                    fill: 'origin', // Fill down to x-axis
-                    borderWidth: 2
-                }
-            ]
-        };
-
-        this.chart?.update();
+            // Update chart
+            const chartRef = this.chart();
+            if (chartRef) {
+                chartRef.update();
+            }
+        });
     }
 
     private formatCompact(num: number): string {
-        return Intl.NumberFormat('en-US', { notation: "compact", maximumFractionDigits: 1 }).format(num);
+        return Intl.NumberFormat('en-US', {
+            notation: 'compact',
+            maximumFractionDigits: 1
+        }).format(num);
     }
 }

@@ -1,23 +1,23 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap, catchError, throwError } from 'rxjs';
-import { LoginRequest, RegisterRequest, AuthResponse } from '../models/auth.models';
+import { LoginRequest, RegisterRequest, AuthResponse, User } from '../models/auth.models';
 import { AuthStore } from '../store/auth.store';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    private http = inject(HttpClient);
-    private store = inject(AuthStore);
-    private apiHost = 'http://localhost:8080';
-    private apiUrl = '/api/v1/auth';
+    private readonly http = inject(HttpClient);
+    private readonly store = inject(AuthStore);
+    private readonly apiUrl = `${environment.apiUrl}/auth`;
 
     login(credentials: LoginRequest): Observable<AuthResponse> {
         this.store.setLoading(true);
-        return this.http.post<AuthResponse>(`${this.apiHost}${this.apiUrl}/login`, credentials).pipe(
+        return this.http.post<AuthResponse>(`${this.apiUrl}/login`, credentials).pipe(
             tap(response => {
-                const user = {
+                const user: User = {
                     id: response.userId,
                     email: response.email,
                     name: response.fullName,
@@ -34,9 +34,9 @@ export class AuthService {
 
     register(data: RegisterRequest): Observable<AuthResponse> {
         this.store.setLoading(true);
-        return this.http.post<AuthResponse>(`${this.apiHost}${this.apiUrl}/register`, data).pipe(
+        return this.http.post<AuthResponse>(`${this.apiUrl}/register`, data).pipe(
             tap(response => {
-                const user = {
+                const user: User = {
                     id: response.userId,
                     email: response.email,
                     name: response.fullName,
@@ -51,7 +51,7 @@ export class AuthService {
         );
     }
 
-    logout() {
+    logout(): void {
         this.store.logout();
     }
 }

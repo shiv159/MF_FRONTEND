@@ -1,0 +1,33 @@
+@if (growthMetrics(); as metrics) {
+<div class="nav-container">
+    <div class="nav-header">
+        <div>
+            <h4 class="section-title">
+                <span class="icon">📈</span> NAV Growth Journey
+            </h4>
+            <div class="period-subtitle">{{ metrics.period }}</div>
+        </div>
+        <div class="metrics-pill">
+            <div class="cagr-val">CAGR: {{ metrics.cagr | number:'1.1-1' }}%</div>
+            <div class="abs-growth">Total: +{{ metrics.totalGrowth | number:'1.0-0' }}%</div>
+        </div>
+    </div>
+
+    <div class="chart-wrapper">
+        <canvas baseChart [data]="chartData()" [options]="chartOptions" [type]="chartType">
+        </canvas>
+    </div>
+
+    <div class="journey-footer">
+        <div class="point start">
+            <div class="label">{{ metrics.period.split(' - ')[0] }}</div>
+            <div class="val">₹{{ metrics.startVal }}</div>
+        </div>
+        <div class="line"></div>
+        <div class="point end">
+            <div class="label">{{ metrics.period.split(' - ')[1] }}</div>
+            <div class="val">₹{{ metrics.endVal }}</div>
+        </div>
+    </div>
+</div>
+}

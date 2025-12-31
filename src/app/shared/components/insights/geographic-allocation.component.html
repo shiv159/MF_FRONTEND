@@ -1,0 +1,23 @@
+@if (hasData()) {
+<div class="geo-container">
+    <h4 class="section-title">
+        <span class="icon">🌐</span> Geographic Exposure
+    </h4>
+
+    <div class="geo-list">
+        @for (item of countryData(); track item.name) {
+        <div class="country-row">
+            <div class="country-info">
+                <span class="flag">{{ item.flag }}</span>
+                <span class="name">{{ item.name }}</span>
+            </div>
+            <div class="bar-container">
+                <div class="bar-fill" [style.width.%]="item.weight * 2"></div>
+                <!-- Multiplier for visual effect since weights sum < 100 usually for top holdings -->
+            </div>
+            <div class="weight">{{ item.weight | number:'1.2-2' }}%</div>
+        </div>
+        }
+    </div>
+</div>
+}

@@ -1,0 +1,102 @@
+.activity-container {
+    background: var(--color-surface, white);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border, #e5e7eb);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+:host-context(.dark) .activity-container {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1f2937);
+    margin-bottom: 1.25rem;
+}
+
+:host-context(.dark) .section-title {
+    color: #f3f4f6;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.activity-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background: var(--color-surface-alt, #f9fafb);
+    border-radius: 0.5rem;
+}
+
+:host-context(.dark) .activity-row {
+    background: rgba(55, 65, 81, 0.5);
+}
+
+.stock-info {
+    flex: 1;
+}
+
+.stock-name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #1f2937);
+}
+
+:host-context(.dark) .stock-name {
+    color: #e5e7eb;
+}
+
+.ticker {
+    font-size: 0.6875rem;
+    color: var(--color-text-secondary, #6b7280);
+}
+
+:host-context(.dark) .ticker {
+    color: #9ca3af;
+}
+
+.change-badge {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.625rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.change-badge.buy {
+    background: #ecfdf5;
+    color: #059669;
+}
+
+:host-context(.dark) .change-badge.buy {
+    background: rgba(5, 150, 105, 0.2);
+    color: #34d399;
+}
+
+.change-badge.sell {
+    background: #fef2f2;
+    color: #dc2626;
+}
+
+:host-context(.dark) .change-badge.sell {
+    background: rgba(220, 38, 38, 0.2);
+    color: #f87171;
+}
+
+.indicator {
+    font-size: 0.625rem;
+}

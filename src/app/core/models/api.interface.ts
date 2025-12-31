@@ -279,5 +279,6 @@ export interface RecommendedFund {
     riskMetrics: RiskMetrics;
     sectorAllocation: Record<string, number>;
     topHoldings: TopHolding[];
+    fundMetadata?: FundMetadata;
     reason?: string;
 }

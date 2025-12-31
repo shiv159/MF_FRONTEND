@@ -1,0 +1,46 @@
+@if (hasData()) {
+<div class="valuation-container">
+    <h4 class="section-title">
+        <svg class="title-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+        </svg>
+        Stock Valuation Analysis
+    </h4>
+
+    <div class="groups-container">
+        @for (group of valuationGroups(); track group.category) {
+        <div class="valuation-group">
+            <div class="group-header" [style.backgroundColor]="group.bgColor">
+                <span class="group-icon">{{ group.icon }}</span>
+                <span class="group-title" [style.color]="group.color">{{ group.category }}</span>
+                <span class="stock-count">{{ group.stocks.length }} stocks</span>
+            </div>
+
+            <div class="stocks-list">
+                @for (stock of group.stocks.slice(0, 5); track stock.isin) {
+                <div class="stock-item">
+                    <div class="stock-info">
+                        <div class="stock-name">{{ stock.securityName }}</div>
+                        <div class="stock-sector">{{ stock.sector }}</div>
+                    </div>
+                    <div class="stock-metrics">
+                        @if (stock.quantRating) {
+                        <div class="star-rating" [title]="'Rating: ' + stock.quantRating + '/5'">
+                            {{ getStarRating(stock.quantRating) }}
+                        </div>
+                        }
+                        <div class="return-value" [class]="getReturnClass(stock.totalReturn1Year)">
+                            {{ formatReturn(stock.totalReturn1Year) }}
+                        </div>
+                    </div>
+                </div>
+                }
+                @if (group.stocks.length > 5) {
+                <div class="more-stocks">+{{ group.stocks.length - 5 }} more</div>
+                }
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

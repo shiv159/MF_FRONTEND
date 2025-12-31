@@ -1,0 +1,92 @@
+.geo-container {
+    background: var(--color-surface, white);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 1px solid var(--color-border, #e5e7eb);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+:host-context(.dark) .geo-container {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary, #1f2937);
+    margin-bottom: 1.25rem;
+}
+
+:host-context(.dark) .section-title {
+    color: #f3f4f6;
+}
+
+.geo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.country-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.country-info {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 6rem;
+}
+
+.flag {
+    font-size: 1.25rem;
+}
+
+.name {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-primary, #374151);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+:host-context(.dark) .name {
+    color: #e5e7eb;
+}
+
+.bar-container {
+    flex: 1;
+    height: 0.5rem;
+    background: #f3f4f6;
+    border-radius: 9999px;
+    overflow: hidden;
+}
+
+:host-context(.dark) .bar-container {
+    background: #4b5563;
+}
+
+.bar-fill {
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 9999px;
+}
+
+.weight {
+    width: 3rem;
+    text-align: right;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-text-secondary, #6b7280);
+}
+
+:host-context(.dark) .weight {
+    color: #9ca3af;
+}

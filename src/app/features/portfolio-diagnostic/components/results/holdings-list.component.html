@@ -1,32 +1,71 @@
-<div class="holdings-card">
-    <div class="holdings-header">
-        <h4 class="holdings-title">Your Holdings</h4>
-    </div>
-    <div class="table-wrapper">
-        <table class="holdings-table">
-            <thead>
-                <tr>
-                    <th>Fund Name</th>
-                    <th>Weight</th>
-                    <th>Category</th>
-                    <th>NAV Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                @for (holding of holdings(); track holding.fundId) {
-                <tr>
-                    <td>
-                        <div class="fund-name">{{ holding.fundName }}</div>
-                        <div class="fund-isin">{{ holding.isin }}</div>
-                    </td>
-                    <td class="weight-cell">{{ holding.weightPct }}%</td>
-                    <td>
-                        <span class="category-badge">{{ holding.fundCategory }}</span>
-                    </td>
-                    <td class="date-cell">{{ holding.navAsOf }}</td>
-                </tr>
-                }
-            </tbody>
-        </table>
+<div class="holdings-container">
+    <h3 class="section-title">Portfolio Holdings Analysis</h3>
+
+    <div class="holdings-grid">
+        @for (fund of holdings(); track fund.fundId) {
+        <div class="holding-card" [class.expanded]="isExpanded(fund.fundId)">
+            <div class="card-header" (click)="toggleExpand(fund.fundId)">
+                <div class="fund-info">
+                    <div class="fund-name">{{ fund.fundName }}</div>
+                    <div class="fund-meta">
+                        <span class="category">{{ fund.fundCategory }}</span>
+                        @if (fund.amcName) {
+                        <span class="amc-dot">•</span>
+                        <span class="amc">{{ fund.amcName }}</span>
+                        }
+                    </div>
+                </div>
+                <div class="fund-metrics">
+                    <div class="metric">
+                        <span class="label">Weight</span>
+                        <span class="val">{{ fund.weightPct }}%</span>
+                    </div>
+                    @if (fund.fundMetadata?.alpha) {
+                    <div class="metric desktop-only">
+                        <span class="label">Alpha</span>
+                        <span class="val" [class.positive]="fund.fundMetadata!.alpha! > 0">
+                            {{ fund.fundMetadata!.alpha! > 0 ? '+' : '' }}{{ fund.fundMetadata!.alpha }}
+                        </span>
+                    </div>
+                    }
+                    <div class="expand-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            @if (isExpanded(fund.fundId)) {
+            <div class="card-content">
+                <div class="insights-row">
+                    @if (fund.fundMetadata) {
+                    <app-fund-comparison [metadata]="fund.fundMetadata" class="insight-col"></app-fund-comparison>
+
+                    @if (fund.fundMetadata.nav_history) {
+                    <app-nav-history-chart [history]="fund.fundMetadata.nav_history"
+                        class="insight-col"></app-nav-history-chart>
+                    }
+                    } @else {
+                    <div class="no-data">Detailed analysis not available for this fund.</div>
+                    }
+                </div>
+
+                <div class="sector-preview">
+                    <h5 class="preview-title">Sector Allocation</h5>
+                    <div class="sector-tags">
+                        @for (sector of fund.sectorAllocation | keyvalue; track sector.key) {
+                        @if (sector.value > 5) {
+                        <span class="sector-tag">
+                            {{ sector.key | titlecase }} {{ sector.value | number:'1.0-0' }}%
+                        </span>
+                        }
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+        }
     </div>
 </div>

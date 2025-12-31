@@ -1,0 +1,45 @@
+@if (hasData()) {
+<div class="esg-container">
+    <div class="esg-header">
+        <div class="header-left">
+            <h4 class="section-title">
+                <span class="icon">🌍</span> Portfolio ESG Analysis
+            </h4>
+            <div class="subtitle">Environmental, Social, and Governance Risk</div>
+        </div>
+        <div class="score-badge" [style.background-color]="getRiskColor(avgEsgScore()) + '20'"
+            [style.color]="getRiskColor(avgEsgScore())">
+            <div class="score-val">{{ avgEsgScore() | number:'1.1-1' }}</div>
+            <div class="score-label">{{ getRiskLabel(avgEsgScore()) }}</div>
+        </div>
+    </div>
+
+    <div class="globes-section">
+        <div class="globe-rating">
+            @for (i of [1,2,3,4,5]; track i) {
+            <span class="globe" [class.active]="avgEsgScore() < (50 - (i * 8))">🌍</span>
+            }
+        </div>
+        <div class="globe-text">Morningstar Sustainability Rating™</div>
+    </div>
+
+    <div class="categories-grid">
+        @for (cat of esgCategories(); track cat.label) {
+        <div class="cat-card">
+            <div class="cat-header">
+                <span class="dot" [style.background-color]="cat.color"></span>
+                <span class="cat-name">{{ cat.label }}</span>
+                <span class="cat-weight">{{ cat.weight | number:'1.1-1' }}%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar" [style.width.%]="(cat.weight / 100) * 100"
+                    [style.background-color]="cat.color"></div>
+            </div>
+            <div class="cat-stocks">
+                {{ cat.count }} holdings including {{ cat.stocks.join(', ') }}
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

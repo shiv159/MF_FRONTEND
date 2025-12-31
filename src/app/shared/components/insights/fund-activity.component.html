@@ -1,0 +1,23 @@
+@if (hasActivity()) {
+<div class="activity-container">
+    <h4 class="section-title">
+        <span class="icon">⚡</span> Recent Fund Activity
+    </h4>
+
+    <div class="activity-list">
+        @for (item of activity(); track item.ticker) {
+        <div class="activity-row">
+            <div class="stock-info">
+                <div class="stock-name">{{ item.name }}</div>
+                <div class="ticker">{{ item.ticker }}</div>
+            </div>
+
+            <div class="change-badge" [class.buy]="item.changeType === 'BUY'" [class.sell]="item.changeType === 'SELL'">
+                <span class="indicator">{{ item.changeType === 'BUY' ? '▲' : '▼' }}</span>
+                <span class="amount">{{ item.changeType }} {{ item.amount }} Shares</span>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

@@ -1,0 +1,71 @@
+@if (comparisonData(); as data) {
+<div class="comparison-container">
+    <div class="comparison-header">
+        <h4 class="section-title">
+            <span class="icon">📊</span> Performance Comparison
+            <span class="period-badge">{{ data.period }}</span>
+        </h4>
+    </div>
+
+    <!-- Alpha Comparison -->
+    <div class="metric-group">
+        <h5 class="metric-title">Alpha (Excess Returns)</h5>
+
+        <div class="bar-row">
+            <div class="bar-label">Your Fund</div>
+            <div class="bar-track">
+                <div class="bar-fill fund" [style.width.%]="getProgressWidth(data.alpha.fund, maxAlpha())"></div>
+                <div class="bar-value">{{ data.alpha.fund | number:'1.2-2' }}</div>
+            </div>
+        </div>
+
+        <div class="bar-row">
+            <div class="bar-label">Category Avg</div>
+            <div class="bar-track">
+                <div class="bar-fill category" [style.width.%]="getProgressWidth(data.alpha.category, maxAlpha())">
+                </div>
+                <div class="bar-value">{{ data.alpha.category | number:'1.2-2' }}</div>
+            </div>
+        </div>
+
+        <div class="bar-row">
+            <div class="bar-label">Index</div>
+            <div class="bar-track">
+                <div class="bar-fill index" [style.width.%]="getProgressWidth(data.alpha.index, maxAlpha())"></div>
+                <div class="bar-value">{{ data.alpha.index | number:'1.2-2' }}</div>
+            </div>
+        </div>
+
+        @if (data.alpha.fund > data.alpha.category) {
+        <div class="insight-pill positive">
+            Use alpha to generate {{ (data.alpha.fund - data.alpha.category) | number:'1.1-1' }}% more returns than
+            category
+        </div>
+        }
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Sharpe Ratio Comparison -->
+    <div class="metric-group">
+        <h5 class="metric-title">Sharpe Ratio (Risk-Adjusted Return)</h5>
+
+        <div class="bar-row">
+            <div class="bar-label">Your Fund</div>
+            <div class="bar-track">
+                <div class="bar-fill fund" [style.width.%]="getProgressWidth(data.sharpe.fund, maxSharpe())"></div>
+                <div class="bar-value">{{ data.sharpe.fund | number:'1.2-2' }}</div>
+            </div>
+        </div>
+
+        <div class="bar-row">
+            <div class="bar-label">Category Avg</div>
+            <div class="bar-track">
+                <div class="bar-fill category" [style.width.%]="getProgressWidth(data.sharpe.category, maxSharpe())">
+                </div>
+                <div class="bar-value">{{ data.sharpe.category | number:'1.2-2' }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+}

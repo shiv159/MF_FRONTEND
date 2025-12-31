@@ -8,10 +8,25 @@
     <!-- Summary Cards -->
     <app-portfolio-summary [analysis]="data().analysis!"></app-portfolio-summary>
 
+    <!-- Dashboard Layout -->
+    <div class="dashboard-layout">
+        <!-- Main Column (Left) -->
+        <div class="dashboard-main">
+            <app-stock-valuation-cards [holdings]="aggregatedHoldings()"></app-stock-valuation-cards>
+            <app-fund-activity [holdings]="aggregatedHoldings()"></app-fund-activity>
+        </div>
+
+        <!-- Side Column (Right) -->
+        <div class="dashboard-side">
+            <app-esg-dashboard [holdings]="aggregatedHoldings()"></app-esg-dashboard>
+            <app-geographic-allocation [holdings]="aggregatedHoldings()"></app-geographic-allocation>
+        </div>
+    </div>
+
     <!-- Charts Grid -->
     <div class="charts-grid">
         <app-sector-chart [sectors]="data().analysis?.aggregateSectorAllocation || {}"></app-sector-chart>
-        <div class="lg:col-span-2">
+        <div>
             <app-wealth-projection-chart
                 [timeline]="data().analysis?.wealthProjection?.timeline || []"></app-wealth-projection-chart>
         </div>

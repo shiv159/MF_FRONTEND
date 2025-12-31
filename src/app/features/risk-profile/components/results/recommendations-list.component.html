@@ -11,28 +11,75 @@
 
             <div class="funds-list">
                 @for (fund of group.funds; track fund.id) {
-                <div class="fund-card">
-                    <div class="fund-info">
-                        <div class="fund-name">{{ fund.name }}</div>
-                        <div class="fund-category">{{ fund.category }}</div>
-                        @if (fund.reason) {
-                        <div class="fund-reason">{{ fund.reason }}</div>
+                <div class="fund-card" [class.expanded]="isExpanded(fund.id)">
+                    <div class="card-header" (click)="toggleExpand(fund.id)">
+                        <div class="fund-info">
+                            <div class="fund-name">{{ fund.name }}</div>
+                            <div class="fund-category">{{ fund.category }}</div>
+                            @if (fund.reason) {
+                            <div class="fund-reason">{{ fund.reason }}</div>
+                            }
+                        </div>
+                        <div class="fund-metrics-wrapper">
+                            <div class="fund-metrics">
+                                <div class="metric">
+                                    <div class="metric-label">Sharpe</div>
+                                    <div class="metric-value">{{ fund.riskMetrics.sharpeRatio | number:'1.2-2' }}</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-label">Alpha</div>
+                                    <div class="metric-value">{{ fund.riskMetrics.alpha | number:'1.2-2' }}</div>
+                                </div>
+                                <div class="metric desktop-only">
+                                    <div class="metric-label">Beta</div>
+                                    <div class="metric-value">{{ fund.riskMetrics.beta | number:'1.2-2' }}</div>
+                                </div>
+                            </div>
+                            <div class="expand-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (isExpanded(fund.id)) {
+                    <div class="card-content">
+                        @if (fund.fundMetadata) {
+                        <div class="insights-row">
+                            <app-fund-comparison [metadata]="fund.fundMetadata"
+                                class="insight-col"></app-fund-comparison>
+
+                            @if (fund.fundMetadata.nav_history) {
+                            <app-nav-history-chart [history]="fund.fundMetadata.nav_history"
+                                class="insight-col"></app-nav-history-chart>
+                            }
+                        </div>
+                        }
+
+                        <!-- Top Holdings List -->
+                        @if (fund.topHoldings.length) {
+                        <div class="holdings-preview">
+                            <h5 class="preview-title">Top Holdings</h5>
+                            <div class="holdings-tags">
+                                @for (holding of fund.topHoldings.slice(0, 5); track holding.securityName) {
+                                <span class="holding-tag">
+                                    {{ holding.securityName }}
+                                    <span class="holding-wt">{{ holding.weighting | number:'1.1-1' }}%</span>
+                                </span>
+                                }
+                                @if (fund.topHoldings.length > 5) {
+                                <span class="holding-tag more">+{{ fund.topHoldings.length - 5 }} more</span>
+                                }
+                            </div>
+                        </div>
+                        }
+
+                        @if (!fund.fundMetadata && !fund.topHoldings.length) {
+                        <div class="no-data">Detailed analysis not available for this fund.</div>
                         }
                     </div>
-                    <div class="fund-metrics">
-                        <div class="metric">
-                            <div class="metric-label">Sharpe</div>
-                            <div class="metric-value">{{ fund.riskMetrics.sharpeRatio | number:'1.2-2' }}</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">Alpha</div>
-                            <div class="metric-value">{{ fund.riskMetrics.alpha | number:'1.2-2' }}</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-label">Beta</div>
-                            <div class="metric-value">{{ fund.riskMetrics.beta | number:'1.2-2' }}</div>
-                        </div>
-                    </div>
+                    }
                 </div>
                 }
             </div>

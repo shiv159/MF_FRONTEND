@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: '/api/v1' // Will use relative path in production
+    apiUrl: 'https://mutual-fund-api-xmpa4gy2rq-uc.a.run.app'
 };

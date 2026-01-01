@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, delay } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import {
     RiskProfileRequest,
     RiskProfileResponse,
@@ -10,12 +10,13 @@ import {
     GoalsData,
     PreferencesData
 } from '../../../core/models/api.interface';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class RiskProfileService {
-    private readonly apiUrl = '/api/onboarding/risk-profile';
+    private readonly apiUrl = `${environment.apiUrl}/api/onboarding/risk-profile`;
 
     // State Management for the Wizard
     private profileState: RiskProfileRequest = {
@@ -94,8 +95,7 @@ export class RiskProfileService {
     }
 
     submitProfile(): Observable<RiskProfileResponse> {
-        // Fetch Mock Data from public folder for demo purpose
-        return this.http.get<RiskProfileResponse>('/data/risk-profile.json').pipe(delay(800));
+        return this.http.post<RiskProfileResponse>(this.apiUrl, this.profileState);
     }
 
     getCurrentState(): RiskProfileRequest {

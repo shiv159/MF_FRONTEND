@@ -11,7 +11,7 @@ import { environment } from '../../../../environments/environment';
 export class AuthService {
     private readonly http = inject(HttpClient);
     private readonly store = inject(AuthStore);
-    private readonly apiUrl = `${environment.apiUrl}/auth`;
+    private readonly apiUrl = `${environment.apiUrl}/api/v1/auth`;
 
     login(credentials: LoginRequest): Observable<AuthResponse> {
         this.store.setLoading(true);

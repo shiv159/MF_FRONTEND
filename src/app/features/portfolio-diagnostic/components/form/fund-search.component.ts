@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, input, output, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output, inject, effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ManualSelectionService } from '../../services/manual-selection.service';
@@ -33,6 +33,13 @@ export class FundSearchComponent {
       this.results = results;
       this.showResults = true;
     });
+
+    effect(() => {
+      const fund = this.selectedFund();
+      if (fund) {
+        this.searchTerm = fund;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -47,9 +54,12 @@ export class FundSearchComponent {
   }
 
   selectFund(fund: any): void {
-    this.searchTerm = fund.name;
+    const id = fund.schemeCode || fund.scheme_code || fund.id || fund.isin || fund.fundId;
+    const name = fund.name || fund.schemeName || fund.scheme_name || fund.fundName;
+
+    this.searchTerm = name;
     this.showResults = false;
-    this.fundSelected.emit({ schemeCode: fund.schemeCode, schemeName: fund.name });
+    this.fundSelected.emit({ schemeCode: id, schemeName: name });
   }
 
   clear(): void {

@@ -22,11 +22,11 @@
     <!-- Dropdown Results -->
     @if (showResults && results.length > 0) {
     <div class="results-dropdown">
-        @for (result of results; track result.schemeCode) {
+        @for (result of results; track $index) {
         <button (click)="selectFund(result)" class="result-item">
-            <div class="result-name">{{ result.name }}</div>
+            <div class="result-name">{{ result.fundName || result.name || result.schemeName }}</div>
             <div class="result-meta">
-                <span class="result-amc">{{ result.amc }}</span>
+                <span class="result-amc">{{ result.amcName || result.amc }}</span>
                 <span class="result-isin">{{ result.isin }}</span>
             </div>
         </button>

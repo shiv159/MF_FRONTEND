@@ -1,0 +1,2471 @@
+{
+    "riskProfile": {
+        "score": 80,
+        "level": "AGGRESSIVE",
+        "rationale": "High risk capacity due to long horizon (>10y) and stable financials allows for aggressive equity exposure."
+    },
+    "assetAllocation": {
+        "equity": 90.0,
+        "debt": 5.0,
+        "gold": 5.0
+    },
+    "recommendations": [
+        {
+            "allocationCategory": "Small Cap",
+            "allocationPercent": 100.0,
+            "amount": 1800.0,
+            "funds": [
+                {
+                    "id": "4e769d5a-90af-41ef-a61c-acfd3a597519",
+                    "name": "Bandhan Small Cap Fund Direct Growth",
+                    "category": "Equity Scheme - Small Cap Fund",
+                    "riskMetrics": {
+                        "alpha": 9.905,
+                        "beta": 0.89,
+                        "sharpeRatio": 1.265,
+                        "standardDeviation": 18.049,
+                        "rsquared": 93.985
+                    },
+                    "sectorAllocation": {
+                        "energy": 0.29714,
+                        "utilities": 0.99766,
+                        "healthcare": 12.9563,
+                        "realEstate": 9.21664,
+                        "technology": 6.08155,
+                        "industrials": 12.83005,
+                        "basicMaterials": 11.78552,
+                        "consumerCyclical": 13.7474,
+                        "consumerDefensive": 4.75922,
+                        "financialServices": 24.51406,
+                        "communicationServices": 2.81447
+                    },
+                    "topHoldings": [
+                        {
+                            "isin": "INE671H01015",
+                            "secId": "0P0000BI7O",
+                            "sector": "Real Estate",
+                            "ticker": "532784",
+                            "country": "India",
+                            "weighting": 3.12636,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5681799000,
+                            "quantRating": "3",
+                            "shareChange": 49911.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4701757000,
+                                    5333507000,
+                                    5901495000,
+                                    5681799000
+                                ]
+                            },
+                            "securityName": "Sobha Ltd",
+                            "numberOfShare": 3695960.0,
+                            "firstBoughtDate": "2023-08-31T05:00:00.000",
+                            "susEsgRiskScore": 27.3452,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -7.7132,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE020B01018",
+                            "secId": "0P0000D6F9",
+                            "sector": "Financial Services",
+                            "ticker": "532955",
+                            "country": "India",
+                            "weighting": 2.85431,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5187377000,
+                            "quantRating": "3",
+                            "shareChange": 1750171.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3000111000,
+                                    3720014000,
+                                    4731835000,
+                                    5187377000
+                                ]
+                            },
+                            "securityName": "REC Ltd",
+                            "numberOfShare": 14373446,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 15.74,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": -26.1877,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE683A01023",
+                            "secId": "0P0000AHF3",
+                            "sector": "Financial Services",
+                            "ticker": "532218",
+                            "country": "India",
+                            "weighting": 2.31328,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4204124000,
+                            "quantRating": "3",
+                            "shareChange": -300000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3145173000,
+                                    3110788000,
+                                    3900703000,
+                                    4204124000
+                                ]
+                            },
+                            "securityName": "The South Indian Bank Ltd",
+                            "numberOfShare": 106218390,
+                            "firstBoughtDate": "2024-02-29T06:00:00.000",
+                            "susEsgRiskScore": 27.0907,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 55.171,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE818H01020",
+                            "secId": "0P0000B5UY",
+                            "sector": "Consumer Defensive",
+                            "ticker": "532783",
+                            "country": "India",
+                            "weighting": 2.11384,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 3841653000,
+                            "quantRating": "3",
+                            "shareChange": 408327.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2998347000,
+                                    3393330000,
+                                    3784741000,
+                                    3841653000
+                                ]
+                            },
+                            "securityName": "LT Foods Ltd",
+                            "numberOfShare": 9408899.0,
+                            "firstBoughtDate": "2024-04-30T05:00:00.000",
+                            "susEsgRiskScore": 32.8793,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 0.7061,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE034A01011",
+                            "secId": "0P0000AIZS",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "500101",
+                            "country": "India",
+                            "weighting": 1.52245,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2766872000,
+                            "quantRating": "3",
+                            "shareChange": 169022.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1802550000,
+                                    2092894000,
+                                    2448467000,
+                                    2766872000
+                                ]
+                            },
+                            "securityName": "Arvind Ltd",
+                            "numberOfShare": 7849282.0,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 19.2911,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": -21.9338,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE572E01012",
+                            "secId": "0P000195L8",
+                            "sector": "Financial Services",
+                            "ticker": "PNBHOUSING",
+                            "country": "India",
+                            "weighting": 1.46963,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2670880000,
+                            "quantRating": "3",
+                            "shareChange": 182000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1783400000,
+                                    2390679000,
+                                    2570893000,
+                                    2670880000
+                                ]
+                            },
+                            "securityName": "PNB Housing Finance Ltd",
+                            "numberOfShare": 2950271.0,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 23.1931,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 14.7092,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE149A01033",
+                            "secId": "0P0000AMR3",
+                            "sector": "Financial Services",
+                            "ticker": "504973",
+                            "country": "India",
+                            "weighting": 1.43093,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2600543000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2389390000,
+                                    2609956000,
+                                    2694073000,
+                                    2600543000
+                                ]
+                            },
+                            "securityName": "Cholamandalam Financial Holdings Ltd",
+                            "numberOfShare": 1408592.0,
+                            "firstBoughtDate": "2023-05-31T05:00:00.000",
+                            "susEsgRiskScore": 32.6715,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 36.0062,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE663F01032",
+                            "secId": "0P0000C36K",
+                            "sector": "Communication Services",
+                            "ticker": "NAUKRI",
+                            "country": "India",
+                            "weighting": 1.39067,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2527380000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2376675000,
+                                    2291275000,
+                                    2618770000,
+                                    2527380000
+                                ]
+                            },
+                            "securityName": "Info Edge (India) Ltd",
+                            "numberOfShare": 1900000.0,
+                            "firstBoughtDate": "2025-07-31T05:00:00.000",
+                            "susEsgRiskScore": 23.1659,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -20.8583,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE372A01015",
+                            "secId": "0P0000CEMU",
+                            "sector": "Industrials",
+                            "ticker": "532259",
+                            "country": "India",
+                            "weighting": 1.28415,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2333804000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1970083000,
+                                    2095829000,
+                                    2209336000,
+                                    2333804000
+                                ]
+                            },
+                            "securityName": "Apar Industries Ltd",
+                            "numberOfShare": 254796.0,
+                            "firstBoughtDate": "2023-05-31T05:00:00.000",
+                            "susEsgRiskScore": 22.7216,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -12.6701,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE614B01018",
+                            "secId": "0P0000ARNR",
+                            "sector": "Financial Services",
+                            "ticker": "532652",
+                            "country": "India",
+                            "weighting": 1.28061,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2327355000,
+                            "quantRating": "3",
+                            "shareChange": 701827.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1641637000,
+                                    1667493000,
+                                    1830545000,
+                                    2327355000
+                                ]
+                            },
+                            "securityName": "Karnataka Bank Ltd",
+                            "numberOfShare": 10971364,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 24.2139,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -0.071,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE0JO301016",
+                            "secId": "0P0001RGE4",
+                            "sector": "Healthcare",
+                            "ticker": "543950",
+                            "country": "India",
+                            "weighting": 1.25748,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": null,
+                            "marketValue": 2285334000,
+                            "quantRating": "3",
+                            "shareChange": 547000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2015298000,
+                                    1987739000,
+                                    2135371000,
+                                    2285334000
+                                ]
+                            },
+                            "securityName": "Yatharth Hospital and Trauma Care Services Ltd",
+                            "numberOfShare": 3228785.0,
+                            "firstBoughtDate": "2023-08-31T05:00:00.000",
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": 11.3084,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE503A01015",
+                            "secId": "0P0000BW8V",
+                            "sector": "Financial Services",
+                            "ticker": "532772",
+                            "country": "India",
+                            "weighting": 1.17809,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2141043000,
+                            "quantRating": "3",
+                            "shareChange": -1250000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1219770000,
+                                    1590758000,
+                                    2039665000,
+                                    2141043000
+                                ]
+                            },
+                            "securityName": "DCB Bank Ltd",
+                            "numberOfShare": 11663358,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 31.7297,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 42.9506,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE062A01020",
+                            "secId": "0P0000BI86",
+                            "sector": "Financial Services",
+                            "ticker": "SBIN",
+                            "country": "India",
+                            "weighting": 1.12619,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2046721000,
+                            "quantRating": "3",
+                            "shareChange": -30000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1749951000,
+                                    1902485000,
+                                    1987025000,
+                                    2046721000
+                                ]
+                            },
+                            "securityName": "State Bank of India",
+                            "numberOfShare": 2090624.0,
+                            "firstBoughtDate": "2025-07-31T05:00:00.000",
+                            "susEsgRiskScore": 21.7627,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 21.2795,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE700A01033",
+                            "secId": "0P0000BGJ2",
+                            "sector": "Healthcare",
+                            "ticker": "530019",
+                            "country": "India",
+                            "weighting": 1.08661,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1974790000,
+                            "quantRating": "3",
+                            "shareChange": 70000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1571130000,
+                                    1832779000,
+                                    1918199000,
+                                    1974790000
+                                ]
+                            },
+                            "securityName": "Jubilant Pharmova Ltd",
+                            "numberOfShare": 1812233.0,
+                            "firstBoughtDate": "2024-09-30T05:00:00.000",
+                            "susEsgRiskScore": 31.2854,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": -2.2428,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE238A01034",
+                            "secId": "0P0000CM8C",
+                            "sector": "Financial Services",
+                            "ticker": "532215",
+                            "country": "India",
+                            "weighting": 1.07382,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1951543000,
+                            "quantRating": "3",
+                            "shareChange": -75000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1567800000,
+                                    1810560000,
+                                    1972480000,
+                                    1951543000
+                                ]
+                            },
+                            "securityName": "Axis Bank Ltd",
+                            "numberOfShare": 1525000.0,
+                            "firstBoughtDate": "2025-07-31T05:00:00.000",
+                            "susEsgRiskScore": 17.79,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 13.7444,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE602A01031",
+                            "secId": "0P0000BAK0",
+                            "sector": "Basic Materials",
+                            "ticker": "506590",
+                            "country": "India",
+                            "weighting": 1.0436,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1896619000,
+                            "quantRating": "3",
+                            "shareChange": 152820.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2035881000,
+                                    2057246000,
+                                    2056815000,
+                                    1896619000
+                                ]
+                            },
+                            "securityName": "PCBL Chemical Ltd",
+                            "numberOfShare": 5833060.0,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 25.0836,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -30.6272,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE105A01035",
+                            "secId": "0P0000BHI9",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "520056",
+                            "country": "India",
+                            "weighting": 1.03059,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1872984000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1433627000,
+                                    1686221000,
+                                    1982599000,
+                                    1872984000
+                                ]
+                            },
+                            "securityName": "TVS Holdings Ltd",
+                            "numberOfShare": 130649.0,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 26.8116,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 30.198,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE935A01035",
+                            "secId": "0P0000CAVO",
+                            "sector": "Healthcare",
+                            "ticker": "532296",
+                            "country": "India",
+                            "weighting": 1.02042,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1854489000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1637002000,
+                                    1690798000,
+                                    1802081000,
+                                    1854489000
+                                ]
+                            },
+                            "securityName": "Glenmark Pharmaceuticals Ltd",
+                            "numberOfShare": 952877.0,
+                            "firstBoughtDate": "2024-03-31T05:00:00.000",
+                            "susEsgRiskScore": 26.2117,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 31.7938,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE0EK901012",
+                            "secId": "0P0001LDGQ",
+                            "sector": "Real Estate",
+                            "ticker": "543249",
+                            "country": "India",
+                            "weighting": 0.97646,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": null,
+                            "marketValue": 1774611000,
+                            "quantRating": "3",
+                            "shareChange": 2052614.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1508539000,
+                                    1614560000,
+                                    1690740000,
+                                    1774611000
+                                ]
+                            },
+                            "securityName": "TARC Ltd Ordinary Shares",
+                            "numberOfShare": 12672172,
+                            "firstBoughtDate": "2024-07-31T05:00:00.000",
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": -12.6601,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE066P01011",
+                            "secId": "0P00015R3S",
+                            "sector": "Industrials",
+                            "ticker": "539083",
+                            "country": "India",
+                            "weighting": 0.96166,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1747698000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1794736000,
+                                    1822284000,
+                                    2015765000,
+                                    1747698000
+                                ]
+                            },
+                            "securityName": "Inox Wind Ltd",
+                            "numberOfShare": 12994037,
+                            "firstBoughtDate": "2024-06-30T05:00:00.000",
+                            "susEsgRiskScore": 31.2131,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": -30.8625,
+                            "susEsgRiskCategory": "High"
+                        }
+                    ],
+                    "reason": "High Alpha Generator"
+                }
+            ]
+        },
+        {
+            "allocationCategory": "Large Cap",
+            "allocationPercent": 100.0,
+            "amount": 3600.0,
+            "funds": [
+                {
+                    "id": "3c2fa565-5a83-4da7-8bc1-78aa397454e8",
+                    "name": "Kotak Large Cap Fund Direct Growth",
+                    "category": "Equity Scheme - Large Cap Fund",
+                    "riskMetrics": {
+                        "alpha": 1.957,
+                        "beta": 0.954,
+                        "sharpeRatio": 0.788,
+                        "standardDeviation": 11.749,
+                        "rsquared": 97.796
+                    },
+                    "sectorAllocation": {
+                        "energy": 8.47574,
+                        "utilities": 2.93398,
+                        "healthcare": 4.84715,
+                        "realEstate": 0.90787,
+                        "technology": 9.93061,
+                        "industrials": 9.23624,
+                        "basicMaterials": 7.65352,
+                        "consumerCyclical": 13.46646,
+                        "consumerDefensive": 7.68806,
+                        "financialServices": 30.85183,
+                        "communicationServices": 4.00855
+                    },
+                    "topHoldings": [
+                        {
+                            "isin": "INE040A01034",
+                            "secId": "0P0000C3NZ",
+                            "sector": "Financial Services",
+                            "ticker": "HDFCBANK",
+                            "country": "India",
+                            "weighting": 7.80318,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 8646515000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    8115721000,
+                                    8110604000,
+                                    8472315000,
+                                    8646515000
+                                ]
+                            },
+                            "securityName": "HDFC Bank Ltd",
+                            "numberOfShare": 8581297.0,
+                            "firstBoughtDate": "2023-07-31T05:00:00.000",
+                            "susEsgRiskScore": 23.015,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 12.4187,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE090A01021",
+                            "secId": "0P0000BIOD",
+                            "sector": "Financial Services",
+                            "ticker": "ICICIBANK",
+                            "country": "India",
+                            "weighting": 7.17227,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 7947415000,
+                            "quantRating": "3",
+                            "shareChange": 120093.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    7539307000,
+                                    7270701000,
+                                    7536925000,
+                                    7947415000
+                                ]
+                            },
+                            "securityName": "ICICI Bank Ltd",
+                            "numberOfShare": 5722505.0,
+                            "firstBoughtDate": "2009-10-31T05:00:00.000",
+                            "susEsgRiskScore": 16.9815,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 5.6697,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE002A01018",
+                            "secId": "0P0000B1W1",
+                            "sector": "Energy",
+                            "ticker": "RELIANCE",
+                            "country": "India",
+                            "weighting": 6.81479,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 7551300000,
+                            "quantRating": "3",
+                            "shareChange": 26500.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    6685167000,
+                                    6718662000,
+                                    7121218000,
+                                    7551300000
+                                ]
+                            },
+                            "securityName": "Reliance Industries Ltd",
+                            "numberOfShare": 4817416.0,
+                            "firstBoughtDate": "2006-04-30T05:00:00.000",
+                            "susEsgRiskScore": 39.7317,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 27.8839,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE018A01030",
+                            "secId": "0P0000C9DZ",
+                            "sector": "Industrials",
+                            "ticker": "LT",
+                            "country": "India",
+                            "weighting": 3.95455,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4381938000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3830110000,
+                                    3939825000,
+                                    4340268000,
+                                    4381938000
+                                ]
+                            },
+                            "securityName": "Larsen & Toubro Ltd",
+                            "numberOfShare": 1076749.0,
+                            "firstBoughtDate": "2012-03-31T05:00:00.000",
+                            "susEsgRiskScore": 35.7947,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 12.3044,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE009A01021",
+                            "secId": "0P0000AKOJ",
+                            "sector": "Technology",
+                            "ticker": "INFY",
+                            "country": "India",
+                            "weighting": 3.82696,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4240558000,
+                            "quantRating": "3",
+                            "shareChange": -67068.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    4093130000,
+                                    4015701000,
+                                    4128502000,
+                                    4240558000
+                                ]
+                            },
+                            "securityName": "Infosys Ltd",
+                            "numberOfShare": 2718132.0,
+                            "firstBoughtDate": "2004-10-31T05:00:00.000",
+                            "susEsgRiskScore": 13.1088,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": -10.5105,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE397D01024",
+                            "secId": "0P0000BJR2",
+                            "sector": "Communication Services",
+                            "ticker": "BHARTIARTL",
+                            "country": "India",
+                            "weighting": 3.76109,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4167578000,
+                            "quantRating": "2",
+                            "shareChange": 0.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    3745585000,
+                                    3724961000,
+                                    4074176000,
+                                    4167578000
+                                ]
+                            },
+                            "securityName": "Bharti Airtel Ltd",
+                            "numberOfShare": 1983050.0,
+                            "firstBoughtDate": "2019-10-31T05:00:00.000",
+                            "susEsgRiskScore": 19.204,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 35.0906,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE062A01020",
+                            "secId": "0P0000BI86",
+                            "sector": "Financial Services",
+                            "ticker": "SBIN",
+                            "country": "India",
+                            "weighting": 3.69286,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4091971000,
+                            "quantRating": "3",
+                            "shareChange": 51750.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3085783000,
+                                    3551057000,
+                                    3867932000,
+                                    4091971000
+                                ]
+                            },
+                            "securityName": "State Bank of India",
+                            "numberOfShare": 4179746.0,
+                            "firstBoughtDate": "2021-06-30T05:00:00.000",
+                            "susEsgRiskScore": 21.7627,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 21.2795,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE238A01034",
+                            "secId": "0P0000CM8C",
+                            "sector": "Financial Services",
+                            "ticker": "532215",
+                            "country": "India",
+                            "weighting": 3.19975,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 3545569000,
+                            "quantRating": "3",
+                            "shareChange": -62500.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2824000000,
+                                    3057442000,
+                                    3492677000,
+                                    3545569000
+                                ]
+                            },
+                            "securityName": "Axis Bank Ltd",
+                            "numberOfShare": 2770625.0,
+                            "firstBoughtDate": "2013-02-28T06:00:00.000",
+                            "susEsgRiskScore": 17.79,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 13.7444,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE101A01026",
+                            "secId": "0P0000CA2F",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "M&M",
+                            "country": "India",
+                            "weighting": 2.9718,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 3292980000,
+                            "quantRating": "3",
+                            "shareChange": -20000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3040085000,
+                                    3314509000,
+                                    3126003000,
+                                    3292980000
+                                ]
+                            },
+                            "securityName": "Mahindra & Mahindra Ltd",
+                            "numberOfShare": 876422.0,
+                            "firstBoughtDate": "2020-06-30T05:00:00.000",
+                            "susEsgRiskScore": 26.2795,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 25.0384,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE154A01025",
+                            "secId": "0P0000BL1E",
+                            "sector": "Consumer Defensive",
+                            "ticker": "ITC",
+                            "country": "India",
+                            "weighting": 2.77759,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 3077778000,
+                            "quantRating": "3",
+                            "shareChange": 256000.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2954011000,
+                                    2894894000,
+                                    3092747000,
+                                    3077778000
+                                ]
+                            },
+                            "securityName": "ITC Ltd",
+                            "numberOfShare": 7613551.0,
+                            "firstBoughtDate": "2006-06-30T05:00:00.000",
+                            "susEsgRiskScore": 29.2605,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -3.8771,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE044A01036",
+                            "secId": "0P0000B808",
+                            "sector": "Healthcare",
+                            "ticker": "SUNPHARMA",
+                            "country": "India",
+                            "weighting": 2.67696,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2966276000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2582293000,
+                                    2581969000,
+                                    2738089000,
+                                    2966276000
+                                ]
+                            },
+                            "securityName": "Sun Pharmaceuticals Industries Ltd",
+                            "numberOfShare": 1619500.0,
+                            "firstBoughtDate": "2022-09-30T05:00:00.000",
+                            "susEsgRiskScore": 22.7693,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -3.6284,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE585B01010",
+                            "secId": "0P0000BU88",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "MARUTI",
+                            "country": "India",
+                            "weighting": 2.53147,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2805062000,
+                            "quantRating": "2",
+                            "shareChange": -4250.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    2766893000,
+                                    2946323000,
+                                    2924308000,
+                                    2805062000
+                                ]
+                            },
+                            "securityName": "Maruti Suzuki India Ltd",
+                            "numberOfShare": 176419.0,
+                            "firstBoughtDate": "2013-07-31T05:00:00.000",
+                            "susEsgRiskScore": 30.2476,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 56.8281,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE296A01032",
+                            "secId": "0P0000BEJ2",
+                            "sector": "Financial Services",
+                            "ticker": "500034",
+                            "country": "India",
+                            "weighting": 2.50139,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2771732000,
+                            "quantRating": "2",
+                            "shareChange": 232869.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    2140795000,
+                                    2435997000,
+                                    2543056000,
+                                    2771732000
+                                ]
+                            },
+                            "securityName": "Bajaj Finance Ltd",
+                            "numberOfShare": 2671549.0,
+                            "firstBoughtDate": "2019-11-30T06:00:00.000",
+                            "susEsgRiskScore": 17.5458,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 49.935,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE733E01010",
+                            "secId": "0P0000BYRX",
+                            "sector": "Utilities",
+                            "ticker": "532555",
+                            "country": "India",
+                            "weighting": 2.31483,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2565013000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2447290000,
+                                    2675015000,
+                                    2647515000,
+                                    2565013000
+                                ]
+                            },
+                            "securityName": "NTPC Ltd",
+                            "numberOfShare": 7857293.0,
+                            "firstBoughtDate": "2023-10-31T05:00:00.000",
+                            "susEsgRiskScore": 30.9982,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": -1.267,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE646L01027",
+                            "secId": "0P00016ZQS",
+                            "sector": "Industrials",
+                            "ticker": "INDIGO",
+                            "country": "India",
+                            "weighting": 2.09006,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2315949000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2265175000,
+                                    2195472000,
+                                    2207441000,
+                                    2315949000
+                                ]
+                            },
+                            "securityName": "InterGlobe Aviation Ltd",
+                            "numberOfShare": 392434.0,
+                            "firstBoughtDate": "2021-09-30T05:00:00.000",
+                            "susEsgRiskScore": 26.1826,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 10.3908,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE467B01029",
+                            "secId": "0P0000BEC4",
+                            "sector": "Technology",
+                            "ticker": "TCS",
+                            "country": "India",
+                            "weighting": 1.93103,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2139725000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    1766327000,
+                                    1653924000,
+                                    2085507000,
+                                    2139725000
+                                ]
+                            },
+                            "securityName": "Tata Consultancy Services Ltd",
+                            "numberOfShare": 681984.0,
+                            "firstBoughtDate": "2017-08-31T05:00:00.000",
+                            "susEsgRiskScore": 15.7547,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": -17.526,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE481G01011",
+                            "secId": "0P0000BXYP",
+                            "sector": "Basic Materials",
+                            "ticker": "532538",
+                            "country": "India",
+                            "weighting": 1.87608,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 2078836000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    2265214000,
+                                    2190305000,
+                                    2141022000,
+                                    2078836000
+                                ]
+                            },
+                            "securityName": "UltraTech Cement Ltd",
+                            "numberOfShare": 179210.0,
+                            "firstBoughtDate": "2014-01-31T06:00:00.000",
+                            "susEsgRiskScore": 28.2363,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 3.8831,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE721A01047",
+                            "secId": "0P0000AJBH",
+                            "sector": "Financial Services",
+                            "ticker": "SHRIRAMFIN",
+                            "country": "India",
+                            "weighting": 1.69802,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1881531000,
+                            "quantRating": "3",
+                            "shareChange": -82500.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1245275000,
+                                    1322212000,
+                                    1716312000,
+                                    1881531000
+                                ]
+                            },
+                            "securityName": "Shriram Finance Ltd",
+                            "numberOfShare": 2209277.0,
+                            "firstBoughtDate": "2023-06-30T05:00:00.000",
+                            "susEsgRiskScore": 19.9615,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 70.6585,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE237A01028",
+                            "secId": "0P0000BHY1",
+                            "sector": "Financial Services",
+                            "ticker": "KOTAKBANK",
+                            "country": "India",
+                            "weighting": 1.56252,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1731386000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1597645000,
+                                    1624051000,
+                                    1713293000,
+                                    1731386000
+                                ]
+                            },
+                            "securityName": "Kotak Mahindra Bank Ltd",
+                            "numberOfShare": 815000.0,
+                            "firstBoughtDate": "2019-02-28T06:00:00.000",
+                            "susEsgRiskScore": 16.959,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 23.8501,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE758T01015",
+                            "secId": "0P0001MZRH",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "543320",
+                            "country": "India",
+                            "weighting": 1.54834,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 1715677000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    1746133000,
+                                    1810372000,
+                                    1816582000,
+                                    1715677000
+                                ]
+                            },
+                            "securityName": "Eternal Ltd",
+                            "numberOfShare": 5717018.0,
+                            "firstBoughtDate": "2021-07-31T05:00:00.000",
+                            "susEsgRiskScore": 17.7651,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 3.6579,
+                            "susEsgRiskCategory": "Low"
+                        }
+                    ],
+                    "reason": "Consistent Performer"
+                }
+            ]
+        },
+        {
+            "allocationCategory": "Mid Cap",
+            "allocationPercent": 100.0,
+            "amount": 3600.0,
+            "funds": [
+                {
+                    "id": "d69ac7a6-2d4b-4bb5-bd48-ca5720449ea4",
+                    "name": "Motilal Oswal Midcap Fund Direct Growth",
+                    "category": "Equity Scheme - Large & Mid Cap Fund",
+                    "riskMetrics": {
+                        "alpha": 6.11,
+                        "beta": 1.142,
+                        "sharpeRatio": 1.041,
+                        "standardDeviation": 18.491,
+                        "rsquared": 70.749
+                    },
+                    "sectorAllocation": {
+                        "energy": 0.0,
+                        "utilities": 2.89156,
+                        "healthcare": 2.52742,
+                        "realEstate": 2.87532,
+                        "technology": 12.469,
+                        "industrials": 29.09683,
+                        "basicMaterials": 2.47463,
+                        "consumerCyclical": 21.56503,
+                        "consumerDefensive": 0.0,
+                        "financialServices": 26.10022,
+                        "communicationServices": 0.0
+                    },
+                    "topHoldings": [
+                        {
+                            "isin": "INE758T01015",
+                            "secId": "0P0001MZRH",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "543320",
+                            "country": "India",
+                            "weighting": 5.99561,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 9081228000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    9148804000,
+                                    9485382000,
+                                    9615329000,
+                                    9081228000
+                                ]
+                            },
+                            "securityName": "Eternal Ltd",
+                            "numberOfShare": 30260673,
+                            "firstBoughtDate": "2023-10-31T05:00:00.000",
+                            "susEsgRiskScore": 17.7651,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": -2.4152,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE296A01032",
+                            "secId": "0P0000BEJ2",
+                            "sector": "Financial Services",
+                            "ticker": "500034",
+                            "country": "India",
+                            "weighting": 4.34938,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 6587769000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4039910000,
+                                    4982977000,
+                                    6621422000,
+                                    6587769000
+                                ]
+                            },
+                            "securityName": "Bajaj Finance Ltd",
+                            "numberOfShare": 6349657.0,
+                            "firstBoughtDate": "2025-03-31T05:00:00.000",
+                            "susEsgRiskScore": 17.5458,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 42.1745,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE596F01018",
+                            "secId": "0P00015IBG",
+                            "sector": "Industrials",
+                            "ticker": "539006",
+                            "country": "India",
+                            "weighting": 4.05187,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 6137155000,
+                            "quantRating": "3",
+                            "shareChange": 3379.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4058370000,
+                                    4927345000,
+                                    5776912000,
+                                    6137155000
+                                ]
+                            },
+                            "securityName": "PTC Industries Ltd",
+                            "numberOfShare": 337633.0,
+                            "firstBoughtDate": "2024-09-30T05:00:00.000",
+                            "susEsgRiskScore": 35.4423,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 46.0048,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE414G01012",
+                            "secId": "0P0000T2FU",
+                            "sector": "Financial Services",
+                            "ticker": "533398",
+                            "country": "India",
+                            "weighting": 3.95534,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5990945000,
+                            "quantRating": "3",
+                            "shareChange": -12916.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3000600000,
+                                    4755904000,
+                                    5127167000,
+                                    5990945000
+                                ]
+                            },
+                            "securityName": "Muthoot Finance Ltd",
+                            "numberOfShare": 1600060.0,
+                            "firstBoughtDate": "2025-06-30T05:00:00.000",
+                            "susEsgRiskScore": 19.5605,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 78.176,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE263A01024",
+                            "secId": "0P0000BY3F",
+                            "sector": "Industrials",
+                            "ticker": "BEL",
+                            "country": "India",
+                            "weighting": 3.80584,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5764500000,
+                            "quantRating": "2",
+                            "shareChange": -96584.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    5417411000,
+                                    5694315000,
+                                    6006554000,
+                                    5764500000
+                                ]
+                            },
+                            "securityName": "Bharat Electronics Ltd",
+                            "numberOfShare": 14000000,
+                            "firstBoughtDate": "2024-04-30T05:00:00.000",
+                            "susEsgRiskScore": 33.9621,
+                            "susEsgRiskGlobes": 2.0,
+                            "totalReturn1Year": 32.4121,
+                            "susEsgRiskCategory": "High"
+                        },
+                        {
+                            "isin": "INE067A01029",
+                            "secId": "0P0000AXMJ",
+                            "sector": "Industrials",
+                            "ticker": "500093",
+                            "country": "India",
+                            "weighting": 3.50967,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5315910000,
+                            "quantRating": "2",
+                            "shareChange": -71785.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    5012188000,
+                                    5348957000,
+                                    5872415000,
+                                    5315910000
+                                ]
+                            },
+                            "securityName": "CG Power & Industrial Solutions Ltd",
+                            "numberOfShare": 7900000.0,
+                            "firstBoughtDate": "2023-11-30T06:00:00.000",
+                            "susEsgRiskScore": 26.7087,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -13.5377,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE494B01023",
+                            "secId": "0P0000CLZ3",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "532343",
+                            "country": "India",
+                            "weighting": 3.5026,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5305203000,
+                            "quantRating": "2",
+                            "shareChange": 0.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    679432000,
+                                    1737771000,
+                                    5270952000,
+                                    5305203000
+                                ]
+                            },
+                            "securityName": "TVS Motor Co Ltd",
+                            "numberOfShare": 1502252.0,
+                            "firstBoughtDate": "2025-08-31T05:00:00.000",
+                            "susEsgRiskScore": 12.8345,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 45.1553,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE745G01035",
+                            "secId": "0P0000VOFS",
+                            "sector": "Financial Services",
+                            "ticker": "MCX",
+                            "country": "India",
+                            "weighting": 3.4357,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5203879000,
+                            "quantRating": "2",
+                            "shareChange": -72327.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    4352104000,
+                                    4591205000,
+                                    5443664000,
+                                    5203879000
+                                ]
+                            },
+                            "securityName": "Multi Commodity Exchange of India Ltd",
+                            "numberOfShare": 516591.0,
+                            "firstBoughtDate": "2024-01-31T06:00:00.000",
+                            "susEsgRiskScore": 19.4964,
+                            "susEsgRiskGlobes": 4.0,
+                            "totalReturn1Year": 54.5986,
+                            "susEsgRiskCategory": "Low"
+                        },
+                        {
+                            "isin": "INE372A01015",
+                            "secId": "0P0000CEMU",
+                            "sector": "Industrials",
+                            "ticker": "532259",
+                            "country": "India",
+                            "weighting": 3.4259,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5189022000,
+                            "quantRating": "3",
+                            "shareChange": -11759.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4049967000,
+                                    4386910000,
+                                    5014240000,
+                                    5189022000
+                                ]
+                            },
+                            "securityName": "Apar Industries Ltd",
+                            "numberOfShare": 566518.0,
+                            "firstBoughtDate": "2024-03-31T05:00:00.000",
+                            "susEsgRiskScore": 22.7216,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -13.7001,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE982J01020",
+                            "secId": "0P0001NT64",
+                            "sector": "Technology",
+                            "ticker": "543396",
+                            "country": "India",
+                            "weighting": 3.40284,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 5154106000,
+                            "quantRating": "2",
+                            "shareChange": 36001.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    4332204000,
+                                    4033580000,
+                                    5039280000,
+                                    5154106000
+                                ]
+                            },
+                            "securityName": "One97 Communications Ltd",
+                            "numberOfShare": 3902852.0,
+                            "firstBoughtDate": "2025-06-30T05:00:00.000",
+                            "susEsgRiskScore": 25.2164,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 27.389,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE377N01017",
+                            "secId": "0P0001TYVF",
+                            "sector": "Technology",
+                            "ticker": "WAAREEENER",
+                            "country": "India",
+                            "weighting": 3.35128,
+                            "assessment": "Overvalued",
+                            "esgAsOfDate": null,
+                            "marketValue": 5076000000,
+                            "quantRating": "2",
+                            "shareChange": -38066.0,
+                            "stockRating": "2",
+                            "holdingTrend": {
+                                "trend": [
+                                    5335857000,
+                                    5107267000,
+                                    5614307000,
+                                    5076000000
+                                ]
+                            },
+                            "securityName": "Waaree Energies Ltd",
+                            "numberOfShare": 1600000.0,
+                            "firstBoughtDate": "2024-10-31T05:00:00.000",
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": -5.3137,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE121A01024",
+                            "secId": "0P0000BD5D",
+                            "sector": "Financial Services",
+                            "ticker": "CHOLAFIN",
+                            "country": "India",
+                            "weighting": 3.2092,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4860800000,
+                            "quantRating": "3",
+                            "shareChange": -39587.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4159551000,
+                                    4574007000,
+                                    4818211000,
+                                    4860800000
+                                ]
+                            },
+                            "securityName": "Cholamandalam Investment and Finance Co Ltd",
+                            "numberOfShare": 2800000.0,
+                            "firstBoughtDate": "2025-02-28T06:00:00.000",
+                            "susEsgRiskScore": 21.4469,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 35.9506,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE371P01015",
+                            "secId": "0P0001CMV4",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "AMBER",
+                            "country": "India",
+                            "weighting": 2.96962,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4497927000,
+                            "quantRating": "3",
+                            "shareChange": 19262.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4473168000,
+                                    4803879000,
+                                    4878983000,
+                                    4497927000
+                                ]
+                            },
+                            "securityName": "Amber Enterprises India Ltd Ordinary Shares",
+                            "numberOfShare": 626365.0,
+                            "firstBoughtDate": "2024-01-31T06:00:00.000",
+                            "susEsgRiskScore": 26.2782,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 9.7657,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE1NPP01017",
+                            "secId": "0P0001UYS2",
+                            "sector": "Utilities",
+                            "ticker": "544390",
+                            "country": "India",
+                            "weighting": 2.85092,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": null,
+                            "marketValue": 4318134000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4690193000,
+                                    4691508000,
+                                    4353667000,
+                                    4318134000
+                                ]
+                            },
+                            "securityName": "Siemens Energy India Ltd",
+                            "numberOfShare": 1366671.0,
+                            "firstBoughtDate": "2025-07-31T05:00:00.000",
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE811K01011",
+                            "secId": "0P0000Q71M",
+                            "sector": "Real Estate",
+                            "ticker": "533274",
+                            "country": "India",
+                            "weighting": 2.83491,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4293888000,
+                            "quantRating": "3",
+                            "shareChange": -2773.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3995364000,
+                                    3738029000,
+                                    4471270000,
+                                    4293888000
+                                ]
+                            },
+                            "securityName": "Prestige Estates Projects Ltd",
+                            "numberOfShare": 2560000.0,
+                            "firstBoughtDate": "2023-10-31T05:00:00.000",
+                            "susEsgRiskScore": 23.7809,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -15.2706,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE775A01035",
+                            "secId": "0P0000ASGA",
+                            "sector": "Consumer Cyclical",
+                            "ticker": "MOTHERSON",
+                            "country": "India",
+                            "weighting": 2.74727,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4161151000,
+                            "quantRating": "3",
+                            "shareChange": -8139529.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4073201000,
+                                    4639716000,
+                                    4628298000,
+                                    4161151000
+                                ]
+                            },
+                            "securityName": "Samvardhana Motherson International Ltd",
+                            "numberOfShare": 35776383,
+                            "firstBoughtDate": "2024-08-31T05:00:00.000",
+                            "susEsgRiskScore": 27.0874,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": 15.7147,
+                            "susEsgRiskCategory": "Medium"
+                        },
+                        {
+                            "isin": "INE0BS701011",
+                            "secId": "0P0001TK7K",
+                            "sector": "Technology",
+                            "ticker": "PREMIERENE",
+                            "country": "India",
+                            "weighting": 2.70554,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": null,
+                            "marketValue": 4097940000,
+                            "quantRating": "3",
+                            "shareChange": -69242.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3504846000,
+                                    3872895000,
+                                    4667135000,
+                                    4097940000
+                                ]
+                            },
+                            "securityName": "Premier Energies Ltd",
+                            "numberOfShare": 4200000.0,
+                            "firstBoughtDate": "2024-09-30T05:00:00.000",
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": -31.5424,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE0HOQ01053",
+                            "secId": "0P0001Y4IS",
+                            "sector": "Financial Services",
+                            "ticker": "GROWW",
+                            "country": "India",
+                            "weighting": 2.66904,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": null,
+                            "marketValue": 4042657000,
+                            "quantRating": "3",
+                            "shareChange": 25444720,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4042657000,
+                                    null,
+                                    null,
+                                    null
+                                ]
+                            },
+                            "securityName": "Billionbrains Garage Ventures Ltd",
+                            "numberOfShare": 25444720,
+                            "firstBoughtDate": "2025-11-30T06:00:00.000",
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE066F01020",
+                            "secId": "0P0001D2IL",
+                            "sector": "Industrials",
+                            "ticker": "541154",
+                            "country": "India",
+                            "weighting": 2.65875,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 4027060000,
+                            "quantRating": "3",
+                            "shareChange": 0.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    3919864000,
+                                    4208005000,
+                                    4148872000,
+                                    4027060000
+                                ]
+                            },
+                            "securityName": "Hindustan Aeronautics Ltd Ordinary Shares",
+                            "numberOfShare": 886549.0,
+                            "firstBoughtDate": "2024-06-30T05:00:00.000",
+                            "susEsgRiskScore": 42.723,
+                            "susEsgRiskGlobes": 1.0,
+                            "totalReturn1Year": -4.0508,
+                            "susEsgRiskCategory": "Severe"
+                        },
+                        {
+                            "isin": "INE040H01021",
+                            "secId": "0P0000B5TM",
+                            "sector": "Industrials",
+                            "ticker": "532667",
+                            "country": "India",
+                            "weighting": 2.53175,
+                            "assessment": "Fairly Valued",
+                            "esgAsOfDate": "2025-12-03T06:00:00.000",
+                            "marketValue": 3834710000,
+                            "quantRating": "3",
+                            "shareChange": -62330.0,
+                            "stockRating": "3",
+                            "holdingTrend": {
+                                "trend": [
+                                    4055080000,
+                                    4092163000,
+                                    4213996000,
+                                    3834710000
+                                ]
+                            },
+                            "securityName": "Suzlon Energy Ltd",
+                            "numberOfShare": 71000000,
+                            "firstBoughtDate": "2024-01-31T06:00:00.000",
+                            "susEsgRiskScore": 22.3642,
+                            "susEsgRiskGlobes": 3.0,
+                            "totalReturn1Year": -23.8116,
+                            "susEsgRiskCategory": "Medium"
+                        }
+                    ],
+                    "reason": "High Alpha Generator"
+                }
+            ]
+        },
+        {
+            "allocationCategory": "Corporate Bond",
+            "allocationPercent": 100.0,
+            "amount": 500.0,
+            "funds": [
+                {
+                    "id": "828d053c-7f0c-413c-af9f-73773a4b7ddf",
+                    "name": "Axis Corporate Bond Fund Direct Growth",
+                    "category": "Debt Scheme - Corporate Bond Fund",
+                    "riskMetrics": {
+                        "alpha": 0.189,
+                        "beta": 1.471,
+                        "sharpeRatio": 1.425,
+                        "standardDeviation": 1.122,
+                        "rsquared": 88.557
+                    },
+                    "sectorAllocation": {
+                        "assetType": 0.0
+                    },
+                    "topHoldings": [
+                        {
+                            "isin": "IN0020230085",
+                            "secId": "B100049PB4",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 6.17483,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 6229728000,
+                            "quantRating": null,
+                            "shareChange": 5000000.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "7.18% Govt Stock 2033",
+                            "numberOfShare": 60000000,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "IN0020240126",
+                            "secId": "B1000ARVMZ",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 5.17315,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 5219138750,
+                            "quantRating": null,
+                            "shareChange": -4500000.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "6.79% Govt Stock 2034",
+                            "numberOfShare": 51500000,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE261F08EM1",
+                            "secId": "B1000BX56C",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 2.72259,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 2746796400,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "National Bank For Agriculture And Rural Development",
+                            "numberOfShare": 27000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE556F08KW0",
+                            "secId": "B1000D7GTB",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 2.02146,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 2039432000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Small Industries Development Bank Of India",
+                            "numberOfShare": 20000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE556F08KS8",
+                            "secId": "B1000A8I9Z",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 2.01775,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 2035692000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Small Industries Development Bank Of India",
+                            "numberOfShare": 20000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE377Y07565",
+                            "secId": "B1000FYDFV",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.98494,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 2002584000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Bajaj Housing Finance Limited",
+                            "numberOfShare": 20000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE2I7F15012",
+                            "secId": "B1000IEI2P",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.95163,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1968976330,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "SIDDHIVINAYAK SECURITISATION TRUST",
+                            "numberOfShare": 194.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE020B08EG2",
+                            "secId": "B10003K260",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.79465,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1810607750,
+                            "quantRating": null,
+                            "shareChange": 12500.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Rec Limited",
+                            "numberOfShare": 17500.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE053F07BE7",
+                            "secId": "B00037KGTS",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.60381,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1618065150,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Indian Railway Finance Corporation Limited",
+                            "numberOfShare": 1550.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE2I7G15010",
+                            "secId": "B1000IEI87",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.35811,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1370186800,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "SHIVSHAKTI SECURITISATION TRUST",
+                            "numberOfShare": 135.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE763G08967",
+                            "secId": "B1000IKL2K",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.31915,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1330879800,
+                            "quantRating": null,
+                            "shareChange": 13298.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "ICICI Securities Limited",
+                            "numberOfShare": 13298.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE261F08DV4",
+                            "secId": "B10003BA41",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.26155,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1272761250,
+                            "quantRating": null,
+                            "shareChange": 5000.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "National Bank For Agriculture And Rural Development",
+                            "numberOfShare": 12500.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE219X07454",
+                            "secId": "B100080N2D",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.25477,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1265930000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Indigrid Infrastructure Trust",
+                            "numberOfShare": 12500.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE020B08FZ9",
+                            "secId": "B1000GPBIN",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.23885,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1249865000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Rec Limited",
+                            "numberOfShare": 12500.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE296A07TJ4",
+                            "secId": "B1000F2MJ7",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.19675,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1207390800,
+                            "quantRating": null,
+                            "shareChange": -3500.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Bajaj Finance Limited",
+                            "numberOfShare": 12000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "IN0020250042",
+                            "secId": "B1000GRWBR",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.16218,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1172514000,
+                            "quantRating": null,
+                            "shareChange": 7500000.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "6.68% Govt Stock 2040",
+                            "numberOfShare": 12000000,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE916DA7SZ3",
+                            "secId": "B1000ESCBM",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.10226,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1112060400,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Kotak Mahindra Prime Limited",
+                            "numberOfShare": 11000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE483Z08012",
+                            "secId": "B1000BZBPB",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.09448,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1104214530,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Kohima-Mariani Transmission Limited",
+                            "numberOfShare": 11300.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE507T07138",
+                            "secId": "B10006H8SY",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.01849,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1027547000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Summit Digitel Infrastructure Limited",
+                            "numberOfShare": 10000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        },
+                        {
+                            "isin": "INE020B08EH0",
+                            "secId": "B10003K262",
+                            "sector": null,
+                            "ticker": null,
+                            "country": "India",
+                            "weighting": 1.01494,
+                            "assessment": null,
+                            "esgAsOfDate": null,
+                            "marketValue": 1023966000,
+                            "quantRating": null,
+                            "shareChange": 0.0,
+                            "stockRating": null,
+                            "holdingTrend": null,
+                            "securityName": "Rural Electrification Corporation Limited",
+                            "numberOfShare": 10000.0,
+                            "firstBoughtDate": null,
+                            "susEsgRiskScore": null,
+                            "susEsgRiskGlobes": null,
+                            "totalReturn1Year": null,
+                            "susEsgRiskCategory": null
+                        }
+                    ],
+                    "reason": "Consistent Performer"
+                }
+            ]
+        }
+    ],
+    "portfolioHealth": {
+        "sectorConcentration": "Balanced",
+        "overlapStatus": "Moderate",
+        "diversificationScore": 5.4,
+        "topOverlappingStocks": [
+            {
+                "stockName": "Eternal Ltd",
+                "isin": "INE758T01015",
+                "totalWeight": 2.86,
+                "fundCount": 2,
+                "fundNames": [
+                    "Kotak Large Cap Fund Direct Growth",
+                    "Motilal Oswal Midcap Fund Direct Growth"
+                ]
+            },
+            {
+                "stockName": "Bajaj Finance Ltd",
+                "isin": "INE296A01032",
+                "totalWeight": 2.6,
+                "fundCount": 2,
+                "fundNames": [
+                    "Kotak Large Cap Fund Direct Growth",
+                    "Motilal Oswal Midcap Fund Direct Growth"
+                ]
+            },
+            {
+                "stockName": "State Bank of India",
+                "isin": "INE062A01020",
+                "totalWeight": 1.61,
+                "fundCount": 2,
+                "fundNames": [
+                    "Bandhan Small Cap Fund Direct Growth",
+                    "Kotak Large Cap Fund Direct Growth"
+                ]
+            },
+            {
+                "stockName": "Apar Industries Ltd",
+                "isin": "INE372A01015",
+                "totalWeight": 1.54,
+                "fundCount": 2,
+                "fundNames": [
+                    "Bandhan Small Cap Fund Direct Growth",
+                    "Motilal Oswal Midcap Fund Direct Growth"
+                ]
+            },
+            {
+                "stockName": "Axis Bank Ltd",
+                "isin": "INE238A01034",
+                "totalWeight": 1.42,
+                "fundCount": 2,
+                "fundNames": [
+                    "Bandhan Small Cap Fund Direct Growth",
+                    "Kotak Large Cap Fund Direct Growth"
+                ]
+            }
+        ],
+        "fundSimilarities": [
+            {
+                "fundA": "Bandhan Small Cap Fund Direct Growth",
+                "fundB": "Kotak Large Cap Fund Direct Growth",
+                "stockOverlapPct": 2.2,
+                "sectorCorrelation": 75.58
+            }
+        ],
+        "wealthProjection": {
+            "projectedYears": 10,
+            "totalInvestment": 100000.0,
+            "likelyScenarioAmount": 292947.74,
+            "pessimisticScenarioAmount": 169700.88,
+            "optimisticScenarioAmount": 539786.92,
+            "timeline": [
+                {
+                    "year": 1,
+                    "optimisticAmount": 136032.0,
+                    "expectedAmount": 111599.0,
+                    "pessimisticAmount": 91021.0
+                },
+                {
+                    "year": 2,
+                    "optimisticAmount": 162467.0,
+                    "expectedAmount": 124141.0,
+                    "pessimisticAmount": 95137.0
+                },
+                {
+                    "year": 3,
+                    "optimisticAmount": 193019.0,
+                    "expectedAmount": 138302.0,
+                    "pessimisticAmount": 100337.0
+                },
+                {
+                    "year": 4,
+                    "optimisticAmount": 230234.0,
+                    "expectedAmount": 155834.0,
+                    "pessimisticAmount": 105988.0
+                },
+                {
+                    "year": 5,
+                    "optimisticAmount": 261799.0,
+                    "expectedAmount": 172241.0,
+                    "pessimisticAmount": 115321.0
+                },
+                {
+                    "year": 6,
+                    "optimisticAmount": 303173.0,
+                    "expectedAmount": 189758.0,
+                    "pessimisticAmount": 122397.0
+                },
+                {
+                    "year": 7,
+                    "optimisticAmount": 354130.0,
+                    "expectedAmount": 209659.0,
+                    "pessimisticAmount": 129923.0
+                },
+                {
+                    "year": 8,
+                    "optimisticAmount": 412737.0,
+                    "expectedAmount": 234993.0,
+                    "pessimisticAmount": 137781.0
+                },
+                {
+                    "year": 9,
+                    "optimisticAmount": 469548.0,
+                    "expectedAmount": 260780.0,
+                    "pessimisticAmount": 151141.0
+                },
+                {
+                    "year": 10,
+                    "optimisticAmount": 539787.0,
+                    "expectedAmount": 292948.0,
+                    "pessimisticAmount": 169701.0
+                }
+            ],
+            "probabilityOfTarget": null
+        },
+        "aggregateSectorAllocation": {
+            "FinancialServices": 26.23,
+            "Industrials": 16.96,
+            "ConsumerCyclical": 15.88,
+            "Technology": 9.64,
+            "BasicMaterials": 6.07,
+            "Healthcare": 5.25,
+            "ConsumerDefensive": 3.82,
+            "Energy": 3.27,
+            "RealEstate": 3.18,
+            "Utilities": 2.4
+        }
+    }
+}

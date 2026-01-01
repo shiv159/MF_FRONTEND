@@ -9,23 +9,25 @@ import { RiskProfileService } from '../../services/risk-profile.service';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="space-y-6 animate-fade-in-up">
-      <h3 class="text-2xl font-bold text-gray-800 mb-4">Psychology Check</h3>
+      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Psychology Check</h3>
 
       <!-- Market Drop Reaction -->
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-3">
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
           If your portfolio drops by 30% in a market crash, what would you do?
         </label>
         <div class="space-y-3">
           <div *ngFor="let option of options" 
                (click)="data.marketDropReaction = option.value"
                [class]="'p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between ' + 
-                        (data.marketDropReaction === option.value ? 'border-blue-600 bg-blue-50 ring-1 ring-blue-600' : 'border-gray-100 hover:bg-gray-50')">
+                        (data.marketDropReaction === option.value 
+                          ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20 ring-1 ring-blue-600 dark:ring-blue-500' 
+                          : 'border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-400')">
             <div>
-              <div class="font-bold text-gray-900">{{ option.label }}</div>
-              <div class="text-sm text-gray-500">{{ option.desc }}</div>
+              <div class="font-bold text-gray-900 dark:text-white">{{ option.label }}</div>
+              <div class="text-sm text-gray-500 dark:text-gray-400">{{ option.desc }}</div>
             </div>
-            <div *ngIf="data.marketDropReaction === option.value" class="text-blue-600">
+            <div *ngIf="data.marketDropReaction === option.value" class="text-blue-600 dark:text-blue-400">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
             </div>
           </div>
@@ -34,8 +36,8 @@ import { RiskProfileService } from '../../services/risk-profile.service';
 
       <!-- Experience -->
       <div>
-        <label class="block text-sm font-medium text-gray-700 mb-2">Investment Experience</label>
-        <select [(ngModel)]="data.investmentPeriodExperience" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 bg-white">
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Investment Experience</label>
+        <select [(ngModel)]="data.investmentPeriodExperience" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-white">
           <option value="" disabled>Select experience</option>
           <option value="NONE">No Experience</option>
           <option value="<3_YEARS">Less than 3 Years</option>
@@ -45,7 +47,7 @@ import { RiskProfileService } from '../../services/risk-profile.service';
       </div>
 
       <div class="pt-6 flex gap-4">
-        <button (click)="back.emit()" class="flex-1 bg-gray-100 text-gray-700 py-4 rounded-xl font-bold hover:bg-gray-200 transition-all">Back</button>
+        <button (click)="back.emit()" class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-4 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">Back</button>
         <button [disabled]="!isValid()" (click)="onNext()" class="flex-1 bg-blue-600 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 disabled:opacity-50 transition-all">Next</button>
       </div>
     </div>

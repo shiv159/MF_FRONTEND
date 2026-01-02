@@ -6,6 +6,7 @@ import { StepperComponent } from '../../../shared/components/stepper.component';
 import { LoadingSkeletonComponent } from '../../../shared/components/loading-skeleton.component';
 import { ThemeToggleComponent } from '../../../shared/components/ui/theme-toggle.component';
 import { RiskProfileResponse } from '../../../core/models/api.interface';
+import { ChatService } from '../../chat/services/chat.service';
 
 // Steps
 import { DemographicsStepComponent } from '../components/steps/demographics-step.component';
@@ -39,6 +40,7 @@ export class RiskProfileComponent {
   private readonly router = inject(Router);
   private readonly service = inject(RiskProfileService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly chatService = inject(ChatService);
 
   currentStep = 0;
   isCompleted = false;
@@ -46,6 +48,10 @@ export class RiskProfileComponent {
   resultData: RiskProfileResponse | null = null;
 
   readonly stepLabels = ['Demographics', 'Financials', 'Goals', 'Behavioral', 'Preferences'];
+
+  constructor() {
+    this.chatService.isVisible.set(false);
+  }
 
   goBack(): void {
     this.router.navigate(['/']);
@@ -74,6 +80,7 @@ export class RiskProfileComponent {
       next: (response) => {
         this.resultData = response;
         this.isLoading = false;
+        this.chatService.isVisible.set(true);
         this.cdr.markForCheck();
       },
       error: (err) => {

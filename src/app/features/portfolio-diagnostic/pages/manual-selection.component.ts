@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ManualSelectionService } from '../services/manual-selection.service';
 import { ManualSelectionItem, ManualSelectionResponse } from '../../../core/models/api.interface';
 import { ThemeToggleComponent } from '../../../shared/components/ui/theme-toggle.component';
+import { ChatService } from '../../chat/services/chat.service';
 
 import { SelectionRowComponent } from '../components/form/selection-row.component';
 import { WeightTotalComponent } from '../components/form/weight-total.component';
@@ -30,11 +31,16 @@ export class ManualSelectionComponent {
   private readonly router = inject(Router);
   private readonly service = inject(ManualSelectionService);
   private readonly cdr = inject(ChangeDetectorRef);
+  private readonly chatService = inject(ChatService);
 
   selections: ManualSelectionItem[] = [{ weightPct: 0 }];
   totalWeight = 0;
   isLoading = false;
   resultData: ManualSelectionResponse | null = null;
+
+  constructor() {
+    this.chatService.isVisible.set(false);
+  }
 
   goBack(): void {
     this.router.navigate(['/']);
@@ -64,6 +70,7 @@ export class ManualSelectionComponent {
       next: (response) => {
         this.resultData = response;
         this.isLoading = false;
+        this.chatService.isVisible.set(true);
         this.cdr.markForCheck();
       },
       error: (err) => {

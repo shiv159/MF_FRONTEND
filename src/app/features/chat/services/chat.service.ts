@@ -1,26 +1,45 @@
-import { Injectable, inject, signal } from '@angular/core';
+import { Injectable, inject, signal, OnDestroy } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { ChatMessage, ChatRequest } from '../models/chat.interface';
 import { TokenStorageService } from '../../../core/auth/services/token-storage.service';
+import { RxStompService } from '../../../core/services/rx-stomp.service';
+import { Message } from '@stomp/stompjs';
+import { Subscription } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
-export class ChatService {
-    // baseUrl = environment.apiUrl + '/chat'; // Ensure environment has apiUrl
-    // Hardcoding for now based on assumption, replace with environment
-    private apiUrl = 'http://localhost:8080/api/chat/stream';
-
+export class ChatService implements OnDestroy {
     private conversationIdKey = 'chat_conversation_id';
     private tokenStorage = inject(TokenStorageService);
+    private rxStompService = inject(RxStompService);
 
     // Signals for Reactive State
     messages = signal<ChatMessage[]>([]);
     isLoading = signal<boolean>(false);
     isVisible = signal<boolean>(false);
 
+    private topicSubscription?: Subscription;
+
     constructor() {
         this.restoreSession();
+        this.initWebSocket();
+    }
+
+    private initWebSocket() {
+        // Subscribe to user-specific replies
+        // Note: The destination /user/queue/reply is mapped by the broker 
+        // to /user/{username}/queue/reply automatically
+        this.topicSubscription = this.rxStompService.watch('/user/queue/reply').subscribe((message: Message) => {
+            const body = message.body;
+            this.updateLastMessage(body);
+            this.finalizeLastMessage(); // Since we are currently getting full response at once
+            this.isLoading.set(false);
+        });
+    }
+
+    ngOnDestroy() {
+        this.topicSubscription?.unsubscribe();
     }
 
     private restoreSession() {
@@ -44,7 +63,7 @@ export class ChatService {
         this.messages.set([]); // Clear UI messages
     }
 
-    async sendMessage(content: string) {
+    sendMessage(content: string) {
         if (!content.trim()) return;
 
         // 1. Add User Message
@@ -72,50 +91,17 @@ export class ChatService {
         const user = this.tokenStorage.getUser();
         const userId = user?.id || '';
 
-        try {
-            // 3. Fetch with POST support for SSE
-            const response = await fetch(this.apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    // 'Authorization': `Bearer ${token}` // Add logic to get token if needed
-                },
-                body: JSON.stringify({
-                    message: content,
-                    conversationId: this.getConversationId(),
-                    userId: userId // Include userId for portfolio context
-                } as ChatRequest)
-            });
+        // 3. Send via WebSocket
+        const payload: ChatRequest = {
+            message: content,
+            conversationId: this.getConversationId(),
+            userId: userId
+        };
 
-            if (!response.body) throw new Error('No response body');
-
-            const reader = response.body.getReader();
-            const decoder = new TextDecoder();
-
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) break;
-
-                const chunk = decoder.decode(value, { stream: true });
-                // Parse SSE format (data: ...)
-                // Simple parser assuming one 'data:' per line or chunk
-                const lines = chunk.split('\n');
-                for (const line of lines) {
-                    if (line.startsWith('data:')) {
-                        const text = line.replace('data:', '').trim();
-                        // Update the *last* message (Assistant)
-                        this.updateLastMessage(text);
-                    }
-                }
-            }
-
-        } catch (err) {
-            console.error('Chat Error:', err);
-            this.updateLastMessage('\n[Error: Could not connect to AI]');
-        } finally {
-            this.isLoading.set(false);
-            this.finalizeLastMessage();
-        }
+        this.rxStompService.publish({
+            destination: '/app/chat.sendMessage',
+            body: JSON.stringify(payload)
+        });
     }
 
     private updateLastMessage(textToAppend: string) {
@@ -123,7 +109,6 @@ export class ChatService {
             const newMsgs = [...msgs];
             const last = newMsgs[newMsgs.length - 1];
             if (last.role === 'assistant') {
-                // Append token directly - Spring AI streams include proper spacing
                 newMsgs[newMsgs.length - 1] = { ...last, content: last.content + textToAppend };
             }
             return newMsgs;

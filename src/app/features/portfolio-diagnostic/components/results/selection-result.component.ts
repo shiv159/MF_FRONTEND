@@ -9,6 +9,7 @@ import { StockValuationCardsComponent } from '../../../../shared/components/insi
 import { EsgDashboardComponent } from '../../../../shared/components/insights/esg-dashboard.component';
 import { GeographicAllocationComponent } from '../../../../shared/components/insights/geographic-allocation.component';
 import { FundActivityComponent } from '../../../../shared/components/insights/fund-activity.component';
+import { SectorOverlapComponent } from '../sector-overlap/sector-overlap.component';
 
 @Component({
   selector: 'app-selection-result',
@@ -21,7 +22,9 @@ import { FundActivityComponent } from '../../../../shared/components/insights/fu
     StockValuationCardsComponent,
     EsgDashboardComponent,
     GeographicAllocationComponent,
-    FundActivityComponent
+    GeographicAllocationComponent,
+    FundActivityComponent,
+    SectorOverlapComponent
   ],
   templateUrl: './selection-result.component.html',
   styleUrl: './selection-result.component.css',

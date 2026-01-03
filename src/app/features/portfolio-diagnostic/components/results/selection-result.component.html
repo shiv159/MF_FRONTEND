@@ -8,31 +8,7 @@
     <!-- Summary Cards -->
     <app-portfolio-summary [analysis]="data().analysis!"></app-portfolio-summary>
 
-    <!-- Dashboard Layout -->
-    <div class="dashboard-layout">
-        <!-- Main Column (Left) -->
-        <div class="dashboard-main">
-            <app-stock-valuation-cards [holdings]="aggregatedHoldings()"></app-stock-valuation-cards>
-            <app-fund-activity [holdings]="aggregatedHoldings()"></app-fund-activity>
-        </div>
-
-        <!-- Side Column (Right) -->
-        <div class="dashboard-side">
-            <app-esg-dashboard [holdings]="aggregatedHoldings()"></app-esg-dashboard>
-            <app-geographic-allocation [holdings]="aggregatedHoldings()"></app-geographic-allocation>
-        </div>
-    </div>
-
-    <!-- Charts Grid -->
-    <div class="charts-grid">
-        <app-sector-chart [sectors]="data().analysis?.aggregateSectorAllocation || {}"></app-sector-chart>
-        <div>
-            <app-wealth-projection-chart
-                [timeline]="data().analysis?.wealthProjection?.timeline || []"></app-wealth-projection-chart>
-        </div>
-    </div>
-
-    <!-- Overlap Warning -->
+    <!-- 1. Overlap Warning (Moved UP) -->
     @if (data().analysis?.topOverlappingStocks?.length) {
     <div class="overlap-warning">
         <h4 class="warning-title">
@@ -62,6 +38,35 @@
     </div>
     }
 
-    <!-- Holdings List -->
+    <!-- 2. Sector Overlap Analysis (NEW) -->
+    @if (data().analysis?.sectorOverlaps?.length) {
+    <app-sector-overlap [overlaps]="data().analysis?.sectorOverlaps || []"></app-sector-overlap>
+    }
+
+    <!-- 3. Charts Grid -->
+    <div class="charts-grid">
+        <app-sector-chart [sectors]="data().analysis?.aggregateSectorAllocation || {}"></app-sector-chart>
+        <div>
+            <app-wealth-projection-chart
+                [timeline]="data().analysis?.wealthProjection?.timeline || []"></app-wealth-projection-chart>
+        </div>
+    </div>
+
+    <!-- 4. Holdings List -->
     <app-holdings-list [holdings]="data().portfolio.holdings"></app-holdings-list>
+
+    <!-- 5. Dashboard Layout (Analysis - MOVED TO BOTTOM) -->
+    <div class="dashboard-layout">
+        <!-- Main Column (Left) -->
+        <div class="dashboard-main">
+            <app-stock-valuation-cards [holdings]="aggregatedHoldings()"></app-stock-valuation-cards>
+            <app-fund-activity [holdings]="aggregatedHoldings()"></app-fund-activity>
+        </div>
+
+        <!-- Side Column (Right) -->
+        <div class="dashboard-side">
+            <app-esg-dashboard [holdings]="aggregatedHoldings()"></app-esg-dashboard>
+            <app-geographic-allocation [holdings]="aggregatedHoldings()"></app-geographic-allocation>
+        </div>
+    </div>
 </div>

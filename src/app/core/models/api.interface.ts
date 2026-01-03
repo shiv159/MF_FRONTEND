@@ -164,6 +164,18 @@ export interface PortfolioHealthDTO {
     fundSimilarities: FundSimilarity[];
     wealthProjection: WealthProjection;
     aggregateSectorAllocation: Record<string, number>;
+    sectorOverlaps?: SectorOverlap[];
+}
+
+export interface SectorOverlap {
+    sectorName: string;
+    totalAllocation: number;
+    fundContributions: FundContribution[];
+}
+
+export interface FundContribution {
+    fundName: string;
+    contribution: number;
 }
 
 export interface StockOverview {

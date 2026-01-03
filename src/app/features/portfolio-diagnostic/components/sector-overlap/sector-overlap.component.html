@@ -1,0 +1,39 @@
+<div class="result-card">
+    <div class="card-header">
+        <h3 class="card-title">Sector Overlap Analysis</h3>
+        <span class="card-badge">Detailed Breakdown</span>
+    </div>
+
+    <div class="card-content">
+        <div class="overlap-list">
+            @for (sector of overlaps(); track sector.sectorName) {
+            <div class="sector-item">
+                <div class="sector-header">
+                    <span class="sector-name">{{ sector.sectorName }}</span>
+                    <span class="sector-total">{{ sector.totalAllocation }}%</span>
+                </div>
+
+                <div class="fund-breakdown">
+                    <div class="breakdown-bar">
+                        @for (fund of sector.fundContributions; track fund.fundName) {
+                        <div class="fund-segment" [style.width.%]="(fund.contribution / sector.totalAllocation) * 100"
+                            [style.backgroundColor]="getColor(fund.fundName)"
+                            [title]="fund.fundName + ': ' + fund.contribution + '%'">
+                        </div>
+                        }
+                    </div>
+
+                    <div class="fund-legend">
+                        @for (fund of sector.fundContributions; track fund.fundName) {
+                        <div class="legend-item">
+                            <span class="color-dot" [style.backgroundColor]="getColor(fund.fundName)"></span>
+                            <span class="fund-label">{{ fund.fundName }} ({{ fund.contribution }}%)</span>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            }
+        </div>
+    </div>
+</div>

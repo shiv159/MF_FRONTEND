@@ -20,7 +20,10 @@
         <div class="hero-glow"></div>
     </div>
 
-    <!-- Charts Grid -->
+    <!-- 2. Recommendations (Moved UP) -->
+    <app-recommendations-list [recommendations]="result.recommendations"></app-recommendations-list>
+
+    <!-- 3. Charts Grid -->
     <div class="charts-grid">
         <app-asset-allocation-chart [allocation]="result.assetAllocation"></app-asset-allocation-chart>
         <app-sector-chart [sectors]="result.portfolioHealth?.aggregateSectorAllocation ?? {}"></app-sector-chart>
@@ -30,7 +33,7 @@
         </div>
     </div>
 
-    <!-- Overlap Warning -->
+    <!-- 4. Overlap Warning -->
     @if (result.portfolioHealth?.topOverlappingStocks?.length) {
     <div class="overlap-warning">
         <h4 class="warning-title">
@@ -59,9 +62,6 @@
         </div>
     </div>
     }
-
-    <!-- Recommendations -->
-    <app-recommendations-list [recommendations]="result.recommendations"></app-recommendations-list>
 
     <!-- Action Button -->
     <div class="action-section">

@@ -43,7 +43,7 @@ export class FundSearchComponent {
 
   readonly selectedFund = input<string>('');
   readonly disabled = input(false);
-  readonly fundSelected = output<{ schemeCode: number; schemeName: string }>();
+  readonly fundSelected = output<{ schemeCode: string | number; schemeName: string }>();
   readonly cleared = output<void>();
   readonly noResultsTyped = output<string>(); // Emit when user types but no catalog match
 
@@ -111,11 +111,11 @@ export class FundSearchComponent {
     const idRaw = fund.schemeCode || fund.scheme_code || fund.id || fund.isin || fund.fundId;
     const nameRaw = fund.name || fund.schemeName || fund.scheme_name || fund.fundName;
 
-    const schemeCode = typeof idRaw === 'string' ? Number(idRaw) : idRaw;
-    const schemeName = nameRaw ?? '';
+    const schemeCode = idRaw == null ? '' : String(idRaw);
+    const schemeName = nameRaw == null ? '' : String(nameRaw);
 
     // Ensure we only emit valid selections.
-    if (!schemeName || schemeCode == null || Number.isNaN(schemeCode)) return;
+    if (!schemeName || !schemeCode.trim()) return;
 
     // Set immediately so the user sees the selection right away,
     // then the parent `selectedFund` input will keep it in sync.

@@ -1,47 +1,6 @@
 /* Landing Page - Premium Dark Theme */
 
-.landing-page {
-    min-height: 100vh;
-    background-color: var(--color-bg);
-    display: flex;
-    flex-direction: column;
-}
 
-/* Header */
-.landing-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--color-border);
-    background-color: var(--color-surface);
-    backdrop-filter: blur(12px);
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.brand-icon {
-    width: 2.25rem;
-    height: 2.25rem;
-    background: var(--gradient-primary);
-    color: white;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: var(--shadow-glow-primary);
-}
-
-.brand-text {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: var(--color-text-primary);
-}
 
 .header-actions {
     display: flex;

@@ -18,7 +18,7 @@ export class SelectionRowComponent {
 
   // Single source of truth for UI + payload is `item().fundName`.
 
-  onFundSelected(fund: { schemeCode: number; schemeName: string }): void {
+  onFundSelected(fund: { schemeCode: string | number; schemeName: string }): void {
     const current = this.item();
     // User selected from results: send both id + name.
     current.fundId = String(fund.schemeCode);

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { RiskProfileService } from '../services/risk-profile.service';
@@ -36,7 +36,7 @@ import { RiskResultComponent } from '../components/results/risk-result.component
   styleUrl: './risk-profile.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RiskProfileComponent {
+export class RiskProfileComponent implements OnDestroy {
   private readonly router = inject(Router);
   private readonly service = inject(RiskProfileService);
   private readonly cdr = inject(ChangeDetectorRef);
@@ -54,7 +54,12 @@ export class RiskProfileComponent {
   }
 
   goBack(): void {
+    this.chatService.isVisible.set(false);
     this.router.navigate(['/landing']);
+  }
+
+  ngOnDestroy(): void {
+    this.chatService.isVisible.set(false);
   }
 
   nextStep(): void {

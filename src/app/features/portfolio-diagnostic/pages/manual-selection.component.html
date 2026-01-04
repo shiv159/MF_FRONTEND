@@ -27,7 +27,7 @@
         <div class="content-container">
 
             <!-- Page Header -->
-            @if (!resultData) {
+            @if (!resultData()) {
             <div class="page-header-content">
                 <h1 class="page-title">Portfolio Diagnostic</h1>
                 <p class="page-subtitle">Add your existing mutual funds to analyze health, overlap, and performance.</p>
@@ -35,15 +35,15 @@
             }
 
             <!-- Form View -->
-            @if (!resultData && !isLoading) {
+            @if (!resultData() && !isLoading()) {
             <div class="form-section">
                 <!-- Weight Indicator -->
-                <app-weight-total [total]="totalWeight"></app-weight-total>
+                <app-weight-total [total]="totalWeight()"></app-weight-total>
 
                 <!-- Fund Rows -->
                 <div class="rows-container">
-                    @for (item of selections; track $index) {
-                    <app-selection-row [item]="item" (update)="calculateTotal()" (remove)="removeRow($index)">
+                    @for (item of selections(); track $index) {
+                    <app-selection-row [index]="$index" [item]="item" (update)="onRowUpdate($event)" (remove)="removeRow($event)">
                     </app-selection-row>
                     }
 
@@ -60,7 +60,7 @@
 
                 <!-- Submit -->
                 <div class="actions">
-                    <button [disabled]="totalWeight !== 100" (click)="submit()" class="submit-btn">
+                    <button [disabled]="totalWeight() !== 100" (click)="submit()" class="submit-btn">
                         Analyze Portfolio
                     </button>
                 </div>
@@ -68,7 +68,7 @@
             }
 
             <!-- Loading View -->
-            @if (isLoading) {
+            @if (isLoading()) {
             <div class="loading-card">
                 <h3 class="loading-title">Analyzing your portfolio...</h3>
                 <app-loading-skeleton [rows]="6"></app-loading-skeleton>
@@ -76,8 +76,8 @@
             }
 
             <!-- Results View -->
-            @if (resultData) {
-            <app-selection-result [data]="resultData"></app-selection-result>
+            @if (resultData(); as data) {
+            <app-selection-result [data]="data"></app-selection-result>
             }
 
         </div>

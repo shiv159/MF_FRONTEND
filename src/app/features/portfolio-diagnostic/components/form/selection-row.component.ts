@@ -12,36 +12,43 @@ import { FundSearchComponent } from './fund-search.component';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectionRowComponent {
+  readonly index = input.required<number>();
   readonly item = input.required<ManualSelectionItem>();
-  readonly update = output<void>();
-  readonly remove = output<void>();
+  readonly update = output<{ index: number; item: ManualSelectionItem }>();
+  readonly remove = output<number>();
 
   // Single source of truth for UI + payload is `item().fundName`.
 
   onFundSelected(fund: { schemeCode: string | number; schemeName: string }): void {
     const current = this.item();
-    // User selected from results: send both id + name.
-    current.fundId = String(fund.schemeCode);
-    current.fundName = fund.schemeName;
-    this.update.emit();
+    const updated: ManualSelectionItem = {
+      ...current,
+      fundId: String(fund.schemeCode),
+      fundName: fund.schemeName
+    };
+    this.update.emit({ index: this.index(), item: updated });
   }
 
   onFundCleared(): void {
     const current = this.item();
-    current.fundId = undefined;
-    current.fundName = undefined;
-    this.update.emit();
+    const updated: ManualSelectionItem = { ...current, fundId: undefined, fundName: undefined };
+    this.update.emit({ index: this.index(), item: updated });
   }
 
   onManualEntry(typedText: string): void {
-    // User typed without selecting: use fundName only
     const current = this.item();
-    current.fundId = undefined;
-    current.fundName = typedText;
-    this.update.emit();
+    const updated: ManualSelectionItem = { ...current, fundId: undefined, fundName: typedText };
+    this.update.emit({ index: this.index(), item: updated });
   }
 
-  onWeightChange(): void {
-    this.update.emit();
+  onWeightInput(event: Event): void {
+    const nextWeight = +((event.target as HTMLInputElement).value || 0);
+    const current = this.item();
+    const updated: ManualSelectionItem = { ...current, weightPct: nextWeight };
+    this.update.emit({ index: this.index(), item: updated });
+  }
+
+  onRemove(): void {
+    this.remove.emit(this.index());
   }
 }

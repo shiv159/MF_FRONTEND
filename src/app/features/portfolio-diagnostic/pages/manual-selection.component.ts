@@ -43,7 +43,7 @@ export class ManualSelectionComponent {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/landing']);
   }
 
   addRow(): void {

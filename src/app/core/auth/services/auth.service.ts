@@ -4,6 +4,7 @@ import { Observable, tap, catchError, throwError } from 'rxjs';
 import { LoginRequest, RegisterRequest, AuthResponse, User } from '../models/auth.models';
 import { AuthStore } from '../store/auth.store';
 import { environment } from '../../../../environments/environment';
+import { RxStompService } from '../../services/rx-stomp.service';
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,7 @@ import { environment } from '../../../../environments/environment';
 export class AuthService {
     private readonly http = inject(HttpClient);
     private readonly store = inject(AuthStore);
+    private readonly rxStompService = inject(RxStompService);
     private readonly apiUrl = `${environment.apiUrl}/api/v1/auth`;
 
     login(credentials: LoginRequest): Observable<AuthResponse> {
@@ -24,6 +26,7 @@ export class AuthService {
                     type: response.userType
                 };
                 this.store.loginSuccess(user, response.accessToken);
+                void this.rxStompService.reconnectWithLatestToken();
             }),
             catchError(error => {
                 this.store.loginFailure(error.error?.message || 'Login failed');
@@ -43,6 +46,7 @@ export class AuthService {
                     type: response.userType
                 };
                 this.store.loginSuccess(user, response.accessToken);
+                void this.rxStompService.reconnectWithLatestToken();
             }),
             catchError(error => {
                 this.store.loginFailure(error.error?.message || 'Registration failed');
@@ -52,6 +56,7 @@ export class AuthService {
     }
 
     logout(): void {
+        void this.rxStompService.deactivate();
         this.store.logout();
     }
 }

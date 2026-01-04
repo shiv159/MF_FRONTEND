@@ -42,7 +42,7 @@ export class RegisterComponent {
       const { fullName, email, phone, password } = this.registerForm.value;
       if (fullName && email && password) {
         this.authService.register({ fullName, email, phone: phone || undefined, password }).subscribe({
-          next: () => this.router.navigate(['/']),
+          next: () => this.router.navigate(['/landing']),
           error: () => { }
         });
       }

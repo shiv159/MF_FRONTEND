@@ -1,9 +1,16 @@
 import { RxStompConfig } from '@stomp/rx-stomp';
 import { environment } from '../../../environments/environment';
 
+function toWsUrl(httpUrl: string): string {
+    // Convert http(s)://host[:port] to ws(s)://host[:port]
+    // Keep path handling simple and append /ws for this app.
+    const wsBase = httpUrl.replace(/^http:\/\//, 'ws://').replace(/^https:\/\//, 'wss://');
+    return `${wsBase}/ws`;
+}
+
 export const rxStompConfig: RxStompConfig = {
     // Which server?
-    brokerURL: `ws://localhost:8080/ws`, // This will be overridden by webSocketFactory for SockJS support
+    brokerURL: toWsUrl(environment.apiUrl), // Overridden by webSocketFactory for SockJS support
 
     // Headers
     // Typical headers: login, passcode, host
@@ -24,7 +31,9 @@ export const rxStompConfig: RxStompConfig = {
     // Will log diagnostics on console
     // It can be quite verbose, not recommended in production
     // Skip this key to stop logging to console
-    debug: (msg: string): void => {
-        console.log(new Date(), msg);
-    },
+    debug: environment.production
+        ? undefined
+        : (msg: string): void => {
+            console.log(new Date(), msg);
+        },
 };

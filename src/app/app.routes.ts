@@ -5,6 +5,11 @@ import { authGuard } from './core/auth/guards/auth.guard';
 export const routes: Routes = [
     {
         path: '',
+        redirectTo: 'auth/login',
+        pathMatch: 'full'
+    },
+    {
+        path: 'landing',
         component: LandingComponent,
         canActivate: [authGuard]
     },
@@ -22,5 +27,5 @@ export const routes: Routes = [
         loadComponent: () => import('./features/portfolio-diagnostic/pages/manual-selection.component').then(m => m.ManualSelectionComponent),
         canActivate: [authGuard]
     },
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'auth/login' }
 ];

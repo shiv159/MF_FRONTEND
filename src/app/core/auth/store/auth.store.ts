@@ -38,8 +38,7 @@ export const AuthStore = signalStore(
         },
         initializeFromStorage() {
             const user = tokenStorage.getUser();
-            const token = tokenStorage.getToken();
-            if (user && token) {
+            if (user && tokenStorage.hasValidToken()) {
                 patchState(store, { user, isAuthenticated: true });
             }
         }

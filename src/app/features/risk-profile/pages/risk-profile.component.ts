@@ -54,7 +54,7 @@ export class RiskProfileComponent {
   }
 
   goBack(): void {
-    this.router.navigate(['/']);
+    this.router.navigate(['/landing']);
   }
 
   nextStep(): void {

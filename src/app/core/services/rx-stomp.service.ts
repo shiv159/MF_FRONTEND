@@ -9,24 +9,35 @@ import { environment } from '../../../environments/environment';
     providedIn: 'root',
 })
 export class RxStompService extends RxStomp {
-    constructor() {
+    constructor(private readonly tokenStorage: TokenStorageService) {
         super();
+    }
+
+    async reconnectWithLatestToken(): Promise<void> {
+        // Force a reconnect so the server receives fresh Authorization headers.
+        // This is especially useful right after login/logout.
+        await this.deactivate();
+        this.activate();
+    }
+
+    refreshConnectHeaders(): void {
+        const token = this.tokenStorage.getToken();
+        this.stompClient.connectHeaders = token ? { Authorization: `Bearer ${token}` } : {};
     }
 }
 
 export function rxStompServiceFactory(tokenService: TokenStorageService): RxStompService {
-    const rxStomp = new RxStompService();
+    const rxStomp = new RxStompService(tokenService);
 
     // Clone config
     const config = { ...rxStompConfig };
 
-    // Helper to get token
-    const token = tokenService.getToken();
-    if (token) {
-        config.connectHeaders = {
-            Authorization: `Bearer ${token}`
-        };
-    }
+    config.beforeConnect = async () => {
+        // Runs on every (re)connect. Ensures latest token is used.
+        const token = tokenService.getToken();
+        config.connectHeaders = token ? { Authorization: `Bearer ${token}` } : {};
+        rxStomp.refreshConnectHeaders();
+    };
 
     // Use SockJS
     config.webSocketFactory = () => {

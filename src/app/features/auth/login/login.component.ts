@@ -40,7 +40,7 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       if (email && password) {
         this.authService.login({ email, password }).subscribe({
-          next: () => this.router.navigate(['/']),
+          next: () => this.router.navigate(['/landing']),
           error: () => { }
         });
       }

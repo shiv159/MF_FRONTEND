@@ -47,7 +47,14 @@ export class ManualSelectionComponent {
   }
 
   addRow(): void {
-    this.selections.push({ weightPct: 0 });
+    // Only allow adding new row if current selections have at least one fund defined
+    const hasEmptyRow = this.selections.some(
+      item => !item.fundId && !item.fundName
+    );
+    
+    if (!hasEmptyRow || this.selections.length === 0) {
+      this.selections.push({ weightPct: 0 });
+    }
   }
 
   removeRow(index: number): void {
@@ -62,7 +69,12 @@ export class ManualSelectionComponent {
   submit(): void {
     if (this.totalWeight !== 100) return;
 
-    const payload = { selections: this.selections };
+    // Filter out selections that don't have either fundId or fundName
+    const validSelections = this.selections.filter(
+      item => (item.fundId && item.fundId.trim()) || (item.fundName && item.fundName.trim())
+    );
+
+    const payload = { selections: validSelections };
     this.isLoading = true;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 

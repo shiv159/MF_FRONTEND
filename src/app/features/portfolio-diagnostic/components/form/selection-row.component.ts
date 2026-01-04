@@ -16,16 +16,28 @@ export class SelectionRowComponent {
   readonly update = output<void>();
   readonly remove = output<void>();
 
-  isManualMode = false;
-
-  toggleMode(): void {
-    this.isManualMode = !this.isManualMode;
-  }
+  // Single source of truth for UI + payload is `item().fundName`.
 
   onFundSelected(fund: { schemeCode: number; schemeName: string }): void {
     const current = this.item();
+    // User selected from results: send both id + name.
     current.fundId = String(fund.schemeCode);
     current.fundName = fund.schemeName;
+    this.update.emit();
+  }
+
+  onFundCleared(): void {
+    const current = this.item();
+    current.fundId = undefined;
+    current.fundName = undefined;
+    this.update.emit();
+  }
+
+  onManualEntry(typedText: string): void {
+    // User typed without selecting: use fundName only
+    const current = this.item();
+    current.fundId = undefined;
+    current.fundName = typedText;
     this.update.emit();
   }
 

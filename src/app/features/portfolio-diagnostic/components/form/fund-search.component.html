@@ -6,9 +6,9 @@
                     d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
             </svg>
         </div>
-        <input type="text" [(ngModel)]="searchTerm" (input)="onSearch($event)" (focus)="showResults = true"
-            [disabled]="disabled()" class="search-input" placeholder="Search mutual funds...">
-        @if (searchTerm && !disabled()) {
+        <input type="text" [value]="searchTerm()" (input)="onSearch($event)" (focus)="showResults = true"
+            (blur)="onBlur()" [disabled]="disabled()" class="search-input" placeholder="Search or type fund name...">
+        @if (searchTerm() && !disabled()) {
         <button (click)="clear()" class="clear-btn" aria-label="Clear search">
             <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd"
@@ -23,7 +23,7 @@
     @if (showResults && results.length > 0) {
     <div class="results-dropdown">
         @for (result of results; track $index) {
-        <button (click)="selectFund(result)" class="result-item">
+        <button (mousedown)="onResultMouseDown($event, result)" class="result-item" type="button">
             <div class="result-name">{{ result.fundName || result.name || result.schemeName }}</div>
             <div class="result-meta">
                 <span class="result-amc">{{ result.amcName || result.amc }}</span>

@@ -2,29 +2,19 @@
     <!-- Header -->
     <div class="row-header">
         <span class="row-label">FUND SELECTION</span>
-        <div class="mode-toggle">
-            <button (click)="toggleMode()" class="mode-btn" [class.active]="!isManualMode">
-                Catalog
-            </button>
-            <button (click)="toggleMode()" class="mode-btn" [class.active]="isManualMode">
-                Manual
-            </button>
-        </div>
         <span class="weight-label">WEIGHT %</span>
     </div>
 
     <!-- Content -->
     <div class="row-content">
-        <!-- Fund Search/Input -->
+        <!-- Smart Search Input -->
         <div class="fund-input-area">
-            @if (!isManualMode) {
-            <app-fund-search [selectedFund]="item().fundName || ''" (fundSelected)="onFundSelected($event)">
+            <app-fund-search 
+                [selectedFund]="item().fundName || ''" 
+                (fundSelected)="onFundSelected($event)"
+                (cleared)="onFundCleared()" 
+                (noResultsTyped)="onManualEntry($event)">
             </app-fund-search>
-            } @else {
-            <input type="text" [value]="item().fundName || ''"
-                (input)="item().fundName = $any($event.target).value; onWeightChange()"
-                placeholder="Enter fund name manually" class="manual-input">
-            }
         </div>
 
         <!-- Weight Input -->

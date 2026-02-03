@@ -48,4 +48,9 @@ export class LoginComponent {
       this.loginForm.markAllAsTouched();
     }
   }
+
+  protected loginWithGoogle(): void {
+    this.authService.loginWithGoogle();
+  }
 }
+

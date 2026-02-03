@@ -50,4 +50,9 @@ export class RegisterComponent {
       this.registerForm.markAllAsTouched();
     }
   }
+
+  protected signUpWithGoogle(): void {
+    this.authService.loginWithGoogle();
+  }
 }
+

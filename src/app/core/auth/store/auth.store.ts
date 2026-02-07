@@ -1,6 +1,5 @@
-import { patchState, signalStore, withMethods, withState } from '@ngrx/signals';
+import { Injectable, computed, inject, signal } from '@angular/core';
 import { User } from '../models/auth.models';
-import { inject } from '@angular/core';
 import { TokenStorageService } from '../services/token-storage.service';
 
 type AuthState = {
@@ -17,30 +16,43 @@ const initialState: AuthState = {
     error: null,
 };
 
-export const AuthStore = signalStore(
-    { providedIn: 'root' },
-    withState(initialState),
-    withMethods((store, tokenStorage = inject(TokenStorageService)) => ({
-        loginSuccess(user: User, token: string) {
-            tokenStorage.saveToken(token);
-            tokenStorage.saveUser(user);
-            patchState(store, { user, isAuthenticated: true, isLoading: false, error: null });
-        },
-        loginFailure(error: string) {
-            patchState(store, { isLoading: false, error });
-        },
-        logout() {
-            tokenStorage.signOut();
-            patchState(store, { user: null, isAuthenticated: false });
-        },
-        setLoading(isLoading: boolean) {
-            patchState(store, { isLoading });
-        },
-        initializeFromStorage() {
-            const user = tokenStorage.getUser();
-            if (user && tokenStorage.hasValidToken()) {
-                patchState(store, { user, isAuthenticated: true });
-            }
+@Injectable({ providedIn: 'root' })
+export class AuthStore {
+    private readonly tokenStorage = inject(TokenStorageService);
+    private readonly state = signal<AuthState>(initialState);
+
+    readonly user = computed(() => this.state().user);
+    readonly isAuthenticated = computed(() => this.state().isAuthenticated);
+    readonly isLoading = computed(() => this.state().isLoading);
+    readonly error = computed(() => this.state().error);
+
+    loginSuccess(user: User, token: string): void {
+        this.tokenStorage.saveToken(token);
+        this.tokenStorage.saveUser(user);
+        this.patch({ user, isAuthenticated: true, isLoading: false, error: null });
+    }
+
+    loginFailure(error: string): void {
+        this.patch({ isLoading: false, error });
+    }
+
+    logout(): void {
+        this.tokenStorage.signOut();
+        this.patch({ user: null, isAuthenticated: false });
+    }
+
+    setLoading(isLoading: boolean): void {
+        this.patch({ isLoading });
+    }
+
+    initializeFromStorage(): void {
+        const user = this.tokenStorage.getUser();
+        if (user && this.tokenStorage.hasValidToken()) {
+            this.patch({ user, isAuthenticated: true });
         }
-    }))
-);
+    }
+
+    private patch(partial: Partial<AuthState>): void {
+        this.state.update(current => ({ ...current, ...partial }));
+    }
+}

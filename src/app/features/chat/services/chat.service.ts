@@ -1,45 +1,30 @@
-import { Injectable, inject, signal, OnDestroy } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { ChatMessage, ChatRequest } from '../models/chat.interface';
 import { TokenStorageService } from '../../../core/auth/services/token-storage.service';
-import { RxStompService } from '../../../core/services/rx-stomp.service';
-import { Message } from '@stomp/stompjs';
-import { Subscription } from 'rxjs';
+
+type ChatHttpResponse = {
+    response: string;
+    conversationId?: string;
+};
 
 @Injectable({
     providedIn: 'root'
 })
-export class ChatService implements OnDestroy {
-    private conversationIdKey = 'chat_conversation_id';
-    private tokenStorage = inject(TokenStorageService);
-    private rxStompService = inject(RxStompService);
+export class ChatService {
+    private readonly conversationIdKey = 'chat_conversation_id';
+    private readonly apiUrl = `${environment.apiUrl}/api/chat/message`;
+    private readonly tokenStorage = inject(TokenStorageService);
+    private readonly http = inject(HttpClient);
 
     // Signals for Reactive State
     messages = signal<ChatMessage[]>([]);
     isLoading = signal<boolean>(false);
     isVisible = signal<boolean>(false);
 
-    private topicSubscription?: Subscription;
-
     constructor() {
         this.restoreSession();
-        this.initWebSocket();
-    }
-
-    private initWebSocket() {
-        // Subscribe to user-specific replies
-        // Note: The destination /user/queue/reply is mapped by the broker 
-        // to /user/{username}/queue/reply automatically
-        this.topicSubscription = this.rxStompService.watch('/user/queue/reply').subscribe((message: Message) => {
-            const body = message.body;
-            this.updateLastMessage(body);
-            this.finalizeLastMessage(); // Since we are currently getting full response at once
-            this.isLoading.set(false);
-        });
-    }
-
-    ngOnDestroy() {
-        this.topicSubscription?.unsubscribe();
     }
 
     private restoreSession() {
@@ -91,25 +76,38 @@ export class ChatService implements OnDestroy {
         const user = this.tokenStorage.getUser();
         const userId = user?.id || '';
 
-        // 3. Send via WebSocket
+        // 3. Send via HTTP endpoint
         const payload: ChatRequest = {
             message: content,
             conversationId: this.getConversationId(),
             userId: userId
         };
 
-        this.rxStompService.publish({
-            destination: '/app/chat.sendMessage',
-            body: JSON.stringify(payload)
+        this.http.post<ChatHttpResponse>(this.apiUrl, payload).subscribe({
+            next: (response) => {
+                if (response.conversationId) {
+                    sessionStorage.setItem(this.conversationIdKey, response.conversationId);
+                }
+
+                this.setLastAssistantMessage(response.response || 'No response received.');
+                this.finalizeLastMessage();
+                this.isLoading.set(false);
+            },
+            error: (error) => {
+                const errorMessage = error?.error?.message || error?.message || 'Unable to process chat request.';
+                this.setLastAssistantMessage(`Sorry, I could not respond right now. ${errorMessage}`);
+                this.finalizeLastMessage();
+                this.isLoading.set(false);
+            }
         });
     }
 
-    private updateLastMessage(textToAppend: string) {
+    private setLastAssistantMessage(content: string) {
         this.messages.update(msgs => {
             const newMsgs = [...msgs];
             const last = newMsgs[newMsgs.length - 1];
             if (last.role === 'assistant') {
-                newMsgs[newMsgs.length - 1] = { ...last, content: last.content + textToAppend };
+                newMsgs[newMsgs.length - 1] = { ...last, content };
             }
             return newMsgs;
         });

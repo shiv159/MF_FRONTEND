@@ -1,0 +1,207 @@
+.home-page {
+    min-height: 100vh;
+    background-color: var(--color-bg);
+    display: flex;
+    flex-direction: column;
+}
+
+.home-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    backdrop-filter: blur(12px);
+}
+
+.home-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.header-link-btn,
+.header-primary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.header-link-btn {
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+}
+
+.header-link-btn:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-hover);
+}
+
+.header-primary-btn {
+    color: white;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.header-primary-btn:hover {
+    transform: translateY(-1px);
+}
+
+.home-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.hero-card {
+    width: 100%;
+    max-width: 70rem;
+    border: 1px solid var(--color-border);
+    background:
+        radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.18), transparent 32%),
+        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.16), transparent 30%),
+        var(--color-surface);
+    border-radius: 2rem;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+}
+
+.dark .hero-card {
+    border-color: var(--color-border-glass);
+    background:
+        radial-gradient(circle at 10% 10%, rgba(59, 130, 246, 0.22), transparent 34%),
+        radial-gradient(circle at 90% 90%, rgba(16, 185, 129, 0.2), transparent 33%),
+        var(--color-surface-glass);
+    backdrop-filter: blur(14px);
+}
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.35rem 0.8rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-border);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    background-color: var(--color-surface);
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    font-weight: 800;
+    color: var(--color-text-primary);
+}
+
+.hero-subtitle {
+    margin-top: 1rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 42rem;
+    color: var(--color-text-secondary);
+}
+
+.hero-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.hero-primary-btn,
+.hero-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    padding: 0.75rem 1.1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.hero-primary-btn {
+    color: white;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-glow-primary);
+}
+
+.hero-primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+.hero-secondary-btn {
+    color: var(--color-text-secondary);
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+}
+
+.hero-secondary-btn:hover {
+    color: var(--color-text-primary);
+    background-color: var(--color-surface-hover);
+}
+
+.hero-pill-grid {
+    margin-top: 2rem;
+    display: grid;
+    gap: 0.75rem;
+    grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+    .hero-pill-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+.hero-pill {
+    border: 1px solid var(--color-border);
+    border-radius: 0.875rem;
+    background-color: var(--color-surface);
+    color: var(--color-text-secondary);
+    padding: 0.9rem 1rem;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.dark .hero-pill {
+    border-color: var(--color-border-glass);
+    background-color: rgba(15, 23, 42, 0.65);
+}
+
+.pill-title {
+    color: var(--color-text-primary);
+    font-weight: 700;
+    margin-right: 0.3rem;
+}
+
+@media (max-width: 767px) {
+    .home-header {
+        padding: 0.9rem 1rem;
+        align-items: flex-start;
+    }
+
+    .home-header-actions {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .hero-card {
+        padding: 1.5rem;
+        border-radius: 1.5rem;
+    }
+}

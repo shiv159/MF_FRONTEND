@@ -1,6 +1,7 @@
 import { Component, ChangeDetectionStrategy, inject, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs';
 import { RiskProfileService } from '../services/risk-profile.service';
 import { StepperComponent } from '../../../shared/components/stepper.component';
 import { LoadingSkeletonComponent } from '../../../shared/components/loading-skeleton.component';
@@ -79,21 +80,25 @@ export class RiskProfileComponent implements OnDestroy {
   submitProfile(): void {
     this.isLoading = true;
     this.isCompleted = true;
+    this.resultData = null;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    this.service.submitProfile().subscribe({
-      next: (response) => {
-        this.resultData = response;
-        this.isLoading = false;
-        this.chatService.isVisible.set(true);
-        this.cdr.markForCheck();
-      },
-      error: (err) => {
-        console.error('Submission failed', err);
-        this.isLoading = false;
-        this.isCompleted = false;
-        this.cdr.markForCheck();
-      }
-    });
+    this.service.submitProfile()
+      .pipe(
+        finalize(() => {
+          this.isLoading = false;
+          this.cdr.markForCheck();
+        })
+      )
+      .subscribe({
+        next: (response) => {
+          this.resultData = response;
+          this.chatService.isVisible.set(true);
+        },
+        error: (err) => {
+          console.error('Submission failed', err);
+          this.isCompleted = false;
+        }
+      });
   }
 }

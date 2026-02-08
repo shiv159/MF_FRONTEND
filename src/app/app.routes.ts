@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
 import { LandingComponent } from './features/landing/landing.component';
 import { authGuard } from './core/auth/guards/auth.guard';
+import { guestGuard } from './core/auth/guards/guest.guard';
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'auth/login',
-        pathMatch: 'full'
+        loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
+        canActivate: [guestGuard]
     },
     {
         path: 'landing',
@@ -27,5 +28,5 @@ export const routes: Routes = [
         loadComponent: () => import('./features/portfolio-diagnostic/pages/manual-selection.component').then(m => m.ManualSelectionComponent),
         canActivate: [authGuard]
     },
-    { path: '**', redirectTo: 'auth/login' }
+    { path: '**', redirectTo: '' }
 ];

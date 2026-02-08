@@ -25,8 +25,21 @@
 
     <!-- Main Content -->
     <main class="landing-main">
+        <section class="landing-hero">
+            <p class="hero-kicker">One workspace for confident investing</p>
+            <h1 class="hero-title">Your Mutual Funds, Decoded.</h1>
+            <p class="hero-subtitle">
+                Plan new investments, analyze your current funds, and improve your allocation with clear next steps.
+            </p>
+            <div class="hero-pill-row">
+                <span class="hero-pill">Plan</span>
+                <span class="hero-pill">Analyze</span>
+                <span class="hero-pill">Improve</span>
+            </div>
+        </section>
+
         <div class="cards-grid">
-            <!-- New Investor Path -->
+            <!-- Planning Path -->
             <button class="path-card" (click)="navigateTo('risk-profile')">
                 <div class="card-icon card-icon-blue">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -34,11 +47,12 @@
                             d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                     </svg>
                 </div>
-                <h2 class="card-title">New Investor Path</h2>
-                <p class="card-desc">Find your risk DNA and get a tailor-made SIP allocation plan in under 2 minutes.
+                <h2 class="card-title">Plan My Portfolio</h2>
+                <p class="card-desc">Answer 5 guided questions to plan a risk-aligned mutual fund strategy you can
+                    trust.
                 </p>
                 <div class="card-action card-action-blue">
-                    Start Profiling
+                    Start Planning
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -46,7 +60,7 @@
                 </div>
             </button>
 
-            <!-- Portfolio Diagnostic -->
+            <!-- Analysis Path -->
             <button class="path-card" (click)="navigateTo('manual-selection')">
                 <div class="card-icon card-icon-green">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,11 +68,12 @@
                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                     </svg>
                 </div>
-                <h2 class="card-title">Portfolio Diagnostic</h2>
-                <p class="card-desc">Enter your existing funds to scan for overlaps, performance drift, and risk issues.
+                <h2 class="card-title">Analyze Current Portfolio</h2>
+                <p class="card-desc">Add your existing funds to analyze overlap, concentration risk, and where to
+                    improve.
                 </p>
                 <div class="card-action card-action-green">
-                    Analyze Holdings
+                    Analyze Portfolio
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M17 8l4 4m0 0l-4 4m4-4H3" />

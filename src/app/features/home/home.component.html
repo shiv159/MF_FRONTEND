@@ -1,0 +1,40 @@
+<div class="home-page">
+    <header class="home-header">
+        <div class="brand">
+            <div class="brand-icon">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 17l5-5 4 4 7-8"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 8h6v6"></path>
+                </svg>
+            </div>
+            <span class="brand-text">Plan<span class="text-primary-500">MyFunds</span></span>
+        </div>
+
+        <div class="home-header-actions">
+            <a routerLink="/auth/login" class="header-link-btn">Sign in</a>
+            <a routerLink="/auth/register" class="header-primary-btn">Create account</a>
+            <ui-theme-toggle></ui-theme-toggle>
+        </div>
+    </header>
+
+    <main class="home-main">
+        <section class="hero-card">
+            <span class="hero-badge">Data-driven mutual fund planning</span>
+            <h1 class="hero-title">Your Mutual Funds, Decoded.</h1>
+            <p class="hero-subtitle">
+                Stop guessing. Analyze risk, overlap, and growth potential in minutes with one clear workflow.
+            </p>
+
+            <div class="hero-actions">
+                <a routerLink="/auth/register" class="hero-primary-btn">Start Planning</a>
+                <a routerLink="/auth/login" class="hero-secondary-btn">I already have an account</a>
+            </div>
+
+            <div class="hero-pill-grid">
+                <div class="hero-pill"><span class="pill-title">Plan</span> Build a risk-aligned investment path.</div>
+                <div class="hero-pill"><span class="pill-title">Analyze</span> Detect overlap and concentration.</div>
+                <div class="hero-pill"><span class="pill-title">Improve</span> Get practical next actions.</div>
+            </div>
+        </section>
+    </main>
+</div>

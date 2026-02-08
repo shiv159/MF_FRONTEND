@@ -5,14 +5,14 @@
         <div class="hero-content">
             <div class="hero-left">
                 <h2 class="hero-title">
-                    Your Risk Profile: <span class="profile-level">{{ result.riskProfile.level }}</span>
+                    Your Risk Profile: <span class="profile-level">{{ result.riskProfile?.level || 'MODERATE' }}</span>
                 </h2>
-                <p class="hero-description">{{ result.riskProfile.rationale }}</p>
+                <p class="hero-description">{{ result.riskProfile?.rationale || 'Based on your answers, here is your suggested plan.' }}</p>
             </div>
             <div class="score-box">
                 <div class="score-label">Risk Score</div>
                 <div class="score-value">
-                    {{ result.riskProfile.score }}<span class="score-max">/100</span>
+                    {{ result.riskProfile?.score ?? 0 }}<span class="score-max">/100</span>
                 </div>
             </div>
         </div>
@@ -21,11 +21,11 @@
     </div>
 
     <!-- 2. Recommendations (Moved UP) -->
-    <app-recommendations-list [recommendations]="result.recommendations"></app-recommendations-list>
+    <app-recommendations-list [recommendations]="result.recommendations ?? []"></app-recommendations-list>
 
     <!-- 3. Charts Grid -->
     <div class="charts-grid">
-        <app-asset-allocation-chart [allocation]="result.assetAllocation"></app-asset-allocation-chart>
+        <app-asset-allocation-chart [allocation]="result.assetAllocation ?? { equity: 0, debt: 0, gold: 0 }"></app-asset-allocation-chart>
         <app-sector-chart [sectors]="result.portfolioHealth?.aggregateSectorAllocation ?? {}"></app-sector-chart>
         <div class="lg:col-span-2">
             <app-wealth-projection-chart

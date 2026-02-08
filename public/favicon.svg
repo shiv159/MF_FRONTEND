@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="planmyfunds-gradient" x1="4" y1="60" x2="60" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#06b6d4" />
+      <stop offset="1" stop-color="#0ea5e9" />
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#planmyfunds-gradient)" />
+  <path d="M16 40L26 30L34 36L48 22" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"
+    stroke-linejoin="round" />
+  <path d="M40 22H48V30" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

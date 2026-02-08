@@ -1,59 +1,170 @@
-# MFFRONTEND
+# PlanMyFunds Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+Angular frontend for **PlanMyFunds**, a mutual fund planning and portfolio diagnostics application with an integrated AI chat assistant.
 
-## Development server
+It supports:
+- user authentication (email/password + Google OAuth)
+- guided risk profiling wizard
+- manual portfolio analysis workflow
+- interactive analytics dashboards and charts
+- in-app chat assistant
+- dark/light theme
+- responsive desktop + mobile UI
 
-To start a local development server, run:
+## Tech Stack
 
-```bash
-ng serve
+- Angular 20 (standalone components, signals, modern control flow)
+- TypeScript 5
+- Tailwind CSS + custom design system (`src/styles.css`)
+- ng2-charts + Chart.js
+- ngx-markdown
+- RxStomp + SockJS (WebSocket/STOMP client support)
+
+## Project Structure
+
+```text
+src/
+  app/
+    core/                    # auth, guards, interceptors, models, ws config
+    features/
+      auth/                  # login, register, oauth callback
+      home/                  # guest landing page
+      landing/               # authenticated dashboard page
+      risk-profile/          # 5-step onboarding + result insights
+      portfolio-diagnostic/  # manual fund selection + diagnostics
+      chat/                  # floating chat assistant
+    shared/                  # reusable UI, charts, insights, theme service
+  environments/              # environment.ts / environment.prod.ts
+  styles.css                 # global theme + shared layout utilities
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Prerequisites
 
-## Code scaffolding
+- Node.js **20+** (Angular 20 compatible)
+- npm **10+**
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Setup
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+Run development server:
 
 ```bash
-ng build
+npm start
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+App URL:
 
-## Running unit tests
+`http://localhost:4200`
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Environment Configuration
+
+The frontend reads API base URL from:
+
+- `src/environments/environment.ts` (dev)
+- `src/environments/environment.prod.ts` (prod)
+
+Current defaults:
+
+- development: `http://localhost:8080`
+- production: `https://mutual-fund-api-xmpa4gy2rq-uc.a.run.app`
+
+Update `apiUrl` as needed for your backend deployment.
+
+## Available Scripts
+
+- `npm start` - start dev server
+- `npm run build` - production build
+- `npm run watch` - development build in watch mode
+- `npm test` - unit tests (Karma)
+
+## Main Routes
+
+- `/` - guest home page
+- `/auth/login` - login
+- `/auth/register` - register
+- `/auth/callback` - Google OAuth callback (`?token=...`)
+- `/landing` - authenticated landing
+- `/risk-profile` - risk profiling wizard
+- `/manual-selection` - portfolio diagnostic flow
+
+Route protection:
+
+- `authGuard` protects authenticated routes
+- `guestGuard` prevents logged-in users from auth/guest pages
+
+## Backend API Expectations
+
+Configured services call:
+
+- `POST /api/v1/auth/login`
+- `POST /api/v1/auth/register`
+- `GET /api/v1/auth/me`
+- `GET /oauth2/authorization/google`
+- `POST /api/onboarding/risk-profile`
+- `GET /api/funds?query=...&limit=20`
+- `POST /api/portfolio/manual-selection`
+- `POST /api/chat/message`
+- `GET/CONNECT /ws` (SockJS/STOMP endpoint)
+
+`jwtInterceptor` automatically attaches:
+
+`Authorization: Bearer <token>`
+
+## Auth and Session Storage
+
+`localStorage` keys:
+
+- `auth-token`
+- `auth-user`
+- `theme-preference`
+
+`sessionStorage` key:
+
+- `chat_conversation_id`
+
+## Chat Assistant Behavior
+
+- Hidden on landing, shown after analysis results are available
+- Stores a conversation ID in session storage
+- Supports predefined prompt shortcuts
+- Renders assistant messages with Markdown
+
+## Build Notes
+
+If you work across Windows and WSL/Linux, avoid reusing `node_modules` between platforms.
+
+Example failure:
+
+`@esbuild/win32-x64` installed but runtime needs `@esbuild/linux-x64`.
+
+Fix:
 
 ```bash
-ng test
+rm -rf node_modules package-lock.json
+npm install
 ```
 
-## Running end-to-end tests
+Run install/build on the same platform where you execute commands.
 
-For end-to-end (e2e) testing, run:
+## Quality Checks
+
+Type check:
 
 ```bash
-ng e2e
+./node_modules/.bin/tsc -p tsconfig.app.json --noEmit
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Angular template/type compile:
 
-## Additional Resources
+```bash
+./node_modules/.bin/ngc -p tsconfig.app.json
+```
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Notes
+
+- This app uses Angular standalone architecture (no `NgModule` app module).
+- Theme is class-based (`dark`) and persisted via `ThemeService`.
+- Mobile responsiveness and desktop behavior are both supported in current UI styles.

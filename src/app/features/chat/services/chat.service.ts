@@ -2,7 +2,6 @@ import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import { ChatMessage, ChatRequest } from '../models/chat.interface';
-import { TokenStorageService } from '../../../core/auth/services/token-storage.service';
 
 type ChatHttpResponse = {
     response: string;
@@ -15,7 +14,6 @@ type ChatHttpResponse = {
 export class ChatService {
     private readonly conversationIdKey = 'chat_conversation_id';
     private readonly apiUrl = `${environment.apiUrl}/api/chat/message`;
-    private readonly tokenStorage = inject(TokenStorageService);
     private readonly http = inject(HttpClient);
 
     // Signals for Reactive State
@@ -72,15 +70,10 @@ export class ChatService {
         };
         this.messages.update(msgs => [...msgs, assistantMsg]);
 
-        // Get userId from storage for portfolio context
-        const user = this.tokenStorage.getUser();
-        const userId = user?.id || '';
-
         // 3. Send via HTTP endpoint
         const payload: ChatRequest = {
             message: content,
-            conversationId: this.getConversationId(),
-            userId: userId
+            conversationId: this.getConversationId()
         };
 
         this.http.post<ChatHttpResponse>(this.apiUrl, payload).subscribe({
@@ -94,7 +87,10 @@ export class ChatService {
                 this.isLoading.set(false);
             },
             error: (error) => {
-                const errorMessage = error?.error?.message || error?.message || 'Unable to process chat request.';
+                const status = error?.status;
+                const errorMessage = status === 401 || status === 403
+                    ? 'Your session has expired. Please sign in again.'
+                    : (error?.error?.message || error?.message || 'Unable to process chat request.');
                 this.setLastAssistantMessage(`Sorry, I could not respond right now. ${errorMessage}`);
                 this.finalizeLastMessage();
                 this.isLoading.set(false);

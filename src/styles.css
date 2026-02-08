@@ -113,6 +113,7 @@
   }
 
   body {
+    margin: 0;
     background-color: var(--color-bg);
     color: var(--color-text-primary);
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -276,7 +277,7 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 1.5rem;
-    padding: 2.5rem;
+    padding: 1.25rem;
     box-shadow: var(--shadow-lg);
     transition: all 0.3s ease;
   }
@@ -285,7 +286,7 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 1.5rem;
-    padding: 2rem;
+    padding: 1.25rem;
     box-shadow: var(--shadow-lg);
     transition: all 0.3s ease;
   }
@@ -297,7 +298,19 @@
     box-shadow: var(--shadow-lg), 0 0 60px rgba(0, 0, 0, 0.3);
   }
 
+  @media (min-width: 640px) {
+    .auth-card {
+      padding: 2rem;
+    }
+  }
+
   @media (min-width: 768px) {
+    .form-card {
+      padding: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
     .form-card {
       padding: 3rem;
     }
@@ -307,7 +320,7 @@
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 1.5rem;
-    padding: 2rem;
+    padding: 1.25rem;
     box-shadow: var(--shadow-lg);
   }
 
@@ -322,6 +335,7 @@
   .landing-page,
   .page-container {
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--color-bg);
     display: flex;
     flex-direction: column;
@@ -334,7 +348,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
     border-bottom: 1px solid var(--color-border);
     background-color: var(--color-surface);
     backdrop-filter: blur(12px);
@@ -343,7 +359,8 @@
   .header-left {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.75rem;
+    min-width: 0;
   }
 
   .back-btn {
@@ -353,6 +370,7 @@
     border: 1px solid var(--color-border);
     border-radius: 0.5rem;
     cursor: pointer;
+    flex-shrink: 0;
     transition: all 0.2s ease;
   }
 
@@ -368,13 +386,64 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem;
   }
 
   /* Shared Page Layout */
   .page-main {
     flex: 1;
-    padding: 2rem;
+    padding: 1rem;
+  }
+
+  .content-container {
+    width: min(100%, 72rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .page-title {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    line-height: 1.2;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .wizard-header,
+  .page-header-content {
+    margin-bottom: 0.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .loading-card {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .auth-header,
+    .landing-header,
+    .page-header {
+      flex-wrap: nowrap;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+    }
+
+    .header-left {
+      gap: 1rem;
+    }
+
+    .auth-main,
+    .page-main {
+      padding: 2rem;
+    }
+
+    .loading-card {
+      padding: 2rem;
+    }
   }
 
   /* Shared Auth Form Primitives */

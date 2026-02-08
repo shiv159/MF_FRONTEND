@@ -2,7 +2,7 @@
 
 .summary-grid {
     display: grid;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -14,12 +14,12 @@
 
 .summary-card {
     display: flex;
-    align-items: center;
-    gap: 1rem;
+    align-items: flex-start;
+    gap: 0.75rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 1rem;
-    padding: 1.5rem;
+    padding: 1rem;
     transition: all 0.2s ease;
 }
 
@@ -29,13 +29,13 @@
 }
 
 .card-icon {
-    width: 4rem;
-    height: 4rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 700;
     flex-shrink: 0;
 }
@@ -76,4 +76,38 @@
 .card-value {
     font-weight: 700;
     color: var(--color-text-primary);
+}
+
+@media (min-width: 640px) {
+    .summary-grid {
+        gap: 1.25rem;
+    }
+
+    .summary-card {
+        align-items: center;
+        gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .card-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .summary-grid {
+        gap: 1.5rem;
+    }
+
+    .summary-card {
+        padding: 1.5rem;
+    }
+
+    .card-icon {
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.5rem;
+    }
 }

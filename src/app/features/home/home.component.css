@@ -1,5 +1,6 @@
 .home-page {
     min-height: 100vh;
+    min-height: 100dvh;
     background-color: var(--color-bg);
     display: flex;
     flex-direction: column;
@@ -60,7 +61,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .hero-card {
@@ -163,6 +164,10 @@
 }
 
 @media (min-width: 768px) {
+    .home-main {
+        padding: 2rem;
+    }
+
     .hero-pill-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }

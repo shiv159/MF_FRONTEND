@@ -3,7 +3,7 @@
 }
 
 .section-title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: var(--color-text-primary, #1f2937);
     margin-bottom: 1.5rem;
@@ -42,10 +42,11 @@
 }
 
 .card-header {
-    padding: 1rem 1.25rem;
+    padding: 0.9rem 1rem;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
     cursor: pointer;
     background: var(--color-surface, white);
 }
@@ -79,6 +80,7 @@
     color: var(--color-text-secondary, #6b7280);
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 
@@ -93,13 +95,15 @@
 .fund-metrics {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    justify-content: space-between;
+    gap: 0.75rem;
+    width: 100%;
 }
 
 .metric {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .label {
@@ -132,6 +136,28 @@
 }
 
 @media (min-width: 640px) {
+    .section-title {
+        font-size: 1.25rem;
+    }
+
+    .card-header {
+        padding: 1rem 1.25rem;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .fund-metrics {
+        width: auto;
+        justify-content: flex-start;
+        gap: 1.5rem;
+    }
+
+    .metric {
+        align-items: flex-end;
+    }
+
     .desktop-only {
         display: flex;
     }
@@ -150,8 +176,14 @@
 }
 
 .card-content {
-    padding: 1.5rem;
+    padding: 1rem;
     animation: slideDown 0.3s ease-out;
+}
+
+@media (min-width: 640px) {
+    .card-content {
+        padding: 1.5rem;
+    }
 }
 
 .insights-row {
@@ -211,9 +243,15 @@
 
 .no-data {
     text-align: center;
-    padding: 2rem;
+    padding: 1.25rem;
     color: var(--color-text-secondary, #6b7280);
     font-style: italic;
+}
+
+@media (min-width: 640px) {
+    .no-data {
+        padding: 2rem;
+    }
 }
 
 @keyframes slideDown {

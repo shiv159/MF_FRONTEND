@@ -17,10 +17,10 @@
 }
 
 .step-title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-text-primary);
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 
@@ -49,8 +49,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
-    padding: 1rem;
+    gap: 1rem;
+    padding: 0.875rem;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: 0.75rem;
@@ -90,8 +90,8 @@
 
 /* Actions */
 .step-actions {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
     border-top: 1px solid var(--color-border);
 }
 
@@ -117,4 +117,21 @@
 .next-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+@media (min-width: 640px) {
+    .step-title {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .counter-control {
+        gap: 2rem;
+        padding: 1rem;
+    }
+
+    .step-actions {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
 }

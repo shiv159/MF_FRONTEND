@@ -1,11 +1,11 @@
 .chart-wrapper {
     position: relative;
     width: 100%;
-    height: 18rem;
+    height: 14rem;
 }
 
 @media (min-width: 768px) {
     .chart-wrapper {
-        height: 20rem;
+        height: 18rem;
     }
 }

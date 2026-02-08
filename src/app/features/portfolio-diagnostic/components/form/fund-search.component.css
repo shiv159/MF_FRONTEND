@@ -109,6 +109,7 @@
 .result-meta {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin-top: 0.25rem;
     font-size: 0.75rem;
@@ -119,4 +120,8 @@
     background-color: var(--color-surface-hover);
     padding: 0.125rem 0.5rem;
     border-radius: 0.25rem;
+}
+
+.result-isin {
+    overflow-wrap: anywhere;
 }

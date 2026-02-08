@@ -9,7 +9,7 @@ import { RiskProfileService } from '../../services/risk-profile.service';
   imports: [CommonModule, FormsModule],
   template: `
     <div class="space-y-6 animate-fade-in-up">
-      <h3 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Psychology Check</h3>
+      <h3 class="text-xl sm:text-2xl font-bold text-gray-800 dark:text-white mb-4">Psychology Check</h3>
 
       <!-- Market Drop Reaction -->
       <div>
@@ -19,7 +19,7 @@ import { RiskProfileService } from '../../services/risk-profile.service';
         <div class="space-y-3">
           <div *ngFor="let option of options" 
                (click)="data.marketDropReaction = option.value"
-               [class]="'p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center justify-between ' + 
+               [class]="'p-4 rounded-xl border-2 cursor-pointer transition-all flex items-start sm:items-center justify-between gap-3 ' + 
                         (data.marketDropReaction === option.value 
                           ? 'border-blue-600 bg-blue-50 dark:bg-blue-900/20 ring-1 ring-blue-600 dark:ring-blue-500' 
                           : 'border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 hover:border-blue-300 dark:hover:border-blue-400')">
@@ -46,9 +46,9 @@ import { RiskProfileService } from '../../services/risk-profile.service';
         </select>
       </div>
 
-      <div class="pt-6 flex gap-4">
-        <button (click)="back.emit()" class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-4 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">Back</button>
-        <button [disabled]="!isValid()" (click)="onNext()" class="flex-1 bg-blue-600 text-white py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 disabled:opacity-50 transition-all">Next</button>
+      <div class="pt-4 sm:pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+        <button (click)="back.emit()" class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-3 sm:py-4 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">Back</button>
+        <button [disabled]="!isValid()" (click)="onNext()" class="flex-1 bg-blue-600 text-white py-3 sm:py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 disabled:opacity-50 transition-all">Next</button>
       </div>
     </div>
   `,

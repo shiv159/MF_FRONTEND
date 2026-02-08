@@ -6,6 +6,8 @@
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .logout-btn {
@@ -262,5 +264,11 @@
 
     .landing-hero {
         padding: 1.25rem;
+    }
+}
+
+@media (min-width: 640px) {
+    .header-actions {
+        flex-wrap: nowrap;
     }
 }

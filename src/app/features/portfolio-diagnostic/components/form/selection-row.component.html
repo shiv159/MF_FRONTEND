@@ -19,6 +19,7 @@
 
         <!-- Weight Input -->
         <div class="weight-input-area">
+            <span class="mobile-weight-label">Weight %</span>
             <input type="number" [value]="item().weightPct"
                 (input)="onWeightInput($event)" min="0" max="100" step="5"
                 class="weight-input">

@@ -1,6 +1,6 @@
 .chart-container {
     background-color: var(--color-surface, white);
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 1rem;
     box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
     border: 1px solid var(--color-border, #e5e7eb);
@@ -14,7 +14,7 @@
 }
 
 .chart-title {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--color-text-primary, #1f2937);
     margin-bottom: 1rem;
@@ -27,7 +27,7 @@
 .legend-grid {
     margin-top: 1rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
     text-align: center;
     font-size: 0.875rem;
@@ -53,4 +53,20 @@
 
 :host-context(.dark) .legend-label {
     color: #9ca3af;
+}
+
+@media (min-width: 480px) {
+    .legend-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 640px) {
+    .chart-container {
+        padding: 1.5rem;
+    }
+
+    .chart-title {
+        font-size: 1.125rem;
+    }
 }

@@ -38,6 +38,30 @@
 
             @if (isExpanded(fund.fundId)) {
             <div class="card-content">
+                <!-- Loading State -->
+                @if (isLoading(fund.fundId)) {
+                    <div class="loading-indicator">
+                        <span class="spinner"></span>
+                        <span>Loading analytics...</span>
+                    </div>
+                }
+
+                <!-- Risk Insights Badge -->
+                @if (getRiskInsights(fund.fundId); as insights) {
+                    <div class="risk-insights-row">
+                        <app-risk-insights-badge [insights]="insights"></app-risk-insights-badge>
+                        <div class="insights-text">
+                            <span class="alpha-insight">{{ insights.alphaInsight }}</span>
+                            <span class="beta-insight">{{ insights.betaInsight }}</span>
+                        </div>
+                    </div>
+                }
+
+                <!-- Rolling Returns Card -->
+                @if (getRollingReturns(fund.fundId); as returns) {
+                    <app-rolling-returns-card [returns]="returns"></app-rolling-returns-card>
+                }
+
                 <div class="insights-row">
                     @if (fund.fundMetadata) {
                     <app-fund-comparison [metadata]="fund.fundMetadata" class="insight-col"></app-fund-comparison>

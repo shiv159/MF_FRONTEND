@@ -294,3 +294,65 @@ export interface RecommendedFund {
     fundMetadata?: FundMetadata;
     reason?: string;
 }
+
+// ============================================
+// NEW: Rolling Returns Interface
+// ============================================
+export interface RollingReturns {
+    fundId: string;
+    fundName: string;
+    return1M: number | null;
+    return3M: number | null;
+    return6M: number | null;
+    return1Y: number | null;
+    return3Y: number | null;
+    return5Y: number | null;
+    sipReturn3Y: number | null;
+    lumpSumReturn3Y: number | null;
+    cagr: number | null;
+    calculatedAsOf: string;
+}
+
+// ============================================
+// NEW: Risk Insights Interface
+// ============================================
+export interface RiskInsights {
+    fundId: string;
+    fundName: string;
+    alpha: number | null;
+    beta: number | null;
+    sharpeRatio: number | null;
+    standardDeviation: number | null;
+    alphaInsight: string;
+    betaInsight: string;
+    volatilityLevel: 'LOW' | 'MARKET_ALIGNED' | 'HIGH';
+    overallRiskLabel: string;
+}
+
+// ============================================
+// NEW: Portfolio Covariance Interface
+// ============================================
+export interface PortfolioCovariance {
+    fundIds: string[];
+    fundNames: string[];
+    covarianceMatrix: number[][];
+    correlationMatrix: number[][];
+    portfolioVariance: number;
+    portfolioStdDev: number;
+    weightedAvgStdDev: number;
+    diversificationBenefit: number;
+    calculationMethod: string;
+    monthsUsed: number;
+}
+
+// ============================================
+// NEW: Covariance Request Interface
+// ============================================
+export interface CovarianceRequest {
+    funds: FundWeight[];
+}
+
+export interface FundWeight {
+    fundId: string;
+    weight: number;
+}

@@ -5,6 +5,12 @@
         <div class="status-badge success">Analysis Complete</div>
     </div>
 
+    <!-- AI Portfolio Diagnostic (NEW) -->
+    @if (diagnosticData() || isAnalyzing()) {
+    <app-portfolio-diagnostic-report [diagnostic]="diagnosticData()!"
+        [isLoading]="isAnalyzing()"></app-portfolio-diagnostic-report>
+    }
+
     <!-- Summary Cards -->
     <app-portfolio-summary [analysis]="data().analysis!"></app-portfolio-summary>
 

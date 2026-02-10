@@ -1,0 +1,174 @@
+@if (isLoading()) {
+<div class="diagnostic-container skeleton-container">
+    <div class="skeleton-header">
+        <div class="skeleton-icon"></div>
+        <div class="skeleton-title-group">
+            <div class="skeleton-title"></div>
+            <div class="skeleton-subtitle"></div>
+        </div>
+    </div>
+    <div class="skeleton-body">
+        <div class="skeleton-text"></div>
+        <div class="skeleton-text short"></div>
+    </div>
+    <div class="skeleton-footer">
+        <div class="ai-analyzing-text">
+            <span class="pulsing-dot"></span> AI Analysis in progress...
+        </div>
+    </div>
+</div>
+}
+
+@if (!isLoading() && diagnostic()) {
+<div class="diagnostic-container">
+    <!-- Header -->
+    <div class="diagnostic-header">
+        <div class="header-left">
+            <div class="header-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div>
+                <h3 class="header-title">Health Diagnostic</h3>
+                <div class="header-subtitle">AI-Powered Analysis</div>
+            </div>
+        </div>
+        <div class="score-badge" [ngClass]="scoreClass()">
+            <span class="score-value">{{ diagnostic()!.metrics.diversificationScore }}/10</span>
+            <span class="score-label">{{ scoreLabel() }}</span>
+        </div>
+    </div>
+
+    <!-- Summary (AI or Template) -->
+    <div class="summary-card">
+        <svg class="summary-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2">
+            <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+            <polyline points="13 2 13 9 20 9"></polyline>
+        </svg>
+        <p class="summary-text">{{ diagnostic()!.summary }}</p>
+    </div>
+
+    <!-- Metrics Row -->
+    <div class="metrics-row">
+        <div class="metric-card">
+            <span class="metric-value">{{ diagnostic()!.metrics.totalFunds }}</span>
+            <span class="metric-label">Funds</span>
+        </div>
+    </div>
+
+    <!-- Two-Column Layout: Asset Breakdown + Fund Houses -->
+    <div class="breakdown-grid">
+        <!-- Asset Allocation -->
+        <div class="breakdown-card">
+            <h4 class="breakdown-title">Asset Allocation</h4>
+            <div class="breakdown-bars">
+                @for (item of sortedAssetClasses(); track item.name) {
+                <div class="bar-row">
+                    <div class="bar-label">
+                        <span class="bar-name">{{ item.name }}</span>
+                        <span class="bar-value">{{ item.pct | number:'1.0-0' }}%</span>
+                    </div>
+                    <div class="bar-track">
+                        <div class="bar-fill" [style.width.%]="item.pct" [ngClass]="{
+                            'bar-equity': item.name === 'Equity',
+                            'bar-debt': item.name === 'Debt',
+                            'bar-hybrid': item.name === 'Hybrid'
+                        }"></div>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+
+        <!-- Fund House Distribution -->
+        <div class="breakdown-card">
+            <h4 class="breakdown-title">Fund House Mix</h4>
+            <div class="fund-house-list">
+                @for (item of sortedFundHouses(); track item.name) {
+                <div class="fund-house-row">
+                    <span class="fund-house-name" [title]="item.name">{{ item.name }}</span>
+                    <span class="fund-house-count">{{ item.count }} Fund{{ item.count > 1 ? 's' : '' }}</span>
+                </div>
+                }
+                @empty {
+                <div class="text-sm text-gray-500 italic">No data available</div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Suggestions Section -->
+    @if (hasIssues()) {
+    <div class="suggestions-section">
+        <h4 class="section-title">
+            <span class="text-red-500">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
+            Optimization Opportunities
+            <span class="issue-count">{{ diagnostic()!.suggestions.length }}</span>
+        </h4>
+        <div class="suggestions-list">
+            @for (suggestion of highSuggestions(); track suggestion.category) {
+            <div class="suggestion-card severity-high">
+                <div class="suggestion-header">
+                    <span class="severity-indicator">{{ getSeverityIcon('HIGH') }}</span>
+                    <span class="suggestion-category">{{ getCategoryLabel(suggestion.category) }}</span>
+                    <span class="severity-badge badge-high">High Priority</span>
+                </div>
+                <p class="suggestion-message">{{ suggestion.message }}</p>
+            </div>
+            }
+
+            @for (suggestion of mediumSuggestions(); track suggestion.category) {
+            <div class="suggestion-card severity-medium">
+                <div class="suggestion-header">
+                    <span class="severity-indicator">{{ getSeverityIcon('MEDIUM') }}</span>
+                    <span class="suggestion-category">{{ getCategoryLabel(suggestion.category) }}</span>
+                    <span class="severity-badge badge-medium">Medium</span>
+                </div>
+                <p class="suggestion-message">{{ suggestion.message }}</p>
+            </div>
+            }
+
+            @for (suggestion of lowSuggestions(); track suggestion.category) {
+            <div class="suggestion-card severity-low">
+                <div class="suggestion-header">
+                    <span class="severity-indicator">{{ getSeverityIcon('LOW') }}</span>
+                    <span class="suggestion-category">{{ getCategoryLabel(suggestion.category) }}</span>
+                    <span class="severity-badge badge-low">Note</span>
+                </div>
+                <p class="suggestion-message">{{ suggestion.message }}</p>
+            </div>
+            }
+        </div>
+    </div>
+    }
+
+    <!-- Strengths Section -->
+    @if (diagnostic()!.strengths.length > 0) {
+    <div class="strengths-section">
+        <h4 class="section-title strengths-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round" />
+                <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            Portfolio Strengths
+        </h4>
+        <div class="strengths-list">
+            @for (strength of diagnostic()!.strengths; track strength) {
+            <div class="strength-card">
+                <span class="strength-icon">✓</span>
+                <p class="strength-text">{{ strength }}</p>
+            </div>
+            }
+        </div>
+    </div>
+    }
+</div>
+}

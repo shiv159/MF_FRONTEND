@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, input, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ManualSelectionResponse, TopHolding } from '../../../../core/models/api.interface';
+import { ManualSelectionResponse, TopHolding, PortfolioDiagnosticDTO } from '../../../../core/models/api.interface';
 import { PortfolioSummaryComponent } from './portfolio-summary.component';
 import { SectorChartComponent } from '../../../../shared/components/sector-chart.component';
 import { HoldingsListComponent } from './holdings-list.component';
@@ -10,6 +10,7 @@ import { EsgDashboardComponent } from '../../../../shared/components/insights/es
 import { GeographicAllocationComponent } from '../../../../shared/components/insights/geographic-allocation.component';
 import { FundActivityComponent } from '../../../../shared/components/insights/fund-activity.component';
 import { SectorOverlapComponent } from '../sector-overlap/sector-overlap.component';
+import { PortfolioDiagnosticReportComponent } from './portfolio-diagnostic-report.component';
 
 @Component({
   selector: 'app-selection-result',
@@ -24,7 +25,8 @@ import { SectorOverlapComponent } from '../sector-overlap/sector-overlap.compone
     GeographicAllocationComponent,
     GeographicAllocationComponent,
     FundActivityComponent,
-    SectorOverlapComponent
+    SectorOverlapComponent,
+    PortfolioDiagnosticReportComponent
   ],
   templateUrl: './selection-result.component.html',
   styleUrl: './selection-result.component.css',
@@ -32,6 +34,8 @@ import { SectorOverlapComponent } from '../sector-overlap/sector-overlap.compone
 })
 export class SelectionResultComponent {
   readonly data = input.required<ManualSelectionResponse>();
+  readonly diagnosticData = input<PortfolioDiagnosticDTO | null>();
+  readonly isAnalyzing = input<boolean>(false);
 
   protected readonly aggregatedHoldings = computed<TopHolding[]>(() => {
     const portfolio = this.data().portfolio;

@@ -356,3 +356,46 @@ export interface FundWeight {
     fundId: string;
     weight: number;
 }
+
+// ============================================
+// Portfolio Diagnostic Interfaces
+// ============================================
+export type SuggestionCategory =
+    | 'FUND_HOUSE_CONCENTRATION'
+    | 'LACK_OF_DIVERSIFICATION'
+    | 'OVER_DIVERSIFICATION'
+    | 'SECTOR_CONCENTRATION'
+    | 'STOCK_OVERLAP'
+    | 'EMOTIONAL_DECISIONS'
+    | 'HIGH_EXPENSE_RATIO'
+    | 'NO_DEBT_ALLOCATION'
+    | 'NO_EQUITY_ALLOCATION'
+    | 'MARKET_CAP_IMBALANCE';
+
+export type DiagnosticSeverity = 'HIGH' | 'MEDIUM' | 'LOW';
+
+export interface DiagnosticSuggestion {
+    category: SuggestionCategory;
+    severity: DiagnosticSeverity;
+    message: string;
+    details: Record<string, any>;
+}
+
+export interface DiagnosticMetrics {
+    totalFunds: number;
+    fundHouseDistribution: Record<string, number>;
+    assetClassBreakdown: Record<string, number>;
+    diversificationScore: number;
+    overlapStatus: string;
+    sectorConcentration: string;
+    topSector: string;
+    topSectorAllocation: number;
+}
+
+export interface PortfolioDiagnosticDTO {
+    summary: string;
+    suggestions: DiagnosticSuggestion[];
+    strengths: string[];
+    metrics: DiagnosticMetrics;
+}
+

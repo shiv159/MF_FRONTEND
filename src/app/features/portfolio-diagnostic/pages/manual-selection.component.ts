@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ManualSelectionService } from '../services/manual-selection.service';
-import { ManualSelectionItem, ManualSelectionResponse } from '../../../core/models/api.interface';
+import { PortfolioDiagnosticService } from '../services/portfolio-diagnostic.service';
+import { ManualSelectionItem, ManualSelectionResponse, PortfolioDiagnosticDTO } from '../../../core/models/api.interface';
 import { ThemeToggleComponent } from '../../../shared/components/ui/theme-toggle.component';
 import { ChatService } from '../../chat/services/chat.service';
 
@@ -30,6 +31,7 @@ import { LoadingSkeletonComponent } from '../../../shared/components/loading-ske
 export class ManualSelectionComponent {
   private readonly router = inject(Router);
   private readonly service = inject(ManualSelectionService);
+  private readonly diagnosticService = inject(PortfolioDiagnosticService);
   private readonly chatService = inject(ChatService);
 
   readonly selections = signal<ManualSelectionItem[]>([{ weightPct: 0 }]);
@@ -38,7 +40,9 @@ export class ManualSelectionComponent {
   );
 
   readonly isLoading = signal(false);
+  readonly isAnalyzing = signal(false);
   readonly resultData = signal<ManualSelectionResponse | null>(null);
+  readonly diagnosticData = signal<PortfolioDiagnosticDTO | null>(null);
 
   constructor() {
     this.chatService.isVisible.set(false);
@@ -91,6 +95,19 @@ export class ManualSelectionComponent {
         this.resultData.set(response);
         this.isLoading.set(false);
         this.chatService.isVisible.set(true);
+
+        // Trigger diagnostic analysis after portfolio is saved
+        this.isAnalyzing.set(true);
+        this.diagnosticService.getDiagnostic().subscribe({
+          next: (diagnostic) => {
+            this.diagnosticData.set(diagnostic);
+            this.isAnalyzing.set(false);
+          },
+          error: (err) => {
+            console.warn('Diagnostic fetch failed:', err);
+            this.isAnalyzing.set(false);
+          }
+        });
       },
       error: (err) => {
         console.error(err);

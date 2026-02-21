@@ -16,7 +16,7 @@ export interface ManualSelectionItem {
     weightPct: number;    // 1-100
 }
 
-export type ManualSelectionStatus = 'RESOLVED_FROM_DB' | 'CREATED_FROM_ETL' | 'ERROR' | 'ENRICHED_FROM_ETL';
+export type ManualSelectionStatus = 'RESOLVED_FROM_DB' | 'CREATED_FROM_ETL' | 'ERROR' | 'ENRICHED_FROM_ETL' | 'ENRICHMENT_FAILED';
 
 export interface ManualSelectionResponse {
     results: ManualSelectionResult[];

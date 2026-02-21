@@ -43,6 +43,7 @@ export class ManualSelectionComponent {
   readonly isAnalyzing = signal(false);
   readonly resultData = signal<ManualSelectionResponse | null>(null);
   readonly diagnosticData = signal<PortfolioDiagnosticDTO | null>(null);
+  readonly failedFunds = signal<ManualSelectionResponse['results']>([]);
 
   constructor() {
     this.chatService.isVisible.set(false);
@@ -93,6 +94,9 @@ export class ManualSelectionComponent {
     this.service.submitSelection(payload).subscribe({
       next: (response) => {
         this.resultData.set(response);
+        // Surface any per-fund enrichment failures so the UI can show targeted warnings
+        const failed = response.results?.filter(r => r.status === 'ENRICHMENT_FAILED') ?? [];
+        this.failedFunds.set(failed);
         this.isLoading.set(false);
         this.chatService.isVisible.set(true);
 

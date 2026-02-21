@@ -77,6 +77,28 @@
             </div>
             }
 
+            <!-- Enrichment Failure Warning -->
+            @if (failedFunds().length > 0) {
+            <div class="enrichment-warning-banner">
+                <div class="warning-icon">⚠️</div>
+                <div class="warning-content">
+                    <p class="warning-title">
+                        {{ failedFunds().length }} fund{{ failedFunds().length > 1 ? 's' : '' }} could not be resolved
+                        and {{ failedFunds().length > 1 ? 'were' : 'was' }} excluded from your portfolio.
+                        Remaining weights have been re-normalised to 100%.
+                    </p>
+                    <ul class="warning-list">
+                        @for (f of failedFunds(); track f.inputFundName) {
+                        <li>
+                            <strong>{{ f.inputFundName ?? f.inputFundId ?? 'Unknown fund' }}</strong>
+                            — {{ f.message }}
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+
             <!-- Results View -->
             @if (resultData(); as data) {
             <app-selection-result [data]="data" [diagnosticData]="diagnosticData()"

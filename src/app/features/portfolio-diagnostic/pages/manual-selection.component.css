@@ -84,7 +84,54 @@
     cursor: not-allowed;
 }
 
+/* Enrichment Warning Banner */
+.enrichment-warning-banner {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: rgb(254 252 232);
+    /* Amber 50 */
+    border: 1px solid rgb(253 230 138);
+    /* Amber 200 */
+    border-radius: 0.75rem;
+    color: rgb(146 64 14);
+    /* Amber 900 */
+}
 
+.dark .enrichment-warning-banner {
+    background-color: rgba(217, 119, 6, 0.1);
+    /* Amber 600 with opacity */
+    border-color: rgba(217, 119, 6, 0.3);
+    color: rgb(253 230 138);
+    /* Amber 200 */
+}
+
+.warning-icon {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+}
+
+.warning-content {
+    flex: 1;
+}
+
+.warning-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+}
+
+.warning-list {
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.875rem;
+    list-style-type: disc;
+}
+
+.warning-list li {
+    margin-bottom: 0.25rem;
+}
 
 .loading-title {
     font-size: 1.25rem;

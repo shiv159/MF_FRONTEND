@@ -507,6 +507,14 @@
     box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
   }
 
+  .form-select.input-error {
+    border-color: var(--color-error);
+  }
+
+  .form-select.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  }
+
   .error-text {
     font-size: 0.75rem;
     color: var(--color-error);

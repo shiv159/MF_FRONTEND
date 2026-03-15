@@ -36,9 +36,14 @@
                 <div class="form-group">
                     <label for="email" class="form-label">Email address</label>
                     <input id="email" type="email" formControlName="email" placeholder="you@example.com"
-                        class="form-input" [class.input-error]="isFieldInvalid('email')" autocomplete="email">
+                        class="form-input" [class.input-error]="isFieldInvalid('email')" autocomplete="email" required
+                        [attr.aria-invalid]="isFieldInvalid('email') ? 'true' : null">
                     @if (isFieldInvalid('email')) {
-                    <p class="error-text">Please enter a valid email address</p>
+                      @if (loginForm.get('email')?.hasError('required')) {
+                      <p class="error-text">Email is required</p>
+                      } @else if (loginForm.get('email')?.hasError('email')) {
+                      <p class="error-text">Please enter a valid email address</p>
+                      }
                     }
                 </div>
 
@@ -48,7 +53,8 @@
                     <div class="input-wrapper">
                         <input id="password" [type]="showPassword() ? 'text' : 'password'" formControlName="password"
                             placeholder="Enter your password" class="form-input pr-10"
-                            [class.input-error]="isFieldInvalid('password')" autocomplete="current-password">
+                            [class.input-error]="isFieldInvalid('password')" autocomplete="current-password" required
+                            [attr.aria-invalid]="isFieldInvalid('password') ? 'true' : null">
                         <button type="button" (click)="togglePassword()" class="password-toggle"
                             aria-label="Toggle password visibility">
                             @if (!showPassword()) {

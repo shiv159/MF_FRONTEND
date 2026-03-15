@@ -119,6 +119,17 @@
     cursor: not-allowed;
 }
 
+.next-btn.is-disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.next-btn.is-disabled:hover {
+    transform: none;
+    box-shadow: none;
+}
+
 @media (min-width: 640px) {
     .step-title {
         font-size: 1.5rem;

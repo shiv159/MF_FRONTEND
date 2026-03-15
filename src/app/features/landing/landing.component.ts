@@ -20,7 +20,7 @@ export class LandingComponent {
   protected readonly store = inject(AuthStore);
 
   constructor() {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('LANDING', true);
   }
 
   protected navigateTo(path: string): void {
@@ -28,6 +28,7 @@ export class LandingComponent {
   }
 
   protected logout(): void {
+    this.chatService.setContext('LANDING', false);
     this.authService.logout();
     this.router.navigate(['/auth/login']);
   }

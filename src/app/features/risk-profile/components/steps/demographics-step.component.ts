@@ -25,6 +25,7 @@ export class DemographicsStepComponent implements OnInit {
     incomeRange: '',
     dependents: 0
   };
+  showErrors = false;
 
   readonly incomeRanges: IncomeRangeOption[] = [
     { value: 'BELOW_5L', label: 'Below ₹5 Lakhs' },
@@ -48,14 +49,40 @@ export class DemographicsStepComponent implements OnInit {
     }
   }
 
+  private getAgeValue(): number | null {
+    return typeof this.data.age === 'number' && Number.isFinite(this.data.age) ? this.data.age : null;
+  }
+
+  isAgeMissing(): boolean {
+    return this.getAgeValue() === null;
+  }
+
+  isAgeNonInteger(): boolean {
+    const age = this.getAgeValue();
+    return age !== null && !Number.isInteger(age);
+  }
+
+  isAgeOutOfRange(): boolean {
+    const age = this.getAgeValue();
+    return age !== null && (age < 18 || age > 100);
+  }
+
+  isAgeInvalid(): boolean {
+    return this.isAgeMissing() || this.isAgeNonInteger() || this.isAgeOutOfRange();
+  }
+
   isValid(): boolean {
-    return !!(this.data.age && this.data.age >= 18 && this.data.incomeRange);
+    const age = this.getAgeValue();
+    return age !== null && Number.isInteger(age) && age >= 18 && age <= 100 && !!this.data.incomeRange;
   }
 
   onNext(): void {
-    if (this.isValid()) {
-      this.service.updateDemographics(this.data);
-      this.next.emit();
+    if (!this.isValid()) {
+      this.showErrors = true;
+      return;
     }
+    this.showErrors = false;
+    this.service.updateDemographics(this.data);
+    this.next.emit();
   }
 }

@@ -1,76 +1,153 @@
-import { Component, computed, signal, ViewChild, ElementRef, effect } from '@angular/core';
+import { Component, ElementRef, ViewChild, computed, effect, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MarkdownModule } from 'ngx-markdown';
 import { ChatService } from '../../services/chat.service';
-
-interface PredefinedPrompt {
-    label: string;
-    prompt: string;
-    icon: string;
-}
+import {
+  AlertItem,
+  ChatAction,
+  ChatMessage,
+  ChatStatusEvent,
+  RebalanceDraftPayload
+} from '../../models/chat.interface';
 
 @Component({
-    selector: 'app-chat-widget',
-    standalone: true,
-    imports: [CommonModule, MarkdownModule],
-    templateUrl: './chat-widget.component.html',
-    styleUrl: './chat-widget.component.css'
+  selector: 'app-chat-widget',
+  standalone: true,
+  imports: [CommonModule, FormsModule, MarkdownModule],
+  templateUrl: './chat-widget.component.html',
+  styleUrl: './chat-widget.component.css'
 })
 export class ChatWidgetComponent {
-    @ViewChild('messagesContainer') messagesContainer!: ElementRef;
+  @ViewChild('messagesContainer') messagesContainer!: ElementRef<HTMLDivElement>;
 
-    isOpen = signal<boolean>(false);
+  readonly isOpen = signal(false);
+  readonly isAlertsOpen = signal(false);
+  readonly draftMessage = signal('');
 
-    // Pre-defined prompts for quick actions
-    predefinedPrompts: PredefinedPrompt[] = [
-        { label: 'Analyze my portfolio', prompt: 'Analyze my portfolio and give me a summary', icon: '📊' },
-        { label: 'Risk assessment', prompt: 'What is my portfolio risk level and how can I improve it?', icon: '⚠️' },
-        { label: 'Top performers', prompt: 'Which funds in my portfolio are performing best?', icon: '🏆' },
-        { label: 'Suggestions', prompt: 'What changes should I make to improve my portfolio?', icon: '💡' }
-    ];
+  readonly isStreaming = computed(() => {
+    const messages = this.chatService.messages();
+    return messages.length > 0 && !!messages[messages.length - 1].isStreaming;
+  });
 
-    // Helper to check if last message is streaming
-    isStreaming = computed(() => {
-        const msgs = this.chatService.messages();
-        return msgs.length > 0 && msgs[msgs.length - 1].isStreaming;
+  readonly showPrompts = computed(
+    () => this.chatService.messages().length === 0 && !this.chatService.isLoading()
+  );
+
+  constructor(public readonly chatService: ChatService) {
+    effect(() => {
+      this.chatService.messages();
+      queueMicrotask(() => this.scrollToBottom());
     });
+  }
 
-    // Show prompts only when chat is empty
-    showPrompts = computed(() => {
-        return this.chatService.messages().length === 0 && !this.chatService.isLoading();
-    });
+  toggleChat(): void {
+    const next = !this.isOpen();
+    this.isOpen.set(next);
+    if (next) {
+      void this.chatService.loadStarterPrompts();
+      void this.chatService.loadAlerts();
+    } else {
+      this.isAlertsOpen.set(false);
+    }
+  }
 
-    constructor(public chatService: ChatService) {
-        // Auto-scroll effect when messages change
-        effect(() => {
-            this.chatService.messages(); // Subscribe to message changes
-            this.scrollToBottom();
-        });
+  toggleAlerts(): void {
+    this.isAlertsOpen.update((open) => !open);
+  }
+
+  resetChat(): void {
+    this.chatService.resetSession();
+    this.draftMessage.set('');
+  }
+
+  sendCurrentMessage(): void {
+    const content = this.draftMessage();
+    if (!content.trim()) {
+      return;
+    }
+    this.chatService.sendMessage(content);
+    this.draftMessage.set('');
+  }
+
+  sendPrompt(prompt: string): void {
+    this.chatService.sendMessage(prompt);
+  }
+
+  sendAction(action: ChatAction): void {
+    this.chatService.sendAction(action);
+  }
+
+  acknowledgeAlert(alertId: string): void {
+    void this.chatService.acknowledgeAlert(alertId);
+  }
+
+  rebalanceDraft(message: ChatMessage): RebalanceDraftPayload | null {
+    const action = message.actions?.find((candidate) => candidate.type === 'REBALANCE_DRAFT');
+    return (action?.payload as RebalanceDraftPayload | undefined) ?? null;
+  }
+
+  followUpActions(message: ChatMessage): ChatAction[] {
+    return message.actions?.filter((action) => action.type === 'FOLLOW_UP_PROMPT') ?? [];
+  }
+
+  allocationEntries(values?: Record<string, number>): Array<{ label: string; value: number }> {
+    return Object.entries(values ?? {}).map(([label, value]) => ({
+      label,
+      value: Number(value)
+    }));
+  }
+
+  draftItems(
+    draft: RebalanceDraftPayload | null,
+    key: 'proposedReductions' | 'proposedAdditions'
+  ): Array<Record<string, unknown>> {
+    const value = draft?.[key];
+    return Array.isArray(value) ? (value as Array<Record<string, unknown>>) : [];
+  }
+
+  suggestedFunds(item: Record<string, unknown>): Array<Record<string, unknown>> {
+    const value = item['suggestedFunds'];
+    return Array.isArray(value) ? (value as Array<Record<string, unknown>>) : [];
+  }
+
+  asText(value: unknown): string {
+    return typeof value === 'string' ? value : '';
+  }
+
+  asNumber(value: unknown): number {
+    return typeof value === 'number' ? value : Number(value ?? 0);
+  }
+
+  statusLabel(event: ChatStatusEvent): string {
+    const payload = (event.payload ?? {}) as Record<string, unknown>;
+
+    if (event.type === 'status') {
+      const status = typeof payload['status'] === 'string' ? payload['status'] : 'working';
+      return status.replace(/_/g, ' ');
+    }
+    if (event.type === 'tool_start') {
+      return `Running ${this.asText(payload['tool']).replace(/_/g, ' ')}`;
+    }
+    if (event.type === 'tool_result') {
+      return `${this.asText(payload['tool']).replace(/_/g, ' ')} ready`;
+    }
+    if (event.type === 'error') {
+      return this.asText(payload['message']) || 'An error occurred';
     }
 
-    toggleChat() {
-        this.isOpen.update(v => !v);
-    }
+    return event.type.replace(/_/g, ' ');
+  }
 
-    resetChat() {
-        this.chatService.resetSession();
-    }
+  trackAlert(_index: number, alert: AlertItem): string {
+    return alert.alertId;
+  }
 
-    sendMessage(content: string) {
-        if (!content.trim()) return;
-        this.chatService.sendMessage(content);
+  private scrollToBottom(): void {
+    if (!this.messagesContainer?.nativeElement) {
+      return;
     }
-
-    sendPredefinedPrompt(prompt: string) {
-        this.chatService.sendMessage(prompt);
-    }
-
-    private scrollToBottom() {
-        setTimeout(() => {
-            if (this.messagesContainer?.nativeElement) {
-                const el = this.messagesContainer.nativeElement;
-                el.scrollTop = el.scrollHeight;
-            }
-        }, 50);
-    }
+    const container = this.messagesContainer.nativeElement;
+    container.scrollTop = container.scrollHeight;
+  }
 }

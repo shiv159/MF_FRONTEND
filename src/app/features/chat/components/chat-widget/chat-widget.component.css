@@ -1,34 +1,23 @@
-/* Animations or custom scrollbars can go here */
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #e2e8f0;
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1; 
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #a8a8a8; 
+  background: #94a3b8;
+  border-radius: 999px;
 }
 
-/* Dark mode scrollbar */
-:host-context(.dark) ::-webkit-scrollbar-track {
-  background: #374151;
-}
-:host-context(.dark) ::-webkit-scrollbar-thumb {
-  background: #6b7280;
-}
-
-/* Markdown styling for chat messages */
 .chat-markdown {
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 .chat-markdown p {
-  margin: 0.25rem 0;
+  margin: 0.35rem 0;
 }
 
 .chat-markdown ul,
@@ -37,79 +26,51 @@
   padding-left: 1.25rem;
 }
 
-.chat-markdown li {
-  margin: 0.25rem 0;
-}
-
 .chat-markdown code {
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
+  background: #e2e8f0;
+  padding: 0.1rem 0.35rem;
   font-size: 0.8rem;
 }
 
-:host-context(.dark) .chat-markdown code {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
 .chat-markdown pre {
-  background-color: #1f2937;
-  color: #f9fafb;
-  padding: 0.75rem;
-  border-radius: 0.5rem;
   overflow-x: auto;
-  margin: 0.5rem 0;
+  border-radius: 1rem;
+  background: #0f172a;
+  color: #f8fafc;
+  padding: 0.9rem;
 }
 
 .chat-markdown pre code {
-  background: none;
+  background: transparent;
   padding: 0;
 }
 
-.chat-markdown strong {
-  font-weight: 600;
+.loading-dot {
+  height: 0.5rem;
+  width: 0.5rem;
+  border-radius: 999px;
+  background: #0f172a;
+  animation: loading-bounce 0.8s infinite ease-in-out;
 }
 
-.chat-markdown h1,
-.chat-markdown h2,
-.chat-markdown h3 {
-  margin: 0.75rem 0 0.25rem 0;
-  font-weight: 600;
+.loading-dot:nth-child(2) {
+  animation-delay: 0.12s;
 }
 
-.chat-markdown h1 {
-  font-size: 1.1rem;
+.loading-dot:nth-child(3) {
+  animation-delay: 0.24s;
 }
 
-.chat-markdown h2 {
-  font-size: 1rem;
-}
-
-.chat-markdown h3 {
-  font-size: 0.9rem;
-}
-
-@media (max-width: 639px) {
-  .chat-markdown {
-    font-size: 0.8125rem;
-  }
-
-  .chat-markdown pre {
-    padding: 0.625rem;
-    font-size: 0.75rem;
-  }
-}
-
-/* Bounce animation for loading dots */
-@keyframes bounce {
-  0%, 100% {
+@keyframes loading-bounce {
+  0%,
+  100% {
     transform: translateY(0);
+    opacity: 0.4;
   }
+
   50% {
     transform: translateY(-4px);
+    opacity: 1;
   }
-}
-
-.animate-bounce {
-  animation: bounce 0.6s ease-in-out infinite;
 }

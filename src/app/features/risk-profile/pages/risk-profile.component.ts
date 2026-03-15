@@ -51,16 +51,16 @@ export class RiskProfileComponent implements OnDestroy {
   readonly stepLabels = ['Demographics', 'Financials', 'Goals', 'Behavioral', 'Preferences'];
 
   constructor() {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('RISK_PROFILE_RESULT', false);
   }
 
   goBack(): void {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('RISK_PROFILE_RESULT', false);
     this.router.navigate(['/landing']);
   }
 
   ngOnDestroy(): void {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('RISK_PROFILE_RESULT', false);
   }
 
   nextStep(): void {
@@ -93,7 +93,7 @@ export class RiskProfileComponent implements OnDestroy {
       .subscribe({
         next: (response) => {
           this.resultData = response;
-          this.chatService.isVisible.set(true);
+          this.chatService.setContext('RISK_PROFILE_RESULT', true);
         },
         error: (err) => {
           console.error('Submission failed', err);

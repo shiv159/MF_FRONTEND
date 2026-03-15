@@ -36,7 +36,8 @@
                 <div class="form-group">
                     <label for="fullName" class="form-label">Full name</label>
                     <input id="fullName" type="text" formControlName="fullName" placeholder="John Doe"
-                        class="form-input" [class.input-error]="isFieldInvalid('fullName')" autocomplete="name">
+                        class="form-input" [class.input-error]="isFieldInvalid('fullName')" autocomplete="name" required
+                        [attr.aria-invalid]="isFieldInvalid('fullName') ? 'true' : null">
                     @if (isFieldInvalid('fullName')) {
                     <p class="error-text">Full name is required</p>
                     }
@@ -46,9 +47,14 @@
                 <div class="form-group">
                     <label for="email" class="form-label">Email address</label>
                     <input id="email" type="email" formControlName="email" placeholder="you@example.com"
-                        class="form-input" [class.input-error]="isFieldInvalid('email')" autocomplete="email">
+                        class="form-input" [class.input-error]="isFieldInvalid('email')" autocomplete="email" required
+                        [attr.aria-invalid]="isFieldInvalid('email') ? 'true' : null">
                     @if (isFieldInvalid('email')) {
-                    <p class="error-text">Please enter a valid email address</p>
+                      @if (registerForm.get('email')?.hasError('required')) {
+                      <p class="error-text">Email is required</p>
+                      } @else if (registerForm.get('email')?.hasError('email')) {
+                      <p class="error-text">Please enter a valid email address</p>
+                      }
                     }
                 </div>
 
@@ -66,8 +72,9 @@
                     <label for="password" class="form-label">Password</label>
                     <div class="input-wrapper">
                         <input id="password" [type]="showPassword() ? 'text' : 'password'" formControlName="password"
-                            placeholder="At least 8 characters" class="form-input pr-10"
-                            [class.input-error]="isFieldInvalid('password')" autocomplete="new-password">
+                            placeholder="At least 8 characters" class="form-input pr-10" required
+                            [class.input-error]="isFieldInvalid('password')" autocomplete="new-password"
+                            [attr.aria-invalid]="isFieldInvalid('password') ? 'true' : null">
                         <button type="button" (click)="togglePassword()" class="password-toggle"
                             aria-label="Toggle password visibility">
                             @if (!showPassword()) {
@@ -88,7 +95,11 @@
                         </button>
                     </div>
                     @if (isFieldInvalid('password')) {
-                    <p class="error-text">Password must be at least 8 characters</p>
+                      @if (registerForm.get('password')?.hasError('required')) {
+                      <p class="error-text">Password is required</p>
+                      } @else if (registerForm.get('password')?.hasError('minlength')) {
+                      <p class="error-text">Password must be at least 8 characters</p>
+                      }
                     }
                 </div>
 

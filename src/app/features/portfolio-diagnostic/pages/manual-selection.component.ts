@@ -46,16 +46,16 @@ export class ManualSelectionComponent {
   readonly failedFunds = signal<ManualSelectionResponse['results']>([]);
 
   constructor() {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('MANUAL_SELECTION_RESULT', false);
   }
 
   goBack(): void {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('MANUAL_SELECTION_RESULT', false);
     this.router.navigate(['/landing']);
   }
 
   ngOnDestroy(): void {
-    this.chatService.isVisible.set(false);
+    this.chatService.setContext('MANUAL_SELECTION_RESULT', false);
   }
 
   addRow(): void {
@@ -98,7 +98,7 @@ export class ManualSelectionComponent {
         const failed = response.results?.filter(r => r.status === 'ENRICHMENT_FAILED') ?? [];
         this.failedFunds.set(failed);
         this.isLoading.set(false);
-        this.chatService.isVisible.set(true);
+        this.chatService.setContext('MANUAL_SELECTION_RESULT', true);
 
         // Trigger diagnostic analysis after portfolio is saved
         this.isAnalyzing.set(true);

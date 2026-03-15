@@ -32,23 +32,35 @@ import { RiskProfileService } from '../../services/risk-profile.service';
             </div>
           </div>
         </div>
+        <p *ngIf="showErrors && !data.marketDropReaction" class="text-sm text-red-500 mt-2">Please select an option</p>
       </div>
 
       <!-- Experience -->
       <div>
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Investment Experience</label>
-        <select [(ngModel)]="data.investmentPeriodExperience" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-white">
+        <select
+          [(ngModel)]="data.investmentPeriodExperience"
+          [ngClass]="showErrors && !data.investmentPeriodExperience ? 'border-red-500 focus:border-red-500 focus:ring-red-500' : ''"
+          class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 bg-white dark:bg-gray-800 dark:text-white">
           <option value="" disabled>Select experience</option>
           <option value="NONE">No Experience</option>
           <option value="<3_YEARS">Less than 3 Years</option>
           <option value="3-5_YEARS">3 - 5 Years</option>
           <option value=">5_YEARS">More than 5 Years</option>
         </select>
+        <p *ngIf="showErrors && !data.investmentPeriodExperience" class="text-sm text-red-500 mt-2">Investment experience is required</p>
       </div>
 
       <div class="pt-4 sm:pt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
         <button (click)="back.emit()" class="flex-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 py-3 sm:py-4 rounded-xl font-bold hover:bg-gray-200 dark:hover:bg-gray-600 transition-all">Back</button>
-        <button [disabled]="!isValid()" (click)="onNext()" class="flex-1 bg-blue-600 text-white py-3 sm:py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 disabled:opacity-50 transition-all">Next</button>
+        <button
+          (click)="onNext()"
+          [attr.aria-disabled]="!isValid()"
+          [class.opacity-50]="!isValid()"
+          [class.cursor-not-allowed]="!isValid()"
+          class="flex-1 bg-blue-600 text-white py-3 sm:py-4 rounded-xl font-bold shadow-lg hover:bg-blue-700 disabled:opacity-50 transition-all">
+          Next
+        </button>
       </div>
     </div>
   `,
@@ -61,6 +73,7 @@ export class BehavioralStepComponent {
   data = { marketDropReaction: '', investmentPeriodExperience: '' };
   @Output() next = new EventEmitter<void>();
   @Output() back = new EventEmitter<void>();
+  showErrors = false;
 
   options = [
     { value: 'BUY_MORE', label: 'Buy More', desc: 'Cheap opportunity! I stick to the plan.' },
@@ -79,6 +92,11 @@ export class BehavioralStepComponent {
   }
 
   onNext() {
+    if (!this.isValid()) {
+      this.showErrors = true;
+      return;
+    }
+    this.showErrors = false;
     this.service.updateSection('behavioral', this.data);
     this.next.emit();
   }

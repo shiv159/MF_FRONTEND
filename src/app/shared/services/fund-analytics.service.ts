@@ -3,9 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, shareReplay } from 'rxjs';
 import {
     RollingReturns,
-    RiskInsights,
-    PortfolioCovariance,
-    CovarianceRequest
+    RiskInsights
 } from '../../core/models/api.interface';
 import { environment } from '../../../environments/environment';
 
@@ -54,41 +52,5 @@ export class FundAnalyticsService {
             this.insightsCache.set(fundId, request$);
         }
         return this.insightsCache.get(fundId)!;
-    }
-
-    /**
-     * POST /api/v1/portfolio/covariance
-     * 
-     * Calculates portfolio covariance matrix and diversification metrics.
-     * This is NOT cached as portfolio composition may change.
-     * 
-     * @param request - List of fund IDs with their weights
-     * @returns Observable<PortfolioCovariance>
-     */
-    getPortfolioCovariance(request: CovarianceRequest): Observable<PortfolioCovariance> {
-        return this.http.post<PortfolioCovariance>(
-            `${this.baseUrl}/portfolio/covariance`,
-            request
-        );
-    }
-
-    /**
-     * Helper to build covariance request from holdings array
-     */
-    buildCovarianceRequest(holdings: Array<{ fundId: string; weightPct: number }>): CovarianceRequest {
-        return {
-            funds: holdings.map(h => ({
-                fundId: h.fundId,
-                weight: h.weightPct / 100  // Convert percentage to decimal
-            }))
-        };
-    }
-
-    /**
-     * Clear all cached data (call when user logs out or portfolio changes)
-     */
-    clearCache(): void {
-        this.returnsCache.clear();
-        this.insightsCache.clear();
     }
 }

@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://mutual-fund-api-xmpa4gy2rq-uc.a.run.app'
+  apiUrl: 'https://mutual-fund-api-783002054799.us-central1.run.app'
 };

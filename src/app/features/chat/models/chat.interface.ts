@@ -1,6 +1,6 @@
 export type ChatRole = 'user' | 'assistant';
 
-export type ScreenContext = 'LANDING' | 'RISK_PROFILE_RESULT' | 'MANUAL_SELECTION_RESULT';
+export type ScreenContext = 'LANDING' | 'RISK_PROFILE_RESULT' | 'MANUAL_SELECTION_RESULT' | 'GOAL_PLANNER' | 'FUND_STORY' | 'PEER_COMPARE';
 
 export type ChatIntent =
   | 'REBALANCE_DRAFT'
@@ -11,7 +11,12 @@ export type ChatIntent =
   | 'RISK_PROFILE_EXPLAINER'
   | 'DIAGNOSTIC_EXPLAINER'
   | 'PORTFOLIO_SUMMARY'
-  | 'GENERAL_QA';
+  | 'GENERAL_QA'
+  | 'WHAT_IF'
+  | 'GOAL_PLANNING'
+  | 'FUND_STORY'
+  | 'STATEMENT_ANALYZE'
+  | 'PEER_COMPARE';
 
 export type ChatStreamEventType =
   | 'status'
@@ -96,6 +101,96 @@ export interface ChatStreamEvent {
 
 export interface StarterPromptsResponse {
   prompts: string[];
+}
+
+export interface WhatIfResult {
+  before: Record<string, unknown>;
+  after: Record<string, unknown>;
+  diff: Record<string, unknown>;
+}
+
+export interface GoalPlan {
+  goalSummary: Record<string, unknown>;
+  sipPlan: Record<string, unknown>;
+  allocationAdvice: Record<string, unknown>;
+  recommendedFunds: Array<Record<string, unknown>>;
+}
+
+export interface FundStory {
+  identity: Record<string, unknown>;
+  position?: Record<string, unknown>;
+  performance?: Record<string, unknown>;
+  riskMetrics?: Record<string, unknown>;
+  sectorAllocation?: Record<string, unknown>;
+  topStockHoldings?: Record<string, unknown>;
+  categoryPeers?: Array<Record<string, unknown>>;
+  categoryAvgExpenseRatio?: number;
+}
+
+export interface PeerComparison {
+  you: Record<string, unknown>;
+  peers: Record<string, unknown>;
+  highlights: Record<string, unknown>;
+  riskProfile: string;
+  portfolioSizeBracket: string;
+}
+
+export interface PortfolioBriefing {
+  briefingId: string;
+  briefingType: string;
+  title: string;
+  content: string;
+  metricsJson: Record<string, unknown>;
+  alertsSummary: Array<Record<string, unknown>>;
+  isRead: boolean;
+  createdAt: string;
+}
+
+export interface UserGoal {
+  goalId: string;
+  goalType: string;
+  goalName: string;
+  targetAmount: number;
+  targetDate: string;
+  currentAmount: number;
+  monthlySip: number;
+  expectedReturnPct: number;
+  status: string;
+  createdAt: string;
+}
+
+export interface StatementAnalysisResult {
+  extractedCount: number;
+  matchedToPortfolio: Array<Record<string, unknown>>;
+  newFunds: Array<Record<string, unknown>>;
+  unmatched: Array<Record<string, unknown>>;
+  matchedCount: number;
+  newFundCount: number;
+  unmatchedCount: number;
+  error?: string;
+}
+
+export interface ChatConversation {
+  conversationId: string;
+  title: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface RebalanceExecutionPlan {
+  steps: Array<{
+    step: number;
+    action: string;
+    fundName: string;
+    amount: number;
+    units?: number;
+    instruction: string;
+    taxImpact?: Record<string, unknown>;
+  }>;
+  totalRedemption: number;
+  totalInvestment: number;
+  taxSummary: Record<string, unknown>;
+  disclaimer: string;
 }
 
 export interface AlertItem {

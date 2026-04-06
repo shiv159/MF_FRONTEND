@@ -12,7 +12,8 @@ import {
   ChatStatusEvent,
   ChatStreamEvent,
   ScreenContext,
-  StarterPromptsResponse
+  StarterPromptsResponse,
+  StatementAnalysisResult
 } from '../models/chat.interface';
 import { TokenStorageService } from '../../../core/auth/services/token-storage.service';
 
@@ -142,6 +143,14 @@ export class ChatService {
     } catch {
       this.alerts.set([]);
     }
+  }
+
+  async uploadStatement(file: File): Promise<StatementAnalysisResult> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return firstValueFrom(
+      this.http.post<StatementAnalysisResult>(`${this.baseUrl}/statement/analyze`, formData)
+    );
   }
 
   async acknowledgeAlert(alertId: string): Promise<void> {

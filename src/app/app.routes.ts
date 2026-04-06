@@ -28,5 +28,20 @@ export const routes: Routes = [
         loadComponent: () => import('./features/portfolio-diagnostic/pages/manual-selection.component').then(m => m.ManualSelectionComponent),
         canActivate: [authGuard]
     },
+    {
+        path: 'goals',
+        loadComponent: () => import('./features/goals/pages/goal-planner.component').then(m => m.GoalPlannerComponent),
+        canActivate: [authGuard]
+    },
+    {
+        path: 'briefings',
+        loadComponent: () => import('./features/briefing/pages/briefing.component').then(m => m.BriefingComponent),
+        canActivate: [authGuard]
+    },
+    {
+        path: 'peers',
+        loadComponent: () => import('./features/peers/pages/peer-comparison.component').then(m => m.PeerComparisonComponent),
+        canActivate: [authGuard]
+    },
     { path: '**', redirectTo: '' }
 ];

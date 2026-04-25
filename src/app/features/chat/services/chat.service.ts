@@ -12,6 +12,7 @@ import {
   ChatStatusEvent,
   ChatStreamEvent,
   ScreenContext,
+  StarterPromptGroup,
   StarterPromptsResponse
 } from '../models/chat.interface';
 import { TokenStorageService } from '../../../core/auth/services/token-storage.service';
@@ -35,8 +36,10 @@ export class ChatService {
   readonly isVisible = signal<boolean>(false);
   readonly screenContext = signal<ScreenContext>('LANDING');
   readonly starterPrompts = signal<string[]>([]);
+  readonly starterPromptGroups = signal<StarterPromptGroup[]>([]);
   readonly statusEvents = signal<ChatStatusEvent[]>([]);
   readonly alerts = signal<AlertItem[]>([]);
+  readonly pendingLaunchPrompt = signal<{ id: number; prompt: string } | null>(null);
   readonly unreadAlertCount = computed(() =>
     this.alerts().filter((alert) => alert.status === 'OPEN').length
   );
@@ -65,6 +68,18 @@ export class ChatService {
     this.messages.set([]);
     this.statusEvents.set([]);
     void this.loadStarterPrompts();
+  }
+
+  launchPrompt(prompt: string, screenContext: ScreenContext = this.screenContext()): void {
+    this.setContext(screenContext, true);
+    this.pendingLaunchPrompt.set({ id: Date.now(), prompt });
+  }
+
+  consumeLaunchPrompt(id: number): void {
+    const current = this.pendingLaunchPrompt();
+    if (current?.id === id) {
+      this.pendingLaunchPrompt.set(null);
+    }
   }
 
   sendAction(action: ChatAction): void {
@@ -116,6 +131,7 @@ export class ChatService {
   async loadStarterPrompts(): Promise<void> {
     if (!this.tokenStorage.hasValidSession()) {
       this.starterPrompts.set([]);
+      this.starterPromptGroups.set([]);
       return;
     }
 
@@ -125,8 +141,10 @@ export class ChatService {
         this.http.get<StarterPromptsResponse>(`${this.baseUrl}/starter-prompts`, { params })
       );
       this.starterPrompts.set(response.prompts ?? []);
+      this.starterPromptGroups.set(response.groups ?? []);
     } catch {
       this.starterPrompts.set([]);
+      this.starterPromptGroups.set([]);
     }
   }
 
@@ -280,7 +298,12 @@ export class ChatService {
           sources: this.readArray<ChatSource>(event.payload, 'sources'),
           warnings: this.readArray<string>(event.payload, 'warnings'),
           actions: this.readArray<ChatAction>(event.payload, 'actions'),
-          requiresConfirmation: this.readBoolean(event.payload, 'requiresConfirmation')
+          requiresConfirmation: this.readBoolean(event.payload, 'requiresConfirmation'),
+          workflowRoute: this.readString(event.payload, 'workflowRoute'),
+          confidence: this.readNumber(event.payload, 'confidence'),
+          toolCalls: this.readArray<string>(event.payload, 'toolCalls'),
+          modelProfileUsed: this.readString(event.payload, 'modelProfileUsed'),
+          fallbackUsed: this.readBoolean(event.payload, 'fallbackUsed')
         });
         break;
       case 'error':
@@ -328,6 +351,11 @@ export class ChatService {
       warnings?: string[];
       actions?: ChatAction[];
       requiresConfirmation?: boolean;
+      workflowRoute?: string;
+      confidence?: number;
+      toolCalls?: string[];
+      modelProfileUsed?: string;
+      fallbackUsed?: boolean;
     }
   ): void {
     this.messages.update((messages) =>
@@ -341,7 +369,12 @@ export class ChatService {
           sources: completion.sources ?? [],
           warnings: completion.warnings ?? [],
           actions: completion.actions ?? [],
-          requiresConfirmation: completion.requiresConfirmation ?? false
+          requiresConfirmation: completion.requiresConfirmation ?? false,
+          workflowRoute: completion.workflowRoute,
+          confidence: completion.confidence,
+          toolCalls: completion.toolCalls ?? [],
+          modelProfileUsed: completion.modelProfileUsed,
+          fallbackUsed: completion.fallbackUsed ?? false
         };
 
         return {
@@ -438,6 +471,14 @@ export class ChatService {
       return false;
     }
     return Boolean((source as Record<string, unknown>)[key]);
+  }
+
+  private readNumber(source: unknown, key: string): number | undefined {
+    if (!source || typeof source !== 'object') {
+      return undefined;
+    }
+    const value = (source as Record<string, unknown>)[key];
+    return typeof value === 'number' ? value : undefined;
   }
 
   private readArray<T>(source: unknown, key: string): T[] {

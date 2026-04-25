@@ -18,6 +18,13 @@ export class LandingComponent {
   private readonly authService = inject(AuthService);
   private readonly chatService = inject(ChatService);
   protected readonly store = inject(AuthStore);
+  protected readonly taskLaunchers = [
+    { label: 'Explain', prompt: 'Analyze my portfolio and tell me the top issue' },
+    { label: 'Diagnose', prompt: 'My portfolio looks too aggressive' },
+    { label: 'Compare', prompt: 'Compare these two funds for my profile' },
+    { label: 'Simulate', prompt: 'What if I move 10% to debt?' },
+    { label: 'Data Quality', prompt: 'What data in my portfolio is stale or incomplete?' }
+  ];
 
   constructor() {
     this.chatService.setContext('LANDING', true);
@@ -25,6 +32,10 @@ export class LandingComponent {
 
   protected navigateTo(path: string): void {
     this.router.navigate([path]);
+  }
+
+  protected launchTask(prompt: string): void {
+    this.chatService.launchPrompt(prompt, 'LANDING');
   }
 
   protected logout(): void {

@@ -39,6 +39,17 @@ export class ChatWidgetComponent {
       this.chatService.messages();
       queueMicrotask(() => this.scrollToBottom());
     });
+
+    effect(() => {
+      const launch = this.chatService.pendingLaunchPrompt();
+      if (!launch) {
+        return;
+      }
+
+      this.isOpen.set(true);
+      this.chatService.consumeLaunchPrompt(launch.id);
+      queueMicrotask(() => this.sendPrompt(launch.prompt));
+    });
   }
 
   toggleChat(): void {
@@ -72,6 +83,10 @@ export class ChatWidgetComponent {
 
   sendPrompt(prompt: string): void {
     this.chatService.sendMessage(prompt);
+  }
+
+  promptGroups() {
+    return this.chatService.starterPromptGroups();
   }
 
   sendAction(action: ChatAction): void {
@@ -141,6 +156,10 @@ export class ChatWidgetComponent {
 
   trackAlert(_index: number, alert: AlertItem): string {
     return alert.alertId;
+  }
+
+  trackStatusEvent(index: number, event: ChatStatusEvent): string {
+    return `${event.type}-${event.generatedAt.getTime()}-${index}`;
   }
 
   private scrollToBottom(): void {

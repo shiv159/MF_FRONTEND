@@ -98,6 +98,54 @@
     gap: 0.5rem;
 }
 
+.task-launchers {
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 0.75rem;
+}
+
+.task-launcher {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.55);
+    text-align: left;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.dark .task-launcher {
+    background: rgba(15, 23, 42, 0.45);
+}
+
+.task-launcher:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.dark .task-launcher:hover {
+    background: rgba(15, 23, 42, 0.75);
+}
+
+.task-launcher-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+}
+
+.task-launcher-prompt {
+    color: var(--color-text-primary);
+    font-size: 0.95rem;
+    line-height: 1.45;
+}
+
 .hero-pill {
     display: inline-flex;
     align-items: center;

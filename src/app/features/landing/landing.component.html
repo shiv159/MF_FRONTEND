@@ -37,6 +37,14 @@
                 <span class="hero-pill">Analyze</span>
                 <span class="hero-pill">Improve</span>
             </div>
+            <div class="task-launchers">
+                @for (task of taskLaunchers; track task.label) {
+                    <button type="button" class="task-launcher" (click)="launchTask(task.prompt)">
+                        <span class="task-launcher-label">{{ task.label }}</span>
+                        <span class="task-launcher-prompt">{{ task.prompt }}</span>
+                    </button>
+                }
+            </div>
         </section>
 
         <div class="cards-grid">

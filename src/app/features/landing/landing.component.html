@@ -30,20 +30,12 @@
             <h1 class="hero-title">Your Mutual Funds, Decoded.</h1>
             <p class="hero-subtitle">
                 Plan new investments, analyze your current funds, improve allocation with clear next steps, and use
-                the AI chat assistant for portfolio Q&A.
+                guided portfolio workflows to make better investment decisions.
             </p>
             <div class="hero-pill-row">
                 <span class="hero-pill">Plan</span>
                 <span class="hero-pill">Analyze</span>
                 <span class="hero-pill">Improve</span>
-            </div>
-            <div class="task-launchers">
-                @for (task of taskLaunchers; track task.label) {
-                    <button type="button" class="task-launcher" (click)="launchTask(task.prompt)">
-                        <span class="task-launcher-label">{{ task.label }}</span>
-                        <span class="task-launcher-prompt">{{ task.prompt }}</span>
-                    </button>
-                }
             </div>
         </section>
 

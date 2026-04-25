@@ -29,6 +29,11 @@ type FundSearchResult = {
   amc?: string;
 };
 
+type SelectedFund = {
+  fundId: string;
+  fundName: string;
+};
+
 @Component({
   selector: 'app-fund-search',
   imports: [CommonModule, FormsModule],
@@ -43,7 +48,7 @@ export class FundSearchComponent {
 
   readonly selectedFund = input<string>('');
   readonly disabled = input(false);
-  readonly fundSelected = output<{ schemeCode: string | number; schemeName: string }>();
+  readonly fundSelected = output<SelectedFund>();
   readonly cleared = output<void>();
   readonly noResultsTyped = output<string>(); // Emit when user types but no catalog match
 
@@ -108,21 +113,21 @@ export class FundSearchComponent {
   }
 
   selectFund(fund: FundSearchResult): void {
-    const idRaw = fund.schemeCode || fund.scheme_code || fund.id || fund.isin || fund.fundId;
-    const nameRaw = fund.name || fund.schemeName || fund.scheme_name || fund.fundName;
+    const idRaw = fund.isin ?? fund.fundId ?? fund.schemeCode ?? fund.scheme_code ?? fund.id;
+    const nameRaw = fund.fundName ?? fund.name ?? fund.schemeName ?? fund.scheme_name;
 
-    const schemeCode = idRaw == null ? '' : String(idRaw);
-    const schemeName = nameRaw == null ? '' : String(nameRaw);
+    const fundId = idRaw == null ? '' : String(idRaw);
+    const fundName = nameRaw == null ? '' : String(nameRaw);
 
     // Ensure we only emit valid selections.
-    if (!schemeName || !schemeCode.trim()) return;
+    if (!fundName || !fundId.trim()) return;
 
     // Set immediately so the user sees the selection right away,
     // then the parent `selectedFund` input will keep it in sync.
-    this.searchTerm.set(schemeName);
+    this.searchTerm.set(fundName);
     this.showResults = false;
     this.hasSelectedFromDropdown = true; // Mark that user selected from dropdown
-    this.fundSelected.emit({ schemeCode, schemeName });
+    this.fundSelected.emit({ fundId, fundName });
     
     // Clear the typing timer since they selected something
     if (this.typingTimer) clearTimeout(this.typingTimer);

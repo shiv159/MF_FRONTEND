@@ -11,8 +11,8 @@ export interface ManualSelectionRequest {
 }
 
 export interface ManualSelectionItem {
-    fundId?: string;      // UUID (XOR with fundName)
-    fundName?: string;    // XOR with fundId
+    fundId?: string;      // Backend identifier: UUID or ISIN
+    fundName?: string;    // Optional companion display name
     weightPct: number;    // 1-100
 }
 

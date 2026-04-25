@@ -19,12 +19,12 @@ export class SelectionRowComponent {
 
   // Single source of truth for UI + payload is `item().fundName`.
 
-  onFundSelected(fund: { schemeCode: string | number; schemeName: string }): void {
+  onFundSelected(fund: { fundId: string; fundName: string }): void {
     const current = this.item();
     const updated: ManualSelectionItem = {
       ...current,
-      fundId: String(fund.schemeCode),
-      fundName: fund.schemeName
+      fundId: fund.fundId,
+      fundName: fund.fundName
     };
     this.update.emit({ index: this.index(), item: updated });
   }

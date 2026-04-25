@@ -59,6 +59,9 @@ export class ChatService {
     if (!visible) {
       this.abortActiveStream();
       this.isLoading.set(false);
+      this.pendingLaunchPrompt.set(null);
+    } else if (this.messages().length === 0) {
+      this.isLoading.set(false);
     }
 
     if (visible && this.tokenStorage.hasValidSession()) {
@@ -76,6 +79,7 @@ export class ChatService {
     this.setConversationId(null);
     this.messages.set([]);
     this.statusEvents.set([]);
+    this.pendingLaunchPrompt.set(null);
     this.isLoading.set(false);
     void this.loadStarterPrompts();
   }

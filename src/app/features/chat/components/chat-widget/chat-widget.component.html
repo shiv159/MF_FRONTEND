@@ -86,18 +86,41 @@
         <div #messagesContainer class="flex-1 overflow-y-auto bg-slate-50 px-4 py-4">
           @if (showPrompts()) {
             <div class="mb-4 rounded-3xl border border-dashed border-slate-200 bg-white p-4">
-              <p class="mb-3 text-sm font-semibold text-slate-900">Start with a grounded question</p>
-              <div class="grid gap-2">
-                @for (prompt of chatService.starterPrompts(); track prompt) {
-                  <button
-                    type="button"
-                    (click)="sendPrompt(prompt)"
-                    class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm text-slate-700 transition hover:border-slate-300 hover:bg-white"
-                  >
-                    {{ prompt }}
-                  </button>
-                }
-              </div>
+              <p class="mb-3 text-sm font-semibold text-slate-900">Start with a task</p>
+              @if (promptGroups().length > 0) {
+                <div class="grid gap-3">
+                  @for (group of promptGroups(); track group.key) {
+                    <div>
+                      <p class="mb-2 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
+                        {{ group.title }}
+                      </p>
+                      <div class="grid gap-2">
+                        @for (prompt of group.prompts; track prompt) {
+                          <button
+                            type="button"
+                            (click)="sendPrompt(prompt)"
+                            class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm text-slate-700 transition hover:border-slate-300 hover:bg-white"
+                          >
+                            {{ prompt }}
+                          </button>
+                        }
+                      </div>
+                    </div>
+                  }
+                </div>
+              } @else {
+                <div class="grid gap-2">
+                  @for (prompt of chatService.starterPrompts(); track prompt) {
+                    <button
+                      type="button"
+                      (click)="sendPrompt(prompt)"
+                      class="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-2 text-left text-sm text-slate-700 transition hover:border-slate-300 hover:bg-white"
+                    >
+                      {{ prompt }}
+                    </button>
+                  }
+                </div>
+              }
             </div>
           }
 
@@ -115,13 +138,25 @@
                   [class.text-slate-900]="message.role === 'assistant'"
                   class="rounded-3xl border border-slate-200 px-4 py-3 shadow-sm"
                 >
+                  @if (message.role === 'assistant' && message.metadata?.workflowRoute) {
+                    <div class="mb-3 flex flex-wrap items-center gap-2 text-[11px] text-slate-500">
+                      <span class="rounded-full bg-slate-100 px-2.5 py-1 font-semibold text-slate-600">
+                        {{ message.metadata?.workflowRoute }}
+                      </span>
+                      @if (message.metadata?.confidence !== undefined) {
+                        <span>
+                          Confidence {{ (message.metadata?.confidence ?? 0) * 100 | number:'1.0-0' }}%
+                        </span>
+                      }
+                    </div>
+                  }
                   @if (message.role === 'assistant' && (message.statusEvents?.length ?? 0) > 0) {
                     <div class="mb-3 rounded-2xl bg-slate-50 px-3 py-2">
                       <div class="mb-1 text-[11px] font-semibold uppercase tracking-wide text-slate-500">
                         Progress
                       </div>
                       <div class="flex flex-col gap-1">
-                        @for (event of message.statusEvents ?? []; track event.generatedAt.getTime()) {
+                        @for (event of message.statusEvents ?? []; track trackStatusEvent($index, event)) {
                           <div class="text-xs text-slate-600">{{ statusLabel(event) }}</div>
                         }
                       </div>

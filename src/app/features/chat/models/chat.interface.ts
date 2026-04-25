@@ -4,6 +4,7 @@ export type ScreenContext = 'LANDING' | 'RISK_PROFILE_RESULT' | 'MANUAL_SELECTIO
 
 export type ChatIntent =
   | 'REBALANCE_DRAFT'
+  | 'SCENARIO_ANALYSIS'
   | 'DATA_QUALITY'
   | 'FUND_COMPARE'
   | 'FUND_RISK'
@@ -51,6 +52,10 @@ export interface ChatMetadata {
   toolTrace?: unknown;
   fallbackUsed?: boolean;
   requiresConfirmation?: boolean;
+  workflowRoute?: string;
+  confidence?: number;
+  toolCalls?: string[];
+  modelProfileUsed?: string;
 }
 
 export interface ChatStatusEvent {
@@ -95,6 +100,13 @@ export interface ChatStreamEvent {
 }
 
 export interface StarterPromptsResponse {
+  prompts: string[];
+  groups?: StarterPromptGroup[];
+}
+
+export interface StarterPromptGroup {
+  key: string;
+  title: string;
   prompts: string[];
 }
 

@@ -23,12 +23,15 @@ import { TokenStorageService } from '../../../core/auth/services/token-storage.s
 export class ChatService {
   private readonly conversationIdKey = 'chat_conversation_id';
   private readonly alertsPollIntervalMs = 5 * 60 * 1000;
+  private readonly firstEventTimeoutMs = 15 * 1000;
+  private readonly overallStreamTimeoutMs = 90 * 1000;
   private readonly baseUrl = `${environment.apiUrl}/api/chat`;
   private readonly alertsUrl = `${environment.apiUrl}/api/alerts`;
   private readonly http = inject(HttpClient);
   private readonly tokenStorage = inject(TokenStorageService);
 
   private alertsIntervalId: number | null = null;
+  private activeStreamController: AbortController | null = null;
   private readonly conversationId = signal<string | null>(null);
 
   readonly messages = signal<ChatMessage[]>([]);
@@ -53,6 +56,11 @@ export class ChatService {
     this.screenContext.set(screenContext);
     this.isVisible.set(visible);
 
+    if (!visible) {
+      this.abortActiveStream();
+      this.isLoading.set(false);
+    }
+
     if (visible && this.tokenStorage.hasValidSession()) {
       void this.loadStarterPrompts();
       void this.loadAlerts();
@@ -64,9 +72,11 @@ export class ChatService {
   }
 
   resetSession(): void {
+    this.abortActiveStream();
     this.setConversationId(null);
     this.messages.set([]);
     this.statusEvents.set([]);
+    this.isLoading.set(false);
     void this.loadStarterPrompts();
   }
 
@@ -186,69 +196,96 @@ export class ChatService {
     payload: ChatMessageRequest,
     assistantPlaceholderId: string
   ): Promise<void> {
+    const controller = new AbortController();
+    this.activeStreamController = controller;
+
     try {
-      await this.streamViaFetch(payload, assistantPlaceholderId);
+      await this.streamViaFetch(payload, assistantPlaceholderId, controller);
     } catch (streamError) {
       const message = this.hasStreamingStarted(assistantPlaceholderId)
         ? 'The live stream was interrupted. You can resend the question if needed.'
         : this.extractRuntimeErrorMessage(streamError);
       this.applyAssistantError(assistantPlaceholderId, message);
+    } finally {
+      if (this.activeStreamController === controller) {
+        this.activeStreamController = null;
+      }
     }
   }
 
   private async streamViaFetch(
     payload: ChatMessageRequest,
-    assistantPlaceholderId: string
+    assistantPlaceholderId: string,
+    controller: AbortController
   ): Promise<void> {
     const token = this.tokenStorage.getToken();
     if (!token) {
       throw new Error('Authentication required');
     }
 
-    const response = await fetch(`${this.baseUrl}/stream`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      },
-      body: JSON.stringify(payload)
-    });
+    const overallTimeoutId = window.setTimeout(() => {
+      controller.abort('Chat response timed out');
+    }, this.overallStreamTimeoutMs);
+    let firstEventTimeoutId: number | undefined = window.setTimeout(() => {
+      controller.abort('Chat response did not start in time');
+    }, this.firstEventTimeoutMs);
 
-    if (!response.ok || !response.body) {
-      throw new Error(await this.readErrorText(response));
-    }
+    try {
+      const response = await fetch(`${this.baseUrl}/stream`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify(payload),
+        signal: controller.signal
+      });
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder();
-    let buffer = '';
-    let sawEvent = false;
+      if (!response.ok || !response.body) {
+        throw new Error(await this.readErrorText(response));
+      }
 
-    while (true) {
-      const { done, value } = await reader.read();
-      buffer += decoder.decode(value ?? new Uint8Array(), { stream: !done });
-      buffer = buffer.replace(/\r/g, '');
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buffer = '';
+      let sawEvent = false;
 
-      let boundaryIndex = buffer.indexOf('\n\n');
-      while (boundaryIndex >= 0) {
-        const rawBlock = buffer.slice(0, boundaryIndex).trim();
-        buffer = buffer.slice(boundaryIndex + 2);
-        if (rawBlock) {
-          const event = this.parseSseBlock(rawBlock);
-          if (event) {
-            sawEvent = true;
-            this.handleStreamEvent(event, assistantPlaceholderId);
+      while (true) {
+        const { done, value } = await reader.read();
+        buffer += decoder.decode(value ?? new Uint8Array(), { stream: !done });
+        buffer = buffer.replace(/\r/g, '');
+
+        let boundaryIndex = buffer.indexOf('\n\n');
+        while (boundaryIndex >= 0) {
+          const rawBlock = buffer.slice(0, boundaryIndex).trim();
+          buffer = buffer.slice(boundaryIndex + 2);
+          if (rawBlock) {
+            const event = this.parseSseBlock(rawBlock);
+            if (event) {
+              sawEvent = true;
+              if (firstEventTimeoutId !== undefined) {
+                clearTimeout(firstEventTimeoutId);
+                firstEventTimeoutId = undefined;
+              }
+              this.handleStreamEvent(event, assistantPlaceholderId);
+            }
           }
+          boundaryIndex = buffer.indexOf('\n\n');
         }
-        boundaryIndex = buffer.indexOf('\n\n');
+
+        if (done) {
+          break;
+        }
       }
 
-      if (done) {
-        break;
+      if (!sawEvent) {
+        throw new Error('Empty streaming response');
       }
-    }
-
-    if (!sawEvent) {
-      throw new Error('Empty streaming response');
+    } finally {
+      clearTimeout(overallTimeoutId);
+      if (firstEventTimeoutId !== undefined) {
+        clearTimeout(firstEventTimeoutId);
+      }
     }
   }
 
@@ -426,6 +463,10 @@ export class ChatService {
       return error.error?.message || error.message || 'Unable to process chat request.';
     }
 
+    if (error instanceof DOMException && error.name === 'AbortError') {
+      return 'The chat request took too long. Please try again.';
+    }
+
     return error instanceof Error ? error.message : 'Unable to process chat request.';
   }
 
@@ -440,6 +481,11 @@ export class ChatService {
     } catch {
       return `HTTP ${response.status}`;
     }
+  }
+
+  private abortActiveStream(): void {
+    this.activeStreamController?.abort();
+    this.activeStreamController = null;
   }
 
   private startAlertPolling(): void {

@@ -143,9 +143,9 @@
                       <span class="rounded-full bg-slate-100 px-2.5 py-1 font-semibold text-slate-600">
                         {{ message.metadata?.workflowRoute }}
                       </span>
-                      @if (message.metadata?.confidence !== undefined) {
+                      @if (message.metadata?.routingConfidence !== undefined) {
                         <span>
-                          Confidence {{ (message.metadata?.confidence ?? 0) * 100 | number:'1.0-0' }}%
+                          Route confidence {{ (message.metadata?.routingConfidence ?? 0) * 100 | number:'1.0-0' }}%
                         </span>
                       }
                     </div>

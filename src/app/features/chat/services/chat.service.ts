@@ -22,6 +22,7 @@ import { TokenStorageService } from '../../../core/auth/services/token-storage.s
 })
 export class ChatService {
   private readonly conversationIdKey = 'chat_conversation_id';
+  private readonly correlationIdKey = 'chat_correlation_id';
   private readonly alertsPollIntervalMs = 5 * 60 * 1000;
   private readonly firstEventTimeoutMs = 15 * 1000;
   private readonly overallStreamTimeoutMs = 90 * 1000;
@@ -33,6 +34,7 @@ export class ChatService {
   private alertsIntervalId: number | null = null;
   private activeStreamController: AbortController | null = null;
   private readonly conversationId = signal<string | null>(null);
+  private readonly correlationId = signal<string | null>(null);
 
   readonly messages = signal<ChatMessage[]>([]);
   readonly isLoading = signal<boolean>(false);
@@ -77,6 +79,7 @@ export class ChatService {
   resetSession(): void {
     this.abortActiveStream();
     this.setConversationId(null);
+    this.setCorrelationId(null);
     this.messages.set([]);
     this.statusEvents.set([]);
     this.pendingLaunchPrompt.set(null);
@@ -185,6 +188,7 @@ export class ChatService {
 
   private restoreSession(): void {
     this.setConversationId(sessionStorage.getItem(this.conversationIdKey));
+    this.setCorrelationId(sessionStorage.getItem(this.correlationIdKey));
   }
 
   private setConversationId(conversationId: string | null): void {
@@ -193,6 +197,15 @@ export class ChatService {
       sessionStorage.setItem(this.conversationIdKey, conversationId);
     } else {
       sessionStorage.removeItem(this.conversationIdKey);
+    }
+  }
+
+  private setCorrelationId(correlationId: string | null): void {
+    this.correlationId.set(correlationId);
+    if (correlationId) {
+      sessionStorage.setItem(this.correlationIdKey, correlationId);
+    } else {
+      sessionStorage.removeItem(this.correlationIdKey);
     }
   }
 
@@ -239,11 +252,17 @@ export class ChatService {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
+          'X-Correlation-ID': this.correlationId() ?? crypto.randomUUID()
         },
         body: JSON.stringify(payload),
         signal: controller.signal
       });
+
+      const responseCorrelationId = response.headers.get('X-Correlation-ID');
+      if (responseCorrelationId) {
+        this.setCorrelationId(responseCorrelationId);
+      }
 
       if (!response.ok || !response.body) {
         throw new Error(await this.readErrorText(response));
@@ -322,6 +341,14 @@ export class ChatService {
     if (event.conversationId) {
       this.setConversationId(event.conversationId);
     }
+    if (event.correlationId) {
+      this.setCorrelationId(event.correlationId);
+    } else {
+      const payloadCorrelation = this.readString(event.payload, 'correlationId');
+      if (payloadCorrelation) {
+        this.setCorrelationId(payloadCorrelation);
+      }
+    }
 
     switch (event.type) {
       case 'status':
@@ -341,7 +368,9 @@ export class ChatService {
           actions: this.readArray<ChatAction>(event.payload, 'actions'),
           requiresConfirmation: this.readBoolean(event.payload, 'requiresConfirmation'),
           workflowRoute: this.readString(event.payload, 'workflowRoute'),
-          confidence: this.readNumber(event.payload, 'confidence'),
+          routingConfidence:
+            this.readNumber(event.payload, 'routingConfidence') ?? this.readNumber(event.payload, 'confidence'),
+          correlationId: this.readString(event.payload, 'correlationId'),
           toolCalls: this.readArray<string>(event.payload, 'toolCalls'),
           modelProfileUsed: this.readString(event.payload, 'modelProfileUsed'),
           fallbackUsed: this.readBoolean(event.payload, 'fallbackUsed')
@@ -393,7 +422,8 @@ export class ChatService {
       actions?: ChatAction[];
       requiresConfirmation?: boolean;
       workflowRoute?: string;
-      confidence?: number;
+      routingConfidence?: number;
+      correlationId?: string;
       toolCalls?: string[];
       modelProfileUsed?: string;
       fallbackUsed?: boolean;
@@ -412,7 +442,8 @@ export class ChatService {
           actions: completion.actions ?? [],
           requiresConfirmation: completion.requiresConfirmation ?? false,
           workflowRoute: completion.workflowRoute,
-          confidence: completion.confidence,
+          routingConfidence: completion.routingConfidence,
+          correlationId: completion.correlationId,
           toolCalls: completion.toolCalls ?? [],
           modelProfileUsed: completion.modelProfileUsed,
           fallbackUsed: completion.fallbackUsed ?? false

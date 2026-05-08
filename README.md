@@ -18,7 +18,7 @@ It supports:
 - Tailwind CSS + custom design system (`src/styles.css`)
 - ng2-charts + Chart.js
 - ngx-markdown
-- RxStomp + SockJS (WebSocket/STOMP client support)
+- Fetch + Server-Sent Events (SSE) for chat streaming
 
 ## Project Structure
 
@@ -106,8 +106,7 @@ Configured services call:
 - `POST /api/onboarding/risk-profile`
 - `GET /api/funds?query=...&limit=20`
 - `POST /api/portfolio/manual-selection`
-- `POST /api/chat/message`
-- `GET/CONNECT /ws` (SockJS/STOMP endpoint)
+- `POST /api/chat/stream` (SSE chat stream endpoint)
 
 `jwtInterceptor` automatically attaches:
 
@@ -124,6 +123,7 @@ Configured services call:
 `sessionStorage` key:
 
 - `chat_conversation_id`
+- `chat_correlation_id`
 
 ## Chat Assistant Behavior
 

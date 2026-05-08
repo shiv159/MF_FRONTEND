@@ -53,7 +53,8 @@ export interface ChatMetadata {
   fallbackUsed?: boolean;
   requiresConfirmation?: boolean;
   workflowRoute?: string;
-  confidence?: number;
+  routingConfidence?: number;
+  correlationId?: string;
   toolCalls?: string[];
   modelProfileUsed?: string;
 }
@@ -94,6 +95,7 @@ export interface ChatStreamEvent {
   type: ChatStreamEventType;
   conversationId?: string;
   assistantMessageId?: string;
+  correlationId?: string;
   contentDelta?: string;
   payload?: unknown;
   generatedAt?: string;
